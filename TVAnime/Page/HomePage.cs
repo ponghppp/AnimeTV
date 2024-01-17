@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TVAnime.Page
 {
-    internal class Home
+    internal class HomePage: BasePage
     {
 
     }
