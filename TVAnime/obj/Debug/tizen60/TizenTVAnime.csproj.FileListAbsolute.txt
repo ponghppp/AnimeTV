@@ -1,0 +1,6 @@
+C:\Users\P\Desktop\tvanime\TVAnime\bin\Debug\tizen60\tpkroot\bin\TVAnime.dll
+C:\Users\P\Desktop\tvanime\TVAnime\bin\Debug\tizen60\tpkroot\bin\TVAnime.pdb
+C:\Users\P\Desktop\tvanime\TVAnime\bin\Debug\tizen60\tpkroot\TVAnime.deps.json
+C:\Users\P\Desktop\tvanime\TVAnime\bin\Debug\tizen60\tpkroot\shared\res\TVAnime.png
+C:\Users\P\Desktop\tvanime\TVAnime\bin\Debug\tizen60\tpkroot\tizen-manifest.xml
+C:\Users\P\Desktop\tvanime\TVAnime\bin\Debug\tizen60\org.tizen.example.TVAnime-1.0.0.tpk

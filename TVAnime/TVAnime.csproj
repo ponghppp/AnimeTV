@@ -1,0 +1,36 @@
+<Project Sdk="Tizen.NET.Sdk/1.0.9">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>tizen60</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="lib\**" />
+    <Compile Remove="res\**" />
+    <EmbeddedResource Remove="lib\**" />
+    <EmbeddedResource Remove="res\**" />
+    <None Remove="lib\**" />
+    <None Remove="res\**" />
+    <TizenLibrary Remove="lib\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Tizen.NET.API9" Version="9.0.0.16908" />
+    <PackageReference Include="Tizen.NET.TV" Version="6.6.0.5599517">
+      <ExcludeAssets>Runtime</ExcludeAssets>
+    </PackageReference>
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Component\" />
+  </ItemGroup>
+
+</Project>

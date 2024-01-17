@@ -1,0 +1,10 @@
+C:\Users\jamestang\Desktop\Projects\TVAnime\TVAnime\bin\Debug\tizen70\TVAnime.deps.json
+C:\Users\jamestang\Desktop\Projects\TVAnime\TVAnime\bin\Debug\tizen70\TVAnime.dll
+C:\Users\jamestang\Desktop\Projects\TVAnime\TVAnime\bin\Debug\tizen70\TVAnime.pdb
+C:\Users\jamestang\Desktop\Projects\TVAnime\TVAnime\obj\Debug\tizen70\TVAnime.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jamestang\Desktop\Projects\TVAnime\TVAnime\obj\Debug\tizen70\TVAnime.AssemblyInfoInputs.cache
+C:\Users\jamestang\Desktop\Projects\TVAnime\TVAnime\obj\Debug\tizen70\TVAnime.AssemblyInfo.cs
+C:\Users\jamestang\Desktop\Projects\TVAnime\TVAnime\obj\Debug\tizen70\TVAnime.csproj.CoreCompileInputs.cache
+C:\Users\jamestang\Desktop\Projects\TVAnime\TVAnime\obj\Debug\tizen70\TVAnime.dll
+C:\Users\jamestang\Desktop\Projects\TVAnime\TVAnime\obj\Debug\tizen70\TVAnime.pdb
+C:\Users\jamestang\Desktop\Projects\TVAnime\TVAnime\obj\Debug\tizen70\TVAnime.csproj.AssemblyReference.cache

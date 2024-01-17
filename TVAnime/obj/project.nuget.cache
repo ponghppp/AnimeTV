@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "GrfYkmtiZQefx+f2TxbSPkVZrx3NaWhG3gDRGtwHkp8+QxXZLH046XVPawu5ZSJLAcrp1z0gD1FN+9nbmkPzSQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\P\\Desktop\\tvanime\\TVAnime\\TVAnime.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\P\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\P\\.nuget\\packages\\tizen.net\\6.0.0.14995\\tizen.net.6.0.0.14995.nupkg.sha512",
+    "C:\\Users\\P\\.nuget\\packages\\tizen.net.api6\\6.0.0.14995\\tizen.net.api6.6.0.0.14995.nupkg.sha512",
+    "C:\\Users\\P\\.nuget\\packages\\tizen.net.api9\\9.0.0.16908\\tizen.net.api9.9.0.0.16908.nupkg.sha512",
+    "C:\\Users\\P\\.nuget\\packages\\tizen.net.tv\\6.6.0.5599517\\tizen.net.tv.6.6.0.5599517.nupkg.sha512"
+  ],
+  "logs": []
+}
