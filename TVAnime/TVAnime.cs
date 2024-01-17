@@ -6,6 +6,8 @@ using Tizen.Pims.Contacts.ContactsViews;
 using System.Net.Http.Headers;
 using Tizen.Applications.Cion;
 using TVAnime.Page;
+using System.Collections.Generic;
+using TVAnime.Models;
 
 
 namespace TVAnime
@@ -21,6 +23,8 @@ namespace TVAnime
         void Initialize()
         {
             var homePage = new HomePage();
+            homePage.Init();
+            Globals.pageCount = 1;
         }
 
         static void Main(string[] args)

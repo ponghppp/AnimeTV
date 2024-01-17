@@ -20,3 +20,15 @@ C:\Users\P\Desktop\tvanime\TVAnime\obj\Debug\tizen60\TVAnime.AssemblyInfoInputs.
 C:\Users\P\Desktop\tvanime\TVAnime\obj\Debug\tizen60\TVAnime.AssemblyInfo.cs
 C:\Users\P\Desktop\tvanime\TVAnime\obj\Debug\tizen60\TVAnime.csproj.CoreCompileInputs.cache
 C:\Users\P\Desktop\tvanime\TVAnime\obj\Debug\tizen60\XamlC.stamp
+E:\tizen-project\AnimeTV\TVAnime\bin\Debug\tizen60\TVAnime.deps.json
+E:\tizen-project\AnimeTV\TVAnime\bin\Debug\tizen60\TVAnime.dll
+E:\tizen-project\AnimeTV\TVAnime\bin\Debug\tizen60\TVAnime.pdb
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen60\TVAnime.csproj.AssemblyReference.cache
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen60\TVAnime.GeneratedMSBuildEditorConfig.editorconfig
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen60\TVAnime.AssemblyInfoInputs.cache
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen60\TVAnime.AssemblyInfo.cs
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen60\TVAnime.csproj.CoreCompileInputs.cache
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen60\TVAnime.sourcelink.json
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen60\XamlC.stamp
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen60\TVAnime.dll
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen60\TVAnime.pdb

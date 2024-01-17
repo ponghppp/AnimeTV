@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\P\\workspace\\AnimeTV\\TVAnime\\TVAnime.csproj": {}
+    "E:\\tizen-project\\AnimeTV\\TVAnime\\TVAnime.csproj": {}
   },
   "projects": {
-    "C:\\Users\\P\\workspace\\AnimeTV\\TVAnime\\TVAnime.csproj": {
+    "E:\\tizen-project\\AnimeTV\\TVAnime\\TVAnime.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\P\\workspace\\AnimeTV\\TVAnime\\TVAnime.csproj",
+        "projectUniqueName": "E:\\tizen-project\\AnimeTV\\TVAnime\\TVAnime.csproj",
         "projectName": "TVAnime",
-        "projectPath": "C:\\Users\\P\\workspace\\AnimeTV\\TVAnime\\TVAnime.csproj",
+        "projectPath": "E:\\tizen-project\\AnimeTV\\TVAnime\\TVAnime.csproj",
         "packagesPath": "C:\\Users\\P\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\P\\workspace\\AnimeTV\\TVAnime\\obj\\",
+        "outputPath": "E:\\tizen-project\\AnimeTV\\TVAnime\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "E:\\VisualStudioTools\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\P\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -681,11 +681,12 @@
       ]
     },
     "Tizen.NET/6.0.0.14995": {
-      "sha512": "sNbcUBmgPl9t1TYmS0M3jisjS370Cl+G13do4TGiPncVZuvp6p+DITzYuOPBm30Pz9ugzN66T3zLbM9klkvpHw==",
+      "sha512": "vx7tSPQwfp2ZlX1D5FDKwuRWzb3QHn/zFYY6A/tRL+J0d28a0kkyJqyKEizRIiAASimS0X/ne1CRNkOihnO5WA==",
       "type": "package",
       "path": "tizen.net/6.0.0.14995",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "build/tizen40/Tizen.NET.props",
         "build/tizen40/Tizen.NET.targets",
         "runtime.json",
@@ -694,11 +695,12 @@
       ]
     },
     "Tizen.NET.API6/6.0.0.14995": {
-      "sha512": "6oTpxrpEv0TwU4n877BzCUxPCgvaMnsBTQtdZYWwmd4K1Y7xFCuiVp0Dd+BPoUL9I2/alcsGPiqXjTnqYayG8g==",
+      "sha512": "j9aluiOXT/5uOi+J4Gj9dkeZCr5PXdKw6jyRjOncgQelZFUu7nU/L807YAN3brTapkgv/7cfoBvbcK9mWfwdwA==",
       "type": "package",
       "path": "tizen.net.api6/6.0.0.14995",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "build/tizen60/LICENSE.Microsoft.NETCore.App.Ref.txt",
         "build/tizen60/PlatformManifest.txt",
         "build/tizen60/Tizen.NET.API6.props",
@@ -1689,19 +1691,19 @@
   },
   "packageFolders": {
     "C:\\Users\\P\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "E:\\VisualStudioTools\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\P\\workspace\\AnimeTV\\TVAnime\\TVAnime.csproj",
+      "projectUniqueName": "E:\\tizen-project\\AnimeTV\\TVAnime\\TVAnime.csproj",
       "projectName": "TVAnime",
-      "projectPath": "C:\\Users\\P\\workspace\\AnimeTV\\TVAnime\\TVAnime.csproj",
+      "projectPath": "E:\\tizen-project\\AnimeTV\\TVAnime\\TVAnime.csproj",
       "packagesPath": "C:\\Users\\P\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\P\\workspace\\AnimeTV\\TVAnime\\obj\\",
+      "outputPath": "E:\\tizen-project\\AnimeTV\\TVAnime\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "E:\\VisualStudioTools\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\P\\AppData\\Roaming\\NuGet\\NuGet.Config",

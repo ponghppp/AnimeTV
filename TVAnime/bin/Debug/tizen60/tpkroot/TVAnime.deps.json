@@ -49,14 +49,14 @@
     "Tizen.NET/6.0.0.14995": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-sNbcUBmgPl9t1TYmS0M3jisjS370Cl+G13do4TGiPncVZuvp6p+DITzYuOPBm30Pz9ugzN66T3zLbM9klkvpHw==",
+      "sha512": "sha512-vx7tSPQwfp2ZlX1D5FDKwuRWzb3QHn/zFYY6A/tRL+J0d28a0kkyJqyKEizRIiAASimS0X/ne1CRNkOihnO5WA==",
       "path": "tizen.net/6.0.0.14995",
       "hashPath": "tizen.net.6.0.0.14995.nupkg.sha512"
     },
     "Tizen.NET.API6/6.0.0.14995": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6oTpxrpEv0TwU4n877BzCUxPCgvaMnsBTQtdZYWwmd4K1Y7xFCuiVp0Dd+BPoUL9I2/alcsGPiqXjTnqYayG8g==",
+      "sha512": "sha512-j9aluiOXT/5uOi+J4Gj9dkeZCr5PXdKw6jyRjOncgQelZFUu7nU/L807YAN3brTapkgv/7cfoBvbcK9mWfwdwA==",
       "path": "tizen.net.api6/6.0.0.14995",
       "hashPath": "tizen.net.api6.6.0.0.14995.nupkg.sha512"
     },

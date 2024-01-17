@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DpS7WsLYfG0XvUWMezOIhHeUzIDbOu10wkBz7h20VC48K2dIiH6QBT01/pqWFTP4rrVg/togeWWI1qoRDHoMhg==",
+  "dgSpecHash": "CEZAYKQtYY9cVKocOvFMaOcfqdBzlEKUT0eRmuRrrgrFsgvN1Qf8mT9AzueV9T5+azg4TU9N54ysjOrCovZESg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\P\\workspace\\AnimeTV\\TVAnime\\TVAnime.csproj",
+  "projectFilePath": "E:\\tizen-project\\AnimeTV\\TVAnime\\TVAnime.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\P\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\P\\.nuget\\packages\\tizen.net\\6.0.0.14995\\tizen.net.6.0.0.14995.nupkg.sha512",
