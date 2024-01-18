@@ -9,7 +9,6 @@ namespace TVAnime.Models
 {
     static class Globals
     {
-        public static BasePage currentPage;
-        public static int pageCount;
+        public static List<Type> pageStacks;
     }
 }

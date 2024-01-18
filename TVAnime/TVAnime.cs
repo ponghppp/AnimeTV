@@ -8,6 +8,8 @@ using Tizen.Applications.Cion;
 using TVAnime.Page;
 using System.Collections.Generic;
 using TVAnime.Models;
+using ElmSharp;
+using Tizen.NUI.Components;
 
 
 namespace TVAnime
@@ -22,9 +24,11 @@ namespace TVAnime
 
         void Initialize()
         {
+            Globals.pageStacks = new List<Type> { };
             var homePage = new HomePage();
             homePage.Init();
-            Globals.pageCount = 1;
+            Tizen.NUI.Window.Instance.Add(homePage.view);
+            Globals.pageStacks.Add(homePage.GetType());
         }
 
         static void Main(string[] args)

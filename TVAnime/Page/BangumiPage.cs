@@ -9,13 +9,13 @@ using TVAnime.Component;
 
 namespace TVAnime.Page
 {
-    internal class RecordPage: BasePage
+    internal class BangumiPage : BasePage
     {
         public override void Init()
         {
             var header = new Header();
             var content = new Content();
-            var footer = new Footer(1, this);
+            var footer = new Footer(2, this);
 
             view.Add(header.view);
             view.Add(content.view);

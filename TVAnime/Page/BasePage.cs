@@ -4,17 +4,22 @@ using Tizen.NUI.Components;
 using System.Collections.Generic;
 using TVAnime.Models;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System;
+using System.Runtime.CompilerServices;
+using System.Linq;
 
 namespace TVAnime.Page
 {
     internal abstract class BasePage
     {
+        List<EventHandler<Window.KeyEventArgs>> delegates = new List<EventHandler<Window.KeyEventArgs>>();
         public View view { get; set; }
         public Window window = Window.Instance;
 
         public BasePage()
         {
-            window.KeyEvent += OnKeyEvent;
+            this.OnKeyEvents += OnBackPressed;
+
             View v = new View()
             {
                 HeightResizePolicy = ResizePolicyType.FillToParent,
@@ -29,34 +34,93 @@ namespace TVAnime.Page
             view = v;
         }
 
-        public virtual void Init()
+        public virtual void Init() { }
+
+        public void TransferToView(Type pageType, bool addStack = true)
         {
-            Globals.currentPage = this;
-            window.Add(view);
+            if (Globals.pageStacks.Count >= 2)
+            {
+                var previousPageType = Globals.pageStacks[Globals.pageStacks.Count - 2];
+                if (pageType == previousPageType)
+                {
+                    GoBack();
+                    return;
+                }
+            }
+
+            if (pageType != this.GetType())
+            {
+                Unload();
+                BasePage page = (BasePage)Activator.CreateInstance(pageType);
+                page.Init();
+                window.Add(page.view);
+                if (addStack)
+                {
+                    Globals.pageStacks.Add(pageType);
+                }
+            }
         }
 
-        public void TransferToView(BasePage page)
+        public void ShowLoading()
         {
             Layer layer = new Layer();
+            View view = new View()
+            {
+                WidthResizePolicy = ResizePolicyType.FillToParent,
+                HeightResizePolicy = ResizePolicyType.FillToParent
+            };
+            layer.Add(view);
             window.AddLayer(layer);
-            layer.Add(page.view);
-            window.AddLayer(layer);
-            Globals.pageCount += 1;
-            Globals.currentPage = page;
         }
 
-        public virtual void OnKeyEvent(object sender, Window.KeyEventArgs e)
+        public void HideLoading()
+        {
+            var loadingLayer = window.GetLayer(window.LayerCount);
+            window.RemoveLayer(loadingLayer);
+        }
+
+        private void Unload()
+        {
+            foreach (var eh in delegates)
+            {
+                window.KeyEvent -= eh;
+            }
+            delegates.Clear();
+            window.Remove(this.view);
+        }
+
+        private void GoBack()
+        {
+            var previousPageType = Globals.pageStacks[Globals.pageStacks.Count - 2];
+            Globals.pageStacks.RemoveAt(Globals.pageStacks.Count - 1);
+            TransferToView(previousPageType, false);
+        }
+
+        public event EventHandler<Window.KeyEventArgs> OnKeyEvents
+        {
+            add
+            {
+                delegates.Add(value);
+                window.KeyEvent += value;
+            }
+            remove
+            {
+                delegates.Remove(value);
+                window.KeyEvent -= value;
+            }
+        }
+
+        public virtual void OnBackPressed(object sender, Window.KeyEventArgs e)
         {
             if (e.Key.State == Key.StateType.Down && (e.Key.KeyPressedName == "XF86Back" || e.Key.KeyPressedName == "Escape"))
             {
-                if (Globals.pageCount == 1)
+                if (Globals.pageStacks.Count == 1)
                 {
                     NUIApplication.Current.Exit();
                 }
-                if (this == Globals.currentPage)
+                else
                 {
-                    Globals.pageCount -= 1;
-                    window.RemoveLayer(this.view.GetLayer());
+                    GoBack();
                 }
             }
         }

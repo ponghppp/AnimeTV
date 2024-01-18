@@ -5,11 +5,24 @@ using System.Net.Http.Headers;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Tizen.Network.IoTConnectivity;
+using TVAnime.Helper;
+using Newtonsoft.Json;
+using TVAnime.Models;
 
 namespace TVAnime
 {
     internal class Api
     {
+        public static async Task<List<LatestAnime>> GetLatestList()
+        {
+            var url = "https://d1zquzjgwo9yb.cloudfront.net/";
+            var response = await HttpHelper.MakeHttpRequest(url, HttpMethod.Get);
+            var jsonStr = await response.Content.ReadAsStringAsync();
+            var animeList = JsonConvert.DeserializeObject<List<LatestAnime>>(jsonStr);
+            return animeList;
+        }
+
         public static async void GetAnimeUrl()
         {
             using (var request = new HttpRequestMessage())

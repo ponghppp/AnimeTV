@@ -15,88 +15,35 @@ namespace TVAnime.Page
     internal class HomePage : BasePage
     {
         public int selectedIndex = 0;
-        private List<Episode> episodes = new List<Episode>();
-        private CollectionView collectionView = new CollectionView();
+        private List<SelectionItem> episodes = new List<SelectionItem>();
+        private ItemSelectionView itemSelectionView;
         public override void Init()
         {
-            base.Init();
             var header = new Header();
             var content = new Content();
-            var footer = new Footer(0);
+            var footer = new Footer(0, this);
 
             view.Add(header.view);
 
-            collectionView = new CollectionView()
-            {
-                ScrollingDirection = ScrollableBase.Direction.Vertical,
-                SelectionMode = ItemSelectionMode.SingleAlways,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.MatchParent,
-                ItemsLayouter = new LinearLayouter(),
-                ItemsSource = episodes,
-                ItemTemplate = new DataTemplate(() =>
-                {
-                    var item = new DefaultLinearItem()
-                    {
-                        WidthSpecification = LayoutParamPolicies.MatchParent,
-                        HeightSpecification = LayoutParamPolicies.WrapContent,
-                        Padding = new Extents(10, 10, 0, 0)
-                    };
-
-                    item.Label.TextColor = Color.Black;
-                    item.Label.SetBinding(TextLabel.BackgroundColorProperty, "BackgroundColor");
-                    item.Label.SetBinding(TextLabel.TextProperty, "Name");
-                    return item;
-                })
-            };
-            collectionView.SelectionChanged += SelectionChanged;
+            itemSelectionView = new ItemSelectionView(this);
             GetList();
-            content.view.Add(collectionView);
+            content.view.Add(itemSelectionView.view);
             view.Add(content.view);
+
             view.Add(footer.view);
         }
 
-        private void SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void GetList()
         {
-            if (e.CurrentSelection.Count > 0)
-            {
-                episodes.ForEach(ep => ep.BackgroundColor = Color.White);
-                foreach (object item in e.CurrentSelection)
-                {
-                    Episode episode = (Episode)item;
-                    episode.BackgroundColor = Color.Cyan;
-                }
-                collectionView.ItemsSource = episodes;
-            }
-        }
+            var latestAnimeList = await Api.GetLatestList();
+            episodes = latestAnimeList.Select(a => new SelectionItem(a.animeName + " " + a.episode, a.categoryId.ToString())).ToList();
 
-        private void GetList()
-        {
-            episodes = new List<Episode>() { new Episode("Hi"), new Episode("Bye") };
-            collectionView.ItemsSource = episodes;
+            itemSelectionView.collectionView.ItemsSource = episodes;
             if (episodes.Count > 0)
             {
                 selectedIndex = 0;
-                collectionView.SelectedItem = episodes[selectedIndex];
+                itemSelectionView.collectionView.SelectedItem = episodes[selectedIndex];
             }
         }
-
-        public override void OnKeyEvent(object sender, Window.KeyEventArgs e)
-        {
-            base.OnKeyEvent(sender, e);
-
-            if (e.Key.State == Key.StateType.Down && (e.Key.KeyPressedName == "Down"))
-            {
-                selectedIndex = Math.Min(episodes.Count - 1, selectedIndex + 1);
-                collectionView.SelectedItem = episodes[selectedIndex];
-            }
-            if (e.Key.State == Key.StateType.Down && (e.Key.KeyPressedName == "Up"))
-            {
-                selectedIndex = Math.Max(0, selectedIndex - 1);
-                collectionView.SelectedItem = episodes[selectedIndex];
-            }
-        }
-
-
     }
 }

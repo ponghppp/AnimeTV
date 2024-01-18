@@ -7,14 +7,17 @@ using Tizen.NUI;
 
 namespace TVAnime.Models
 {
-    internal class Episode
+    internal class SelectionItem
     {
         public string Name { get; set; }
+        public string Id { get; set; }
         public Color BackgroundColor { get; set; }
 
-        public Episode(string name) {
+        public SelectionItem(string name, string id)
+        {
             this.Name = name;
             this.BackgroundColor = Color.White;
+            this.Id = id;
         }
     }
 }

@@ -9,9 +9,7 @@ namespace TVAnime.Models
 {
     public class FooterItem
     {
-        public delegate void CallBackFunction(string input);
         public string Title { get; set; }
-
 
         public FooterItem(string Title)
         {
