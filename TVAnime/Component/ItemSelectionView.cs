@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tizen.NUI.BaseComponents;
 using Tizen.NUI;
 using Tizen.NUI.Components;
 using Tizen.NUI.Binding;
 using TVAnime.Models;
 using TVAnime.Page;
-using Tizen.Network.IoTConnectivity;
 
 namespace TVAnime.Component
 {
@@ -18,7 +14,8 @@ namespace TVAnime.Component
         public int selectedIndex = 0;
         public View view { get; set; }
         public BasePage page { get; set; }
-        public CollectionView collectionView { get; set; }
+        public TableView collectionView { get; set; }
+        
 
         public ItemSelectionView(BasePage page)
         {
@@ -37,7 +34,7 @@ namespace TVAnime.Component
                 SelectionMode = ItemSelectionMode.SingleAlways,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.MatchParent,
-                ItemsLayouter = new LinearLayouter(),
+                
                 ItemTemplate = new DataTemplate(() =>
                 {
                     var item = new DefaultLinearItem()
@@ -51,7 +48,6 @@ namespace TVAnime.Component
                     return item;
                 })
             };
-
             collectionView.SelectionChanged += SelectionChanged;
             v.Add(collectionView);
             view = v;
@@ -73,13 +69,13 @@ namespace TVAnime.Component
 
         public void OnKeyEvent(object sender, Window.KeyEventArgs e)
         {
-            if (e.Key.State == Key.StateType.Down)
+            if (e.Key.State == Key.StateType.Down && collectionView.ItemsSource != null)
             {
                 var source = collectionView.ItemsSource.Cast<SelectionItem>().ToList();
-                if (e.Key.KeyPressedName == "Enter")
+                if (e.Key.KeyPressedName == "Return")
                 {
                     var param = source[selectedIndex].Param;
-                    page.TransferToView(typeof(SeriesPage), param);
+                    page.TransferToView((Type)param["Page"], param);
                     return;
                 }
                 var nextSelectedIndex = selectedIndex;

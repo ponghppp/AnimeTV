@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using TVAnime.Models;
 using ElmSharp;
 using Tizen.NUI.Components;
+using TVAnime.Helper;
 
 
 namespace TVAnime
@@ -24,14 +25,10 @@ namespace TVAnime
 
         void Initialize()
         {
-           // Globals.pageStacks = new List<Dictionary<Type, Dictionary<string, object>>> { };
             var homePage = new HomePage();
-            homePage.Init();
             Tizen.NUI.Window.Instance.Add(homePage.view);
+            homePage.Init();
             Globals.AddPageStack(homePage.GetType(), null);
-            //Dictionary<Type, Dictionary<string, object>> dict = new Dictionary<Type, Dictionary<string, object>> { };
-            //dict[homePage.GetType()] = null;
-            //Globals.pageStacks.Add(dict);
         }
 
         static void Main(string[] args)

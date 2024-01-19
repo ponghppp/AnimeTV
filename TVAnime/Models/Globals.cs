@@ -10,7 +10,6 @@ namespace TVAnime.Models
     static class Globals
     {
         public static List<Dictionary<Type, Dictionary<string, object>>> pageStacks;
-        //public static List<Type> pageStacks;
 
         public static void AddPageStack(Type pageType, Dictionary<string, object> param)
         {

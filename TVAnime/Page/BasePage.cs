@@ -14,6 +14,7 @@ namespace TVAnime.Page
     {
         List<EventHandler<Window.KeyEventArgs>> delegates = new List<EventHandler<Window.KeyEventArgs>>();
         public View view { get; set; }
+        public View loadingView { get; set; }
         public Window window = Window.Instance;
         public Dictionary<string, object> param { get; set; }
 
@@ -53,32 +54,73 @@ namespace TVAnime.Page
             {
                 Unload();
                 BasePage page = (BasePage)Activator.CreateInstance(pageType);
-                page.Init();
-                page.param = param;
                 window.Add(page.view);
+                page.param = param;
                 if (addStack)
                 {
                     Globals.AddPageStack(pageType, param);
                 }
+                page.Init();
             }
         }
 
         public void ShowLoading()
         {
-            Layer layer = new Layer();
-            View view = new View()
+            if (loadingView == null)
             {
-                WidthResizePolicy = ResizePolicyType.FillToParent,
-                HeightResizePolicy = ResizePolicyType.FillToParent
-            };
-            layer.Add(view);
-            window.AddLayer(layer);
+                loadingView = new View()
+                {
+                    WidthResizePolicy = ResizePolicyType.FillToParent,
+                    HeightResizePolicy = ResizePolicyType.FillToParent,
+                    BackgroundColor = Color.Black,
+                    Opacity = 0.6f
+                };
+                var loadingLayout = new LinearLayout()
+                {
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                };
+                loadingView.Layout = loadingLayout;
+                View container = new View()
+                {
+                    WidthResizePolicy = ResizePolicyType.FitToChildren,
+                    HeightResizePolicy = ResizePolicyType.FitToChildren,
+                };
+                var containerLayout = new LinearLayout()
+                {
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    LinearOrientation = LinearLayout.Orientation.Vertical
+                };
+                container.Layout = containerLayout;
+                TextLabel textLabel = new TextLabel()
+                {
+                    Text = "載入中...",
+                    TextColor = Color.White,
+                };
+                View spinner = new View()
+                {
+                    WidthSpecification = 100,
+                    HeightSpecification = 100,
+                    BackgroundColor = Color.Cyan
+                };
+                var animation = new Animation(1000)
+                {
+                    Looping = true
+                };
+                animation.AnimateTo(spinner, "Orientation", new Rotation(new Radian(new Degree(180.0f)), PositionAxis.X), 0, 500, new AlphaFunction(AlphaFunction.BuiltinFunctions.EaseInOutSine));
+                animation.Play();
+
+                container.Add(spinner);
+                container.Add(textLabel);
+                loadingView.Add(container);
+            }
+            window.Add(loadingView);
         }
 
         public void HideLoading()
         {
-            var loadingLayer = window.GetLayer(window.LayerCount);
-            window.RemoveLayer(loadingLayer);
+            window.Remove(loadingView);
         }
 
         private void Unload()

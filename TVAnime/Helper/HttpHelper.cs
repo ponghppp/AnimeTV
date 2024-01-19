@@ -15,14 +15,20 @@ using Microsoft.VisualBasic;
 using Tizen.NUI.BaseComponents;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
+using Tizen.Network.IoTConnectivity;
 
 namespace TVAnime.Helper
 {
     internal class HttpHelper
     {
+        static bool connected = false;
         public static async Task<HttpResponseMessage> MakeHttpRequest(string url, HttpMethod method, Dictionary<string, object> body = null, Dictionary<string, string> headers = null) 
         {
-            if (!CheckNetworkConnectivity())
+            if (!connected)
+            {
+                await HttpHelper.CheckNetworkConnectivity();
+            }
+            if (!connected)
             {
                 return GetMockData(url);
             }
@@ -74,21 +80,20 @@ namespace TVAnime.Helper
             return response;
         }
 
-        private static bool CheckNetworkConnectivity()
+        public static async Task CheckNetworkConnectivity()
         {
             try
             {
-                Ping myPing = new Ping();
-                String host = "google.com";
-                byte[] buffer = new byte[32];
-                int timeout = 1000;
-                PingOptions pingOptions = new PingOptions();
-                PingReply reply = myPing.Send(host, timeout, buffer, pingOptions);
-                return (reply.Status == IPStatus.Success);
+                using (HttpClient client = new HttpClient())
+                {
+                    client.Timeout = TimeSpan.FromSeconds(10);
+                    var response = await client.GetAsync("https://google.com");
+                    connected = response.StatusCode == System.Net.HttpStatusCode.OK;
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                Console.WriteLine(ex.Message);
             }
         }
 

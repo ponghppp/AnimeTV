@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 using TVAnime.Component;
+using TVAnime.Models;
 
 namespace TVAnime.Page
 {
-    internal class RecordPage: BasePage
+    internal class RecordPage : BasePage
     {
         public override void Init()
         {
@@ -20,7 +21,11 @@ namespace TVAnime.Page
             view.Add(header.view);
             view.Add(content.view);
             view.Add(footer.view);
+            GetList();
         }
-
+        private async void GetList()
+        {
+            
+        }
     }
 }

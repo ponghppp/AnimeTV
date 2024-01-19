@@ -14,7 +14,6 @@ namespace TVAnime.Page
 {
     internal class HomePage : BasePage
     {
-        public int selectedIndex = 0;
         private List<SelectionItem> episodes = new List<SelectionItem>();
         private ItemSelectionView itemSelectionView;
         public override void Init()
@@ -22,15 +21,14 @@ namespace TVAnime.Page
             var header = new Header();
             var content = new Content();
             var footer = new Footer(0, this);
-
             view.Add(header.view);
 
             itemSelectionView = new ItemSelectionView(this);
-            GetList();
             content.view.Add(itemSelectionView.view);
+            itemSelectionView.collectionView.ItemsLayouter = new LinearLayouter();
             view.Add(content.view);
-
             view.Add(footer.view);
+            GetList();
         }
 
         private async void GetList()
@@ -38,13 +36,23 @@ namespace TVAnime.Page
             ShowLoading();
             var latestAnimeList = await Api.GetLatestList();
             HideLoading();
-            episodes = latestAnimeList.Select(a => new SelectionItem(a.animeName + " " + a.episode, a.categoryId.ToString())).ToList();
+           
+            episodes = latestAnimeList.Select(a => 
+            {
+                var title = a.animeName + " " + a.episode;
+                var id = a.categoryId.ToString();
+                var param = new Dictionary<string, object>()
+                {
+                    ["Id"] = a.categoryId.ToString(),
+                    ["Page"] = typeof(SeriesPage)
+                };
+                return new SelectionItem(title, id, param);
+            }).ToList();
 
             itemSelectionView.collectionView.ItemsSource = episodes;
             if (episodes.Count > 0)
             {
-                selectedIndex = 0;
-                itemSelectionView.collectionView.SelectedItem = episodes[selectedIndex];
+                itemSelectionView.collectionView.SelectedItem = episodes[0];
             }
         }
     }

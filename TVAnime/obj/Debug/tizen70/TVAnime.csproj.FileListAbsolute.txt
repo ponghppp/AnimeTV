@@ -8,3 +8,11 @@ C:\Users\jamestang\Desktop\Projects\TVAnime\TVAnime\obj\Debug\tizen70\TVAnime.cs
 C:\Users\jamestang\Desktop\Projects\TVAnime\TVAnime\obj\Debug\tizen70\TVAnime.dll
 C:\Users\jamestang\Desktop\Projects\TVAnime\TVAnime\obj\Debug\tizen70\TVAnime.pdb
 C:\Users\jamestang\Desktop\Projects\TVAnime\TVAnime\obj\Debug\tizen70\TVAnime.csproj.AssemblyReference.cache
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen70\TVAnime.csproj.AssemblyReference.cache
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen70\TVAnime.GeneratedMSBuildEditorConfig.editorconfig
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen70\TVAnime.AssemblyInfoInputs.cache
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen70\TVAnime.AssemblyInfo.cs
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen70\TVAnime.csproj.CoreCompileInputs.cache
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen70\TVAnime.sourcelink.json
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen70\TVAnime.dll
+E:\tizen-project\AnimeTV\TVAnime\obj\Debug\tizen70\TVAnime.pdb
