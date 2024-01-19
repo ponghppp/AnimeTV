@@ -4,5 +4,6 @@
     <Import Project="$(NuGetPackageRoot)tizen.net.api6\6.0.0.14995\build\tizen60\Tizen.NET.API6.targets" Condition="Exists('$(NuGetPackageRoot)tizen.net.api6\6.0.0.14995\build\tizen60\Tizen.NET.API6.targets')" />
     <Import Project="$(NuGetPackageRoot)tizen.net\6.0.0.14995\build\tizen40\Tizen.NET.targets" Condition="Exists('$(NuGetPackageRoot)tizen.net\6.0.0.14995\build\tizen40\Tizen.NET.targets')" />
     <Import Project="$(NuGetPackageRoot)tizen.net.api9\9.0.0.16908\build\netstandard2.0\Tizen.NET.API9.targets" Condition="Exists('$(NuGetPackageRoot)tizen.net.api9\9.0.0.16908\build\netstandard2.0\Tizen.NET.API9.targets')" />
+    <Import Project="$(NuGetPackageRoot)system.text.json\8.0.0\buildTransitive\netstandard2.0\System.Text.Json.targets" Condition="Exists('$(NuGetPackageRoot)system.text.json\8.0.0\buildTransitive\netstandard2.0\System.Text.Json.targets')" />
   </ImportGroup>
 </Project>

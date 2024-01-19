@@ -19,7 +19,15 @@ namespace TVAnime
             var url = "https://d1zquzjgwo9yb.cloudfront.net/";
             var response = await HttpHelper.MakeHttpRequest(url, HttpMethod.Get);
             var jsonStr = await response.Content.ReadAsStringAsync();
-            var animeList = JsonConvert.DeserializeObject<List<LatestAnime>>(jsonStr);
+            var list = JsonConvert.DeserializeObject<string[][]>(jsonStr);
+            List<LatestAnime> animeList = list.Select(l => new LatestAnime()
+            {
+               categoryId = int.Parse(l[0]),
+               animeName = l[1],
+               episode = l[2],
+               year = l[3],
+               season = l[4]
+            }).Where(l => !(l.animeName.Contains("https://anime1.pw"))).ToList();
             return animeList;
         }
 

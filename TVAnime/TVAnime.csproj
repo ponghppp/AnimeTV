@@ -12,17 +12,18 @@
     <DebugType>None</DebugType>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Data\**" />
     <Compile Remove="lib\**" />
-    <Compile Remove="res\**" />
+    <EmbeddedResource Remove="Data\**" />
     <EmbeddedResource Remove="lib\**" />
-    <EmbeddedResource Remove="res\**" />
+    <None Remove="Data\**" />
     <None Remove="lib\**" />
-    <None Remove="res\**" />
     <TizenLibrary Remove="lib\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Net.Http.Json" Version="8.0.0" />
     <PackageReference Include="Tizen.NET.API9" Version="9.0.0.16908" />
     <PackageReference Include="Tizen.NET.TV" Version="6.6.0.5599517">
       <ExcludeAssets>Runtime</ExcludeAssets>

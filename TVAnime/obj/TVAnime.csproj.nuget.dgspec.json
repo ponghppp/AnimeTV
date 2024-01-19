@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\tizen-project\\AnimeTV\\TVAnime\\TVAnime.csproj": {}
+    "C:\\Users\\jamestang\\Desktop\\Projects\\AnimeTV\\TVAnime\\TVAnime.csproj": {}
   },
   "projects": {
-    "E:\\tizen-project\\AnimeTV\\TVAnime\\TVAnime.csproj": {
+    "C:\\Users\\jamestang\\Desktop\\Projects\\AnimeTV\\TVAnime\\TVAnime.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\tizen-project\\AnimeTV\\TVAnime\\TVAnime.csproj",
+        "projectUniqueName": "C:\\Users\\jamestang\\Desktop\\Projects\\AnimeTV\\TVAnime\\TVAnime.csproj",
         "projectName": "TVAnime",
-        "projectPath": "E:\\tizen-project\\AnimeTV\\TVAnime\\TVAnime.csproj",
-        "packagesPath": "C:\\Users\\P\\.nuget\\packages\\",
-        "outputPath": "E:\\tizen-project\\AnimeTV\\TVAnime\\obj\\",
+        "projectPath": "C:\\Users\\jamestang\\Desktop\\Projects\\AnimeTV\\TVAnime\\TVAnime.csproj",
+        "packagesPath": "C:\\Users\\jamestang\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jamestang\\Desktop\\Projects\\AnimeTV\\TVAnime\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "E:\\VisualStudioTools\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\P\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jamestang\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,7 +25,6 @@
           "tizen60"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://tizen.myget.org/F/dotnet/api/v3/index.json": {}
@@ -46,6 +45,14 @@
         "tizen60": {
           "targetAlias": "tizen60",
           "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "System.Net.Http.Json": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Tizen.NET": {
               "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",

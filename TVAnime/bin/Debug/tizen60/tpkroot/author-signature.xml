@@ -4,7 +4,7 @@
     <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
     <Reference URI="TVAnime.deps.json">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>AF+P32TZ2FtQwSzcp8LZTaJn73OzvDULiX9mT8v1DYo=</DigestValue>
+      <DigestValue>KBsqjDSPRzktP1oUFKtyaMvkdQoDj54deL2220oJHfE=</DigestValue>
     </Reference>
     <Reference URI="tizen-manifest.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
@@ -14,13 +14,41 @@
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
       <DigestValue>/gTbhhRqVKFAMykTkZyDaEozK7OBNMSXGtsJpmRcLuE=</DigestValue>
     </Reference>
+    <Reference URI="res%2FlatestAnime.txt">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>fo69ZEmF8mlIhKDR45M8jA66VC0g5+BLoMpXJ6YGwTM=</DigestValue>
+    </Reference>
     <Reference URI="bin%2FTVAnime.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>RR5Z2jZlU5tGq9s2tIkWIE7QokGWPr2HMmEjcSvC5kU=</DigestValue>
+      <DigestValue>6MDxzHwTE0TJIKdT57M6LbrbPErQmik3BGWCToYj/wg=</DigestValue>
     </Reference>
     <Reference URI="bin%2FTVAnime.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-      <DigestValue>e9avn/ZOEfGvowUMcnYz5Ez2D+O1+oNpwbWXcTGwUnY=</DigestValue>
+      <DigestValue>ceHgYPqXsMpSIyhCmUrEI8J78vZPuv1srSfVZ34EqrU=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FSystem.Text.Json.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>Nj057d0VVcZaphrVZWCHx5WjeQ9DSvkt5fxSevhqS1U=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FSystem.Text.Encodings.Web.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>WtHzSCI/KBw0ubhXRFocNBKkMAJu8EmurGQcU6kkCL4=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FSystem.Runtime.CompilerServices.Unsafe.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>AXSCAPJADHQqponx9RAb1imO/f2SwAwY9PpHOEcjW6k=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FSystem.Net.Http.Json.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>T5WN/3tME4vl+Ynar7wYmfaP/a5eSX9zc0lsjsxVHK8=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FNewtonsoft.Json.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>jB3VwYS04ufq0Glx/z68tGeDvpciktHesQYXRDabTYA=</DigestValue>
+    </Reference>
+    <Reference URI="bin%2FMicrosoft.Bcl.AsyncInterfaces.dll">
+      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+      <DigestValue>E21ZZc9HaOhCC1R6i93qiCkh9CbDcYM9VYqFii8MI1o=</DigestValue>
     </Reference>
     <Reference URI="#prop">
       <Transforms>
@@ -31,11 +59,11 @@
     </Reference>
   </SignedInfo>
   <SignatureValue>
-j0fe1DVsdoi5v9Q5pChghCtWP+B8mBXaE4bT5Pa74yzENbKAGuyt/nUk0euJ7hj6FQV8q0diObsW
-VgG0BG5sROt+35vQ4DFF32fKVyMVh6/hW/aapVDRxUrh6WDx7von+YcBXwSAdI1cVYsxFfBnGzsN
-S5KiG/y49jPAczokNOiAL/rUUG3mk5zGucZITzpRu8LuOuVIoX+CgHNRwzO8egQNBs4kJpwMYNuO
-wxXBLI8MkHYG38XpDUszvWScGq2VF/JfBmRuHQ/1iZbwCRW1Jy4kK50tyyYyFVOZoy7PnNetFhFb
-Ptmmr+Sn7wOAhNnQ4qfmKtbErWl/5DPCJ1FPEw==
+jwtDFpyLxsoSae0z7QFyG6/iNHPtW9pJ8hylOpXxyXQW4Dk7rvYNV9b54UJVaNsITkcAuR30H/TB
+ji+uUcHchnKkwxKu1IJfztMB7XOj2IUySPzFu6OddcQ+rPcS1NDNtwIXUUBlSxaIUvbb23N2rBxS
+qBIgnROWqiaImRcV4lxjiStsmtqf8bfouTM5jlUQ57qFbhotRNJe5womueEFTjOfR3SgLr2dUxf+
+yiVT6iVQEcWjSZcntw3SMNWvhOgGraDjDvLrm/CKWxKZ72sXXr/VgUbtqBmDbVV8Wu3o6OadYRTp
+T3xQN4fmrfg+uUpJg3QpNx/o8LDVgcm2wparFg==
 </SignatureValue>
   <KeyInfo>
     <X509Data>
@@ -43,19 +71,19 @@ Ptmmr+Sn7wOAhNnQ4qfmKtbErWl/5DPCJ1FPEw==
 MIIDZjCCAk6gAwIBAgIBAjANBgkqhkiG9w0BAQ0FADCBijELMAkGA1UEBhMCS1IxFDASBgNVBAgT
 C1NvdXRoIEtvcmVhMQ4wDAYDVQQHEwVTdXdvbjEmMCQGA1UEChMdU2Ftc3VuZyBFbGVjdHJvbmlj
 cyBDby4sIEx0ZC4xCzAJBgNVBAsTAlZEMSAwHgYDVQQDExdTYW1zdW5nIEF1dGhvciBDQSBDbGFz
-czAeFw0yNDAxMTcwNzU4MzRaFw0yNTAxMTYwNzU4MzRaMEYxCTAHBgNVBAYTADEJMAcGA1UECBMA
+czAeFw0yNDAxMTYwODE4NTlaFw0yNTAxMTUwODE4NTlaMEYxCTAHBgNVBAYTADEJMAcGA1UECBMA
 MQkwBwYDVQQHEwAxCTAHBgNVBAoTADEJMAcGA1UECxMAMQ0wCwYDVQQDEwRQb25nMIIBIjANBgkq
-hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoca9VPyCfF2axnXvzAbXrOioTciukpn0xhwDkTlcQ2M+
-I6d4/UIuNVR8nthSQImphCYfO3zMahrLtl2gVazBakjI8hzqx4Vh4jCqGdwFgEbazIuGzBNXIWeK
-kd7F/ibDN8WPx2dyv1Rh/PBHauOmsXLmA73wNKyJDEGASfsn3OZbdeqIjo2A1Zc8n6KqfkuyJwB1
-f5kf7K8ShmN32bCq9I89oZEWFZqncEJ2RuCqluqQah0T+D2YXHZ/a6VRH6AjLt+Lcy3MD4m+EtBO
-JjXxVbzUYDPGRNplTS2OKiFpEwCfxhoGmIh0GMYWHwAhZwtg3JiPKFI/1JTLe+bBE0d+AQIDAQAB
-oxowGDAJBgNVHRMEAjAAMAsGA1UdDwQEAwIHgDANBgkqhkiG9w0BAQ0FAAOCAQEAIN1+bIHh1gbb
-Y6OsDCaki0BuaFr2CaeTsRVjuUvVJtNnCso029Uy5Dfsmc8w2YvmZHAC/mO7DwC6sDjT5lZMaQzS
-ynv6EgNZ2/XJLsBwuKnd3XV841RE/mHU4kLRAU8JTjvTXbIZhtrUC5t5vyNhhBuhAgzlP/7lSFHJ
-EMLpgkFgvip6hm8hwT5pbwCaBEPOBrCnS2FHxxkn8TQJBV7BO1ltNrmTCf25lmsVDeB7yEH/rLgh
-T+z621NmbjY5j2JbvNLeJg6SRpuSsuAGXJDG2O38ITDT8yiiCh9Ig0o1lX0Me+pdjF6NLnwKY9+A
-8LmIxIjySn7X20LIwvbulrJzTg==
+hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAn4nvwt6/bqXGYwNBjViPfMWuhdhvaZvv/1FYh0KsDsyF
+7Xt8Rk8tI5smCfmyWx16xYhMI4eSBQWP9l/kQHa/plIp18a1ns78vR2168C56+CXRLKOd4HSMUUL
+5NUdu/cRpcxaJoMnNLQQwtZgnY/n6rfOAiB2gu22+LY/EyddDF3OGGppvQOs1LUiXlOOaQQoPC2r
+w9R+yjTP1nDQKJ3xDYKjJMsORLs8Zpox7EDzZSrfFzdjPhK95o/bZp+59gdBx/IwGw5ugmBB1DaO
+saJvbqkoqM0otLwJE8nHa463nsbJc8lPnL7ggpHC1Uw/5v5KDMHBd41e/tqkQB+/ZZb0PQIDAQAB
+oxowGDAJBgNVHRMEAjAAMAsGA1UdDwQEAwIHgDANBgkqhkiG9w0BAQ0FAAOCAQEAogcEj5xCLNMA
+2hCoYr6zPXLkOJEiRw+CKcsUyasVO+rcZegURY8HD+RWbdm2mSVWyQwWF/X2mG/2SV9/X0rRioML
+ClzYTDURjlNEaGASOQc8XmExLZ/dNT4Zg4nlOyBS371RILCWiBLSrlVA9kEsLBdJbbApqYlLnxrQ
+oRjDq8yPcNs3PfaW60/8eCX8QX6l0WXSPPn1rGCuWBd6ihJGRMFcO9gIE0/lbZQ41LldLXUXD+Pv
+4kGKb1IEPGL+Rr/jhUJ0wqJRgYT79/m3CSa4Jittk1IbH82RCoW7Shuxgn25hufJDTLtmI9fptij
+UyHYmdJvHgAF5nMsoHjELTrELQ==
 </X509Certificate>
       <X509Certificate>
 MIIDdTCCAl2gAwIBAgICaFYwDQYJKoZIhvcNAQELBQAwXjEaMBgGA1UECgwRVGl6ZW4gQXNzb2Np

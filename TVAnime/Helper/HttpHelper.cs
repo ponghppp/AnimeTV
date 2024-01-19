@@ -9,6 +9,12 @@ using Tizen.Pims.Contacts.ContactsViews;
 using System.Net.WebSockets;
 using TVAnime.Component;
 using System.Net.Mime;
+using System.IO;
+using System.Net.NetworkInformation;
+using Microsoft.VisualBasic;
+using Tizen.NUI.BaseComponents;
+using Newtonsoft.Json;
+using System.Net.Http.Json;
 
 namespace TVAnime.Helper
 {
@@ -16,6 +22,11 @@ namespace TVAnime.Helper
     {
         public static async Task<HttpResponseMessage> MakeHttpRequest(string url, HttpMethod method, Dictionary<string, object> body = null, Dictionary<string, string> headers = null) 
         {
+            if (!CheckNetworkConnectivity())
+            {
+                return GetMockData(url);
+            }
+
             HttpResponseMessage response = null;
             using (var request = new HttpRequestMessage())
             {
@@ -60,6 +71,40 @@ namespace TVAnime.Helper
                     Console.WriteLine(ex.Message);
                 }
             }
+            return response;
+        }
+
+        private static bool CheckNetworkConnectivity()
+        {
+            try
+            {
+                Ping myPing = new Ping();
+                String host = "google.com";
+                byte[] buffer = new byte[32];
+                int timeout = 1000;
+                PingOptions pingOptions = new PingOptions();
+                PingReply reply = myPing.Send(host, timeout, buffer, pingOptions);
+                return (reply.Status == IPStatus.Success);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static HttpResponseMessage GetMockData(string url)
+        {
+            var response = new HttpResponseMessage();
+            var fileName = "";
+            switch (url)
+            {
+                case "https://d1zquzjgwo9yb.cloudfront.net/":
+                    fileName = "latestAnime";
+                    break;
+            }
+            
+            string text = File.ReadAllText(Path.Combine(Tizen.Applications.Application.Current.DirectoryInfo.Resource, fileName + ".txt"));
+            response.Content = new StringContent(text);
             return response;
         }
     }

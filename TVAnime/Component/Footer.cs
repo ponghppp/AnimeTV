@@ -9,15 +9,13 @@ using System.Collections.Generic;
 
 namespace TVAnime.Component
 {
-
-
     internal class Footer
     {
         List<FooterItem> items = new List<FooterItem>
         {
-            new FooterItem("List"),
-            new FooterItem("Record"),
-            new FooterItem("Bangumi"),
+            new FooterItem("列表", typeof(HomePage)),
+            new FooterItem("記錄", typeof(RecordPage)),
+            new FooterItem("新番", typeof(BangumiPage)),
         };
 
         public BasePage currentPage { get; set; }
@@ -53,55 +51,28 @@ namespace TVAnime.Component
                     BackgroundColor = idx == activeIndex ? Color.Blue : Color.Black,
                     TextColor = Color.White
                 };
-                button.Clicked += Clicked;
                 v.Add(button);
             }
             view = v;
             this.currentPage.OnKeyEvents += OnKeyEvent;
         }
 
-        private Type GetPageTypeByTitle(string title)
-        {
-            Type pageType = typeof(HomePage);
-            switch (title)
-            {
-                case "List":
-                    pageType = typeof(HomePage);
-                    break;
-                case "Record":
-                    pageType = typeof(RecordPage);
-                    break;
-                case "Bangumi":
-                    pageType = typeof(BangumiPage);
-                    break;
-            }
-            return pageType;
-        }
-
-        private void Clicked(object sender, ClickedEventArgs e)
-        {
-            var title = ((Button)sender).Text;
-            var pageType = GetPageTypeByTitle(title);
-            this.currentPage.TransferToView(pageType);
-        }
-
         private void OnKeyEvent(object sender, Window.KeyEventArgs e)
         {
             if (e.Key.State == Key.StateType.Down)
             {
-                var currentIndex = activeIndex;
+                var nextIndex = activeIndex;
                 if (e.Key.KeyPressedName == "Left")
                 {
-                    currentIndex = Math.Max(0, activeIndex - 1);
+                    nextIndex = Math.Max(0, activeIndex - 1);
                 }
                 if (e.Key.KeyPressedName == "Right")
                 {
-                    currentIndex = Math.Min(items.Count - 1, activeIndex + 1);
+                    nextIndex = Math.Min(items.Count - 1, activeIndex + 1);
                 }
-                if (currentIndex != activeIndex)
+                if (nextIndex != activeIndex)
                 {
-                    var title = items[currentIndex].Title;
-                    var pageType = GetPageTypeByTitle(title);
+                    var pageType = items[nextIndex].PageType;
                     this.currentPage.TransferToView(pageType);
                 }
             }
