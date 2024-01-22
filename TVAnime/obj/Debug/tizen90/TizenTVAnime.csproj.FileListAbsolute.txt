@@ -1,0 +1,17 @@
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\bin\TVAnime.dll
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\bin\TVAnime.pdb
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\bin\Fizzler.dll
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\bin\Fizzler.Systems.HtmlAgilityPack.dll
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\bin\HtmlAgilityPack.dll
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\bin\Newtonsoft.Json.dll
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\bin\System.Net.Http.Json.dll
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\bin\System.Text.Encodings.Web.dll
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\bin\System.Text.Json.dll
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\bin\System.Xml.XPath.XmlDocument.dll
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\TVAnime.deps.json
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\res\latestAnime.txt
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\shared\res\TVAnime.png
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\tizen-manifest.xml
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\org.tizen.example.TVAnime-1.0.0.tpk

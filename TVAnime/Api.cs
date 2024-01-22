@@ -1,21 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using Tizen.Network.IoTConnectivity;
 using TVAnime.Helper;
 using Newtonsoft.Json;
 using TVAnime.Models;
-using System.Xml;
-using Tizen.NUI.BaseComponents;
 using Newtonsoft.Json.Linq;
-using System.Runtime.CompilerServices;
 using Tizen.System;
-using Tizen.Content.MediaContent;
-using Tizen.TV.System.Manager;
 
 namespace TVAnime
 {

@@ -26,10 +26,6 @@ namespace TVAnime.Helper
         {
             if (!connected)
             {
-                await HttpHelper.CheckNetworkConnectivity();
-            }
-            if (!connected)
-            {
                 return GetMockData(url);
             }
 
@@ -80,7 +76,7 @@ namespace TVAnime.Helper
             return response;
         }
 
-        public static async Task CheckNetworkConnectivity()
+        public static async void CheckNetworkConnectivity()
         {
             try
             {

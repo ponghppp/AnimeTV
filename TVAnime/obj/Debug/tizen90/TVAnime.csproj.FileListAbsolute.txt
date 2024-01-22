@@ -1,0 +1,12 @@
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\obj\Debug\tizen90\TVAnime.csproj.AssemblyReference.cache
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\obj\Debug\tizen90\TVAnime.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\obj\Debug\tizen90\TVAnime.AssemblyInfoInputs.cache
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\obj\Debug\tizen90\TVAnime.AssemblyInfo.cs
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\obj\Debug\tizen90\TVAnime.csproj.CoreCompileInputs.cache
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\obj\Debug\tizen90\TVAnime.sourcelink.json
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\TVAnime.deps.json
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\TVAnime.dll
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\TVAnime.pdb
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\obj\Debug\tizen90\XamlC.stamp
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\obj\Debug\tizen90\TVAnime.dll
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\obj\Debug\tizen90\TVAnime.pdb

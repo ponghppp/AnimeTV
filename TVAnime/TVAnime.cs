@@ -1,16 +1,7 @@
-﻿using System;
-using Tizen.NUI;
-using Tizen.NUI.BaseComponents;
-using System.Net.Http;
-using Tizen.Pims.Contacts.ContactsViews;
-using System.Net.Http.Headers;
-using Tizen.Applications.Cion;
-using TVAnime.Page;
-using System.Collections.Generic;
-using TVAnime.Models;
-using ElmSharp;
-using Tizen.NUI.Components;
+﻿using Tizen.NUI;
 using TVAnime.Helper;
+using TVAnime.Models;
+using TVAnime.Page;
 
 
 namespace TVAnime
@@ -21,6 +12,7 @@ namespace TVAnime
         {
             base.OnCreate();
             Initialize();
+            HttpHelper.CheckNetworkConnectivity();
         }
 
         void Initialize()

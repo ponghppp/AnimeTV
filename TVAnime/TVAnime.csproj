@@ -1,8 +1,8 @@
-<Project Sdk="Tizen.NET.Sdk/1.0.9">
+﻿<Project Sdk="Tizen.NET.Sdk/1.1.7">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>tizen70</TargetFramework>
+    <TargetFramework>tizen90</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -26,11 +26,15 @@
     <PackageReference Include="Fizzler.Systems.HtmlAgilityPack" Version="1.2.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Net.Http.Json" Version="8.0.0" />
-    <PackageReference Include="Tizen.NET.API10" Version="10.0.0.17804" />
-    <PackageReference Include="Tizen.NET.TV" Version="6.6.0.5599517">
-      <ExcludeAssets>Runtime</ExcludeAssets>
-    </PackageReference>
+    <PackageReference Include="Tizen.NET.API9" Version="9.0.0.16908" />
 
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Tizen.NET" Version="9.0.0.16908">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

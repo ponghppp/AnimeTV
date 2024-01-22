@@ -14,9 +14,8 @@ namespace TVAnime.Component
         public int selectedIndex = 0;
         public View view { get; set; }
         public BasePage page { get; set; }
-        public TableView collectionView { get; set; }
+        public CollectionView collectionView { get; set; }
         
-
         public ItemSelectionView(BasePage page)
         {
             this.page = page;

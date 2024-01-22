@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "Tizen,Version=v7.0": {
+    "Tizen,Version=v9.0": {
       "Fizzler/1.3.0": {
         "type": "package",
         "compile": {
@@ -65,7 +65,7 @@
           }
         }
       },
-      "Microsoft.NETCore.Platforms/2.0.0": {
+      "Microsoft.NETCore.Platforms/3.1.0": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -1537,18 +1537,18 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "Tizen.NET/6.0.0.14995": {
+      "Tizen.NET/9.0.0.16760": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.0.0",
-          "Tizen.NET.API6": "6.0.0.14995"
+          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Tizen.NET.API9": "9.0.0.16760"
         },
         "build": {
           "build/tizen40/Tizen.NET.props": {},
           "build/tizen40/Tizen.NET.targets": {}
         }
       },
-      "Tizen.NET.API10/10.0.0.17804": {
+      "Tizen.NET.API9/9.0.0.16908": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/ElmSharp.Wearable.dll": {
@@ -1671,9 +1671,6 @@
           "ref/netstandard2.0/Tizen.MachineLearning.Inference.dll": {
             "related": ".xml"
           },
-          "ref/netstandard2.0/Tizen.MachineLearning.Train.dll": {
-            "related": ".xml"
-          },
           "ref/netstandard2.0/Tizen.Maps.dll": {
             "related": ".xml"
           },
@@ -1725,12 +1722,6 @@
           "ref/netstandard2.0/Tizen.NUI.Extension.dll": {
             "related": ".xml"
           },
-          "ref/netstandard2.0/Tizen.NUI.Gadget.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.NUI.Scene3D.dll": {
-            "related": ".xml"
-          },
           "ref/netstandard2.0/Tizen.NUI.Wearable.dll": {
             "related": ".xml"
           },
@@ -1738,7 +1729,7 @@
             "related": ".xml"
           },
           "ref/netstandard2.0/Tizen.NUI.dll": {
-            "related": ".Components.xml;.Extension.xml;.Gadget.xml;.Scene3D.xml;.Wearable.xml;.WindowSystem.xml;.xml"
+            "related": ".Components.xml;.Extension.xml;.Wearable.xml;.WindowSystem.xml;.xml"
           },
           "ref/netstandard2.0/Tizen.Network.Bluetooth.dll": {
             "related": ".xml"
@@ -1812,9 +1803,6 @@
           "ref/netstandard2.0/Tizen.System.PowerUsage.dll": {
             "related": ".xml"
           },
-          "ref/netstandard2.0/Tizen.System.Resource.dll": {
-            "related": ".xml"
-          },
           "ref/netstandard2.0/Tizen.System.Storage.dll": {
             "related": ".xml"
           },
@@ -1825,301 +1813,7 @@
             "related": ".xml"
           },
           "ref/netstandard2.0/Tizen.System.dll": {
-            "related": ".Feedback.xml;.Information.xml;.MediaKey.xml;.PlatformConfig.xml;.PowerUsage.xml;.Resource.xml;.Storage.xml;.SystemSettings.xml;.Usb.xml;.xml"
-          },
-          "ref/netstandard2.0/Tizen.Telephony.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Tracer.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Uix.InputMethod.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Uix.InputMethodManager.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Uix.Sticker.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Uix.Stt.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Uix.SttEngine.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Uix.Tts.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Uix.TtsEngine.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Uix.VoiceControl.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Uix.VoiceControlManager.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.WebView.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.dll": {
-            "related": ".Account.AccountManager.xml;.Account.FidoClient.xml;.Account.OAuth2.xml;.Account.SyncManager.xml;.Applications.Alarm.xml;.Applications.AttachPanel.xml;.Applications.Badge.xml;.Applications.Cion.xml;.Applications.Common.xml;.Applications.ComponentBased.ComponentManager.xml;.Applications.ComponentBased.Default.xml;.Applications.ComponentBased.Port.xml;.Applications.ComponentBased.xml;.Applications.DataControl.xml;.Applications.EventManager.xml;.Applications.MessagePort.xml;.Applications.Notification.xml;.Applications.NotificationEventListener.xml;.Applications.PackageManager.xml;.Applications.Preference.xml;.Applications.RemoteView.xml;.Applications.Service.xml;.Applications.Shortcut.xml;.Applications.ThemeManager.xml;.Applications.ToastMessage.xml;.Applications.UI.xml;.Applications.WatchApplication.xml;.Applications.WatchfaceComplication.xml;.Applications.WidgetApplication.xml;.Applications.WidgetControl.xml;.Content.Download.xml;.Content.MediaContent.xml;.Content.MimeType.xml;.Context.xml;.Location.Geofence.xml;.Location.xml;.Log.xml;.MachineLearning.Inference.xml;.MachineLearning.Train.xml;.Maps.xml;.Messaging.Push.xml;.Messaging.xml;.Multimedia.AudioIO.xml;.Multimedia.Camera.xml;.Multimedia.MediaCodec.xml;.Multimedia.MediaPlayer.xml;.Multimedia.Metadata.xml;.Multimedia.Radio.xml;.Multimedia.Recorder.xml;.Multimedia.Remoting.xml;.Multimedia.StreamRecorder.xml;.Multimedia.Util.xml;.Multimedia.Vision.xml;.Multimedia.xml;.Network.Bluetooth.xml;.Network.Connection.xml;.Network.IoTConnectivity.xml;.Network.Nfc.xml;.Network.Nsd.xml;.Network.Smartcard.xml;.Network.Stc.xml;.Network.WiFi.xml;.Network.WiFiDirect.xml;.Nlp.xml;.NUI.Components.xml;.NUI.Extension.xml;.NUI.Gadget.xml;.NUI.Scene3D.xml;.NUI.Wearable.xml;.NUI.WindowSystem.xml;.NUI.xml;.PhonenumberUtils.xml;.Pims.Calendar.xml;.Pims.Contacts.xml;.Security.DevicePolicyManager.xml;.Security.PrivacyPrivilegeManager.xml;.Security.SecureRepository.xml;.Security.TEEC.xml;.Security.xml;.Sensor.xml;.System.Feedback.xml;.System.Information.xml;.System.MediaKey.xml;.System.PlatformConfig.xml;.System.PowerUsage.xml;.System.Resource.xml;.System.Storage.xml;.System.SystemSettings.xml;.System.Usb.xml;.System.xml;.Telephony.xml;.Tracer.xml;.Uix.InputMethod.xml;.Uix.InputMethodManager.xml;.Uix.Sticker.xml;.Uix.Stt.xml;.Uix.SttEngine.xml;.Uix.Tts.xml;.Uix.TtsEngine.xml;.Uix.VoiceControl.xml;.Uix.VoiceControlManager.xml;.WebView.xml;.xml"
-          }
-        },
-        "build": {
-          "build/netstandard2.0/Tizen.NET.API10.props": {},
-          "build/netstandard2.0/Tizen.NET.API10.targets": {}
-        }
-      },
-      "Tizen.NET.API6/6.0.0.14995": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/ElmSharp.Wearable.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/ElmSharp.dll": {
-            "related": ".Wearable.xml;.xml"
-          },
-          "ref/netstandard2.0/Tizen.Account.AccountManager.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Account.FidoClient.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Account.OAuth2.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Account.SyncManager.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.Alarm.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.AttachPanel.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.Badge.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.Common.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.ComponentBased.ComponentManager.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.ComponentBased.Default.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.ComponentBased.dll": {
-            "related": ".ComponentManager.xml;.Default.xml;.xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.DataControl.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.EventManager.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.MessagePort.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.Notification.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.NotificationEventListener.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.PackageManager.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.Preference.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.RemoteView.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.Service.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.Shortcut.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.ToastMessage.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.UI.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.WatchApplication.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.WatchfaceComplication.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.WidgetApplication.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Applications.WidgetControl.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Content.Download.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Content.MediaContent.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Content.MimeType.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Context.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Location.Geofence.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Location.dll": {
-            "related": ".Geofence.xml;.xml"
-          },
-          "ref/netstandard2.0/Tizen.Log.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.MachineLearning.Inference.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Maps.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Messaging.Push.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Messaging.dll": {
-            "related": ".Push.xml;.xml"
-          },
-          "ref/netstandard2.0/Tizen.Multimedia.AudioIO.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Multimedia.Camera.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Multimedia.MediaCodec.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Multimedia.MediaPlayer.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Multimedia.Metadata.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Multimedia.Radio.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Multimedia.Recorder.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Multimedia.Remoting.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Multimedia.StreamRecorder.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Multimedia.Util.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Multimedia.Vision.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Multimedia.dll": {
-            "related": ".AudioIO.xml;.Camera.xml;.MediaCodec.xml;.MediaPlayer.xml;.Metadata.xml;.Radio.xml;.Recorder.xml;.Remoting.xml;.StreamRecorder.xml;.Util.xml;.Vision.xml;.xml"
-          },
-          "ref/netstandard2.0/Tizen.NUI.Components.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.NUI.Wearable.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.NUI.dll": {
-            "related": ".Components.xml;.Wearable.xml;.xml"
-          },
-          "ref/netstandard2.0/Tizen.Network.Bluetooth.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Network.Connection.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Network.IoTConnectivity.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Network.Nfc.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Network.Nsd.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Network.Smartcard.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Network.Stc.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Network.WiFi.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Network.WiFiDirect.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Nlp.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.PhonenumberUtils.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Pims.Calendar.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Pims.Contacts.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Security.DevicePolicyManager.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Security.PrivacyPrivilegeManager.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Security.SecureRepository.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Security.TEEC.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.Security.dll": {
-            "related": ".DevicePolicyManager.xml;.PrivacyPrivilegeManager.xml;.SecureRepository.xml;.TEEC.xml;.xml"
-          },
-          "ref/netstandard2.0/Tizen.Sensor.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.System.Feedback.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.System.Information.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.System.MediaKey.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.System.PlatformConfig.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.System.Storage.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.System.SystemSettings.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.System.Usb.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.System.dll": {
-            "related": ".Feedback.xml;.Information.xml;.MediaKey.xml;.PlatformConfig.xml;.Storage.xml;.SystemSettings.xml;.Usb.xml;.xml"
+            "related": ".Feedback.xml;.Information.xml;.MediaKey.xml;.PlatformConfig.xml;.PowerUsage.xml;.Storage.xml;.SystemSettings.xml;.Usb.xml;.xml"
           },
           "ref/netstandard2.0/Tizen.Telephony.dll": {
             "related": ".xml"
@@ -2155,50 +1849,12 @@
             "related": ".xml"
           },
           "ref/netstandard2.0/Tizen.dll": {
-            "related": ".Account.AccountManager.xml;.Account.FidoClient.xml;.Account.OAuth2.xml;.Account.SyncManager.xml;.Applications.Alarm.xml;.Applications.AttachPanel.xml;.Applications.Badge.xml;.Applications.Common.xml;.Applications.ComponentBased.ComponentManager.xml;.Applications.ComponentBased.Default.xml;.Applications.ComponentBased.xml;.Applications.DataControl.xml;.Applications.EventManager.xml;.Applications.MessagePort.xml;.Applications.Notification.xml;.Applications.NotificationEventListener.xml;.Applications.PackageManager.xml;.Applications.Preference.xml;.Applications.RemoteView.xml;.Applications.Service.xml;.Applications.Shortcut.xml;.Applications.ToastMessage.xml;.Applications.UI.xml;.Applications.WatchApplication.xml;.Applications.WatchfaceComplication.xml;.Applications.WidgetApplication.xml;.Applications.WidgetControl.xml;.Content.Download.xml;.Content.MediaContent.xml;.Content.MimeType.xml;.Context.xml;.Location.Geofence.xml;.Location.xml;.Log.xml;.MachineLearning.Inference.xml;.Maps.xml;.Messaging.Push.xml;.Messaging.xml;.Multimedia.AudioIO.xml;.Multimedia.Camera.xml;.Multimedia.MediaCodec.xml;.Multimedia.MediaPlayer.xml;.Multimedia.Metadata.xml;.Multimedia.Radio.xml;.Multimedia.Recorder.xml;.Multimedia.Remoting.xml;.Multimedia.StreamRecorder.xml;.Multimedia.Util.xml;.Multimedia.Vision.xml;.Multimedia.xml;.Network.Bluetooth.xml;.Network.Connection.xml;.Network.IoTConnectivity.xml;.Network.Nfc.xml;.Network.Nsd.xml;.Network.Smartcard.xml;.Network.Stc.xml;.Network.WiFi.xml;.Network.WiFiDirect.xml;.Nlp.xml;.NUI.Components.xml;.NUI.Wearable.xml;.NUI.xml;.PhonenumberUtils.xml;.Pims.Calendar.xml;.Pims.Contacts.xml;.Security.DevicePolicyManager.xml;.Security.PrivacyPrivilegeManager.xml;.Security.SecureRepository.xml;.Security.TEEC.xml;.Security.xml;.Sensor.xml;.System.Feedback.xml;.System.Information.xml;.System.MediaKey.xml;.System.PlatformConfig.xml;.System.Storage.xml;.System.SystemSettings.xml;.System.Usb.xml;.System.xml;.Telephony.xml;.Tracer.xml;.Uix.InputMethod.xml;.Uix.InputMethodManager.xml;.Uix.Stt.xml;.Uix.SttEngine.xml;.Uix.Tts.xml;.Uix.TtsEngine.xml;.Uix.VoiceControl.xml;.Uix.VoiceControlManager.xml;.WebView.xml;.xml"
+            "related": ".Account.AccountManager.xml;.Account.FidoClient.xml;.Account.OAuth2.xml;.Account.SyncManager.xml;.Applications.Alarm.xml;.Applications.AttachPanel.xml;.Applications.Badge.xml;.Applications.Cion.xml;.Applications.Common.xml;.Applications.ComponentBased.ComponentManager.xml;.Applications.ComponentBased.Default.xml;.Applications.ComponentBased.Port.xml;.Applications.ComponentBased.xml;.Applications.DataControl.xml;.Applications.EventManager.xml;.Applications.MessagePort.xml;.Applications.Notification.xml;.Applications.NotificationEventListener.xml;.Applications.PackageManager.xml;.Applications.Preference.xml;.Applications.RemoteView.xml;.Applications.Service.xml;.Applications.Shortcut.xml;.Applications.ThemeManager.xml;.Applications.ToastMessage.xml;.Applications.UI.xml;.Applications.WatchApplication.xml;.Applications.WatchfaceComplication.xml;.Applications.WidgetApplication.xml;.Applications.WidgetControl.xml;.Content.Download.xml;.Content.MediaContent.xml;.Content.MimeType.xml;.Context.xml;.Location.Geofence.xml;.Location.xml;.Log.xml;.MachineLearning.Inference.xml;.Maps.xml;.Messaging.Push.xml;.Messaging.xml;.Multimedia.AudioIO.xml;.Multimedia.Camera.xml;.Multimedia.MediaCodec.xml;.Multimedia.MediaPlayer.xml;.Multimedia.Metadata.xml;.Multimedia.Radio.xml;.Multimedia.Recorder.xml;.Multimedia.Remoting.xml;.Multimedia.StreamRecorder.xml;.Multimedia.Util.xml;.Multimedia.Vision.xml;.Multimedia.xml;.Network.Bluetooth.xml;.Network.Connection.xml;.Network.IoTConnectivity.xml;.Network.Nfc.xml;.Network.Nsd.xml;.Network.Smartcard.xml;.Network.Stc.xml;.Network.WiFi.xml;.Network.WiFiDirect.xml;.Nlp.xml;.NUI.Components.xml;.NUI.Extension.xml;.NUI.Wearable.xml;.NUI.WindowSystem.xml;.NUI.xml;.PhonenumberUtils.xml;.Pims.Calendar.xml;.Pims.Contacts.xml;.Security.DevicePolicyManager.xml;.Security.PrivacyPrivilegeManager.xml;.Security.SecureRepository.xml;.Security.TEEC.xml;.Security.xml;.Sensor.xml;.System.Feedback.xml;.System.Information.xml;.System.MediaKey.xml;.System.PlatformConfig.xml;.System.PowerUsage.xml;.System.Storage.xml;.System.SystemSettings.xml;.System.Usb.xml;.System.xml;.Telephony.xml;.Tracer.xml;.Uix.InputMethod.xml;.Uix.InputMethodManager.xml;.Uix.Stt.xml;.Uix.SttEngine.xml;.Uix.Tts.xml;.Uix.TtsEngine.xml;.Uix.VoiceControl.xml;.Uix.VoiceControlManager.xml;.WebView.xml;.xml"
           }
         },
         "build": {
-          "build/tizen60/Tizen.NET.API6.props": {},
-          "build/tizen60/Tizen.NET.API6.targets": {}
-        }
-      },
-      "Tizen.NET.TV/6.6.0.5599517": {
-        "type": "package",
-        "dependencies": {
-          "Tizen.NET": "6.0.0.14995"
-        },
-        "compile": {
-          "ref/netstandard2.0/Tizen.TV.Accessory.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.TV.Application.Window.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.TV.Multimedia.ESPlayer.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.TV.Multimedia.MediaPlayer.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.TV.NUI.GLApplication.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.TV.Security.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.TV.Service.Billing.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.TV.Service.Sso.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.TV.System.dll": {
-            "related": ".xml"
-          },
-          "ref/netstandard2.0/Tizen.TV.dll": {
-            "related": ".Accessory.xml;.Application.Window.xml;.Multimedia.ESPlayer.xml;.Multimedia.MediaPlayer.xml;.NUI.GLApplication.xml;.Security.xml;.Service.Billing.xml;.Service.Sso.xml;.System.xml;.xml"
-          }
+          "build/tizen90/Tizen.NET.API9.props": {},
+          "build/tizen90/Tizen.NET.API9.targets": {}
         }
       }
     }
@@ -2299,17 +1955,17 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.NETCore.Platforms/2.0.0": {
-      "sha512": "VdLJOCXhZaEMY7Hm2GKiULmn7IEPFE4XC5LPSfBVCUIA8YLZVh846gtfBJalsPQF2PlzdD7ecX7DZEulJ402ZQ==",
+    "Microsoft.NETCore.Platforms/3.1.0": {
+      "sha512": "z7aeg8oHln2CuNulfhiLYxCVMPEwBl3rzicjvIX+4sUuCwvXw5oXQEtbiU2c0z4qYL5L3Kmx0mMA/+t/SbY67w==",
       "type": "package",
-      "path": "microsoft.netcore.platforms/2.0.0",
+      "path": "microsoft.netcore.platforms/3.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+        "microsoft.netcore.platforms.3.1.0.nupkg.sha512",
         "microsoft.netcore.platforms.nuspec",
         "runtime.json",
         "useSharedDesignerContext.txt",
@@ -5981,294 +5637,294 @@
         "system.xml.xpath.xmldocument.nuspec"
       ]
     },
-    "Tizen.NET/6.0.0.14995": {
-      "sha512": "vx7tSPQwfp2ZlX1D5FDKwuRWzb3QHn/zFYY6A/tRL+J0d28a0kkyJqyKEizRIiAASimS0X/ne1CRNkOihnO5WA==",
+    "Tizen.NET/9.0.0.16760": {
+      "sha512": "BKaauzRIYGHgasybMnFIQn8M3BR1GlHP2PC5OqU8+dQqxZrdErTAvQ5P4KzVPuk9tBQE3OQmkO3QJNPkbeYFCw==",
       "type": "package",
-      "path": "tizen.net/6.0.0.14995",
+      "path": "tizen.net/9.0.0.16760",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/tizen40/Tizen.NET.props",
         "build/tizen40/Tizen.NET.targets",
         "runtime.json",
-        "tizen.net.6.0.0.14995.nupkg.sha512",
+        "tizen.net.9.0.0.16760.nupkg.sha512",
         "tizen.net.nuspec"
       ]
     },
-    "Tizen.NET.API10/10.0.0.17804": {
-      "sha512": "c6Ij0sd4TWBF5vFNoXCPBdIOTwhVpukEnkla3Vq4xE86udPPb0ySZ0tjqJkYkZIH47AewgQKmtC5K2zPgpENQg==",
+    "Tizen.NET.API9/9.0.0.16908": {
+      "sha512": "Ggk/9B3Q9yEJyLD5TrjkONXlMS3A/UeejOG515jpUofcJloVyEbF0LqOCtOwmvWKPIVITMkS/j220PZK4C2j/Q==",
       "type": "package",
-      "path": "tizen.net.api10/10.0.0.17804",
+      "path": "tizen.net.api9/9.0.0.16908",
       "files": [
         ".nupkg.metadata",
-        "build/netstandard2.0/Tizen.NET.API10.props",
-        "build/netstandard2.0/Tizen.NET.API10.targets",
-        "build/tizen10.0/LICENSE.Microsoft.NETCore.App.Ref.txt",
-        "build/tizen10.0/PlatformManifest.txt",
-        "build/tizen10.0/Tizen.NET.API10.props",
-        "build/tizen10.0/Tizen.NET.API10.targets",
-        "build/tizen10.0/ref/Microsoft.CSharp.dll",
-        "build/tizen10.0/ref/Microsoft.CSharp.xml",
-        "build/tizen10.0/ref/Microsoft.VisualBasic.Core.dll",
-        "build/tizen10.0/ref/Microsoft.VisualBasic.Core.xml",
-        "build/tizen10.0/ref/Microsoft.VisualBasic.dll",
-        "build/tizen10.0/ref/Microsoft.Win32.Primitives.dll",
-        "build/tizen10.0/ref/Microsoft.Win32.Primitives.xml",
-        "build/tizen10.0/ref/System.AppContext.dll",
-        "build/tizen10.0/ref/System.Buffers.dll",
-        "build/tizen10.0/ref/System.Buffers.xml",
-        "build/tizen10.0/ref/System.Collections.Concurrent.dll",
-        "build/tizen10.0/ref/System.Collections.Concurrent.xml",
-        "build/tizen10.0/ref/System.Collections.Immutable.dll",
-        "build/tizen10.0/ref/System.Collections.Immutable.xml",
-        "build/tizen10.0/ref/System.Collections.NonGeneric.dll",
-        "build/tizen10.0/ref/System.Collections.NonGeneric.xml",
-        "build/tizen10.0/ref/System.Collections.Specialized.dll",
-        "build/tizen10.0/ref/System.Collections.Specialized.xml",
-        "build/tizen10.0/ref/System.Collections.dll",
-        "build/tizen10.0/ref/System.Collections.xml",
-        "build/tizen10.0/ref/System.ComponentModel.Annotations.dll",
-        "build/tizen10.0/ref/System.ComponentModel.Annotations.xml",
-        "build/tizen10.0/ref/System.ComponentModel.DataAnnotations.dll",
-        "build/tizen10.0/ref/System.ComponentModel.EventBasedAsync.dll",
-        "build/tizen10.0/ref/System.ComponentModel.EventBasedAsync.xml",
-        "build/tizen10.0/ref/System.ComponentModel.Primitives.dll",
-        "build/tizen10.0/ref/System.ComponentModel.Primitives.xml",
-        "build/tizen10.0/ref/System.ComponentModel.TypeConverter.dll",
-        "build/tizen10.0/ref/System.ComponentModel.TypeConverter.xml",
-        "build/tizen10.0/ref/System.ComponentModel.dll",
-        "build/tizen10.0/ref/System.ComponentModel.xml",
-        "build/tizen10.0/ref/System.Configuration.dll",
-        "build/tizen10.0/ref/System.Console.dll",
-        "build/tizen10.0/ref/System.Console.xml",
-        "build/tizen10.0/ref/System.Core.dll",
-        "build/tizen10.0/ref/System.Data.Common.dll",
-        "build/tizen10.0/ref/System.Data.Common.xml",
-        "build/tizen10.0/ref/System.Data.DataSetExtensions.dll",
-        "build/tizen10.0/ref/System.Data.dll",
-        "build/tizen10.0/ref/System.Diagnostics.Contracts.dll",
-        "build/tizen10.0/ref/System.Diagnostics.Contracts.xml",
-        "build/tizen10.0/ref/System.Diagnostics.Debug.dll",
-        "build/tizen10.0/ref/System.Diagnostics.Debug.xml",
-        "build/tizen10.0/ref/System.Diagnostics.DiagnosticSource.dll",
-        "build/tizen10.0/ref/System.Diagnostics.DiagnosticSource.xml",
-        "build/tizen10.0/ref/System.Diagnostics.FileVersionInfo.dll",
-        "build/tizen10.0/ref/System.Diagnostics.FileVersionInfo.xml",
-        "build/tizen10.0/ref/System.Diagnostics.Process.dll",
-        "build/tizen10.0/ref/System.Diagnostics.Process.xml",
-        "build/tizen10.0/ref/System.Diagnostics.StackTrace.dll",
-        "build/tizen10.0/ref/System.Diagnostics.StackTrace.xml",
-        "build/tizen10.0/ref/System.Diagnostics.TextWriterTraceListener.dll",
-        "build/tizen10.0/ref/System.Diagnostics.TextWriterTraceListener.xml",
-        "build/tizen10.0/ref/System.Diagnostics.Tools.dll",
-        "build/tizen10.0/ref/System.Diagnostics.Tools.xml",
-        "build/tizen10.0/ref/System.Diagnostics.TraceSource.dll",
-        "build/tizen10.0/ref/System.Diagnostics.TraceSource.xml",
-        "build/tizen10.0/ref/System.Diagnostics.Tracing.dll",
-        "build/tizen10.0/ref/System.Diagnostics.Tracing.xml",
-        "build/tizen10.0/ref/System.Drawing.Primitives.dll",
-        "build/tizen10.0/ref/System.Drawing.Primitives.xml",
-        "build/tizen10.0/ref/System.Drawing.dll",
-        "build/tizen10.0/ref/System.Dynamic.Runtime.dll",
-        "build/tizen10.0/ref/System.Globalization.Calendars.dll",
-        "build/tizen10.0/ref/System.Globalization.Extensions.dll",
-        "build/tizen10.0/ref/System.Globalization.dll",
-        "build/tizen10.0/ref/System.IO.Compression.Brotli.dll",
-        "build/tizen10.0/ref/System.IO.Compression.Brotli.xml",
-        "build/tizen10.0/ref/System.IO.Compression.FileSystem.dll",
-        "build/tizen10.0/ref/System.IO.Compression.ZipFile.dll",
-        "build/tizen10.0/ref/System.IO.Compression.ZipFile.xml",
-        "build/tizen10.0/ref/System.IO.Compression.dll",
-        "build/tizen10.0/ref/System.IO.Compression.xml",
-        "build/tizen10.0/ref/System.IO.FileSystem.DriveInfo.dll",
-        "build/tizen10.0/ref/System.IO.FileSystem.DriveInfo.xml",
-        "build/tizen10.0/ref/System.IO.FileSystem.Primitives.dll",
-        "build/tizen10.0/ref/System.IO.FileSystem.Watcher.dll",
-        "build/tizen10.0/ref/System.IO.FileSystem.Watcher.xml",
-        "build/tizen10.0/ref/System.IO.FileSystem.dll",
-        "build/tizen10.0/ref/System.IO.FileSystem.xml",
-        "build/tizen10.0/ref/System.IO.IsolatedStorage.dll",
-        "build/tizen10.0/ref/System.IO.IsolatedStorage.xml",
-        "build/tizen10.0/ref/System.IO.MemoryMappedFiles.dll",
-        "build/tizen10.0/ref/System.IO.MemoryMappedFiles.xml",
-        "build/tizen10.0/ref/System.IO.Pipes.dll",
-        "build/tizen10.0/ref/System.IO.Pipes.xml",
-        "build/tizen10.0/ref/System.IO.UnmanagedMemoryStream.dll",
-        "build/tizen10.0/ref/System.IO.dll",
-        "build/tizen10.0/ref/System.Linq.Expressions.dll",
-        "build/tizen10.0/ref/System.Linq.Expressions.xml",
-        "build/tizen10.0/ref/System.Linq.Parallel.dll",
-        "build/tizen10.0/ref/System.Linq.Parallel.xml",
-        "build/tizen10.0/ref/System.Linq.Queryable.dll",
-        "build/tizen10.0/ref/System.Linq.Queryable.xml",
-        "build/tizen10.0/ref/System.Linq.dll",
-        "build/tizen10.0/ref/System.Linq.xml",
-        "build/tizen10.0/ref/System.Memory.dll",
-        "build/tizen10.0/ref/System.Memory.xml",
-        "build/tizen10.0/ref/System.Net.Http.dll",
-        "build/tizen10.0/ref/System.Net.Http.xml",
-        "build/tizen10.0/ref/System.Net.HttpListener.dll",
-        "build/tizen10.0/ref/System.Net.HttpListener.xml",
-        "build/tizen10.0/ref/System.Net.Mail.dll",
-        "build/tizen10.0/ref/System.Net.Mail.xml",
-        "build/tizen10.0/ref/System.Net.NameResolution.dll",
-        "build/tizen10.0/ref/System.Net.NameResolution.xml",
-        "build/tizen10.0/ref/System.Net.NetworkInformation.dll",
-        "build/tizen10.0/ref/System.Net.NetworkInformation.xml",
-        "build/tizen10.0/ref/System.Net.Ping.dll",
-        "build/tizen10.0/ref/System.Net.Ping.xml",
-        "build/tizen10.0/ref/System.Net.Primitives.dll",
-        "build/tizen10.0/ref/System.Net.Primitives.xml",
-        "build/tizen10.0/ref/System.Net.Requests.dll",
-        "build/tizen10.0/ref/System.Net.Requests.xml",
-        "build/tizen10.0/ref/System.Net.Security.dll",
-        "build/tizen10.0/ref/System.Net.Security.xml",
-        "build/tizen10.0/ref/System.Net.ServicePoint.dll",
-        "build/tizen10.0/ref/System.Net.ServicePoint.xml",
-        "build/tizen10.0/ref/System.Net.Sockets.dll",
-        "build/tizen10.0/ref/System.Net.Sockets.xml",
-        "build/tizen10.0/ref/System.Net.WebClient.dll",
-        "build/tizen10.0/ref/System.Net.WebClient.xml",
-        "build/tizen10.0/ref/System.Net.WebHeaderCollection.dll",
-        "build/tizen10.0/ref/System.Net.WebHeaderCollection.xml",
-        "build/tizen10.0/ref/System.Net.WebProxy.dll",
-        "build/tizen10.0/ref/System.Net.WebProxy.xml",
-        "build/tizen10.0/ref/System.Net.WebSockets.Client.dll",
-        "build/tizen10.0/ref/System.Net.WebSockets.Client.xml",
-        "build/tizen10.0/ref/System.Net.WebSockets.dll",
-        "build/tizen10.0/ref/System.Net.WebSockets.xml",
-        "build/tizen10.0/ref/System.Net.dll",
-        "build/tizen10.0/ref/System.Numerics.Vectors.dll",
-        "build/tizen10.0/ref/System.Numerics.Vectors.xml",
-        "build/tizen10.0/ref/System.Numerics.dll",
-        "build/tizen10.0/ref/System.ObjectModel.dll",
-        "build/tizen10.0/ref/System.ObjectModel.xml",
-        "build/tizen10.0/ref/System.Reflection.DispatchProxy.dll",
-        "build/tizen10.0/ref/System.Reflection.DispatchProxy.xml",
-        "build/tizen10.0/ref/System.Reflection.Emit.ILGeneration.dll",
-        "build/tizen10.0/ref/System.Reflection.Emit.ILGeneration.xml",
-        "build/tizen10.0/ref/System.Reflection.Emit.Lightweight.dll",
-        "build/tizen10.0/ref/System.Reflection.Emit.Lightweight.xml",
-        "build/tizen10.0/ref/System.Reflection.Emit.dll",
-        "build/tizen10.0/ref/System.Reflection.Emit.xml",
-        "build/tizen10.0/ref/System.Reflection.Extensions.dll",
-        "build/tizen10.0/ref/System.Reflection.Metadata.dll",
-        "build/tizen10.0/ref/System.Reflection.Metadata.xml",
-        "build/tizen10.0/ref/System.Reflection.Primitives.dll",
-        "build/tizen10.0/ref/System.Reflection.Primitives.xml",
-        "build/tizen10.0/ref/System.Reflection.TypeExtensions.dll",
-        "build/tizen10.0/ref/System.Reflection.TypeExtensions.xml",
-        "build/tizen10.0/ref/System.Reflection.dll",
-        "build/tizen10.0/ref/System.Resources.Reader.dll",
-        "build/tizen10.0/ref/System.Resources.ResourceManager.dll",
-        "build/tizen10.0/ref/System.Resources.ResourceManager.xml",
-        "build/tizen10.0/ref/System.Resources.Writer.dll",
-        "build/tizen10.0/ref/System.Resources.Writer.xml",
-        "build/tizen10.0/ref/System.Runtime.CompilerServices.Unsafe.dll",
-        "build/tizen10.0/ref/System.Runtime.CompilerServices.Unsafe.xml",
-        "build/tizen10.0/ref/System.Runtime.CompilerServices.VisualC.dll",
-        "build/tizen10.0/ref/System.Runtime.CompilerServices.VisualC.xml",
-        "build/tizen10.0/ref/System.Runtime.Extensions.dll",
-        "build/tizen10.0/ref/System.Runtime.Extensions.xml",
-        "build/tizen10.0/ref/System.Runtime.Handles.dll",
-        "build/tizen10.0/ref/System.Runtime.InteropServices.RuntimeInformation.dll",
-        "build/tizen10.0/ref/System.Runtime.InteropServices.RuntimeInformation.xml",
-        "build/tizen10.0/ref/System.Runtime.InteropServices.WindowsRuntime.dll",
-        "build/tizen10.0/ref/System.Runtime.InteropServices.WindowsRuntime.xml",
-        "build/tizen10.0/ref/System.Runtime.InteropServices.dll",
-        "build/tizen10.0/ref/System.Runtime.InteropServices.xml",
-        "build/tizen10.0/ref/System.Runtime.Intrinsics.dll",
-        "build/tizen10.0/ref/System.Runtime.Intrinsics.xml",
-        "build/tizen10.0/ref/System.Runtime.Loader.dll",
-        "build/tizen10.0/ref/System.Runtime.Loader.xml",
-        "build/tizen10.0/ref/System.Runtime.Numerics.dll",
-        "build/tizen10.0/ref/System.Runtime.Numerics.xml",
-        "build/tizen10.0/ref/System.Runtime.Serialization.Formatters.dll",
-        "build/tizen10.0/ref/System.Runtime.Serialization.Formatters.xml",
-        "build/tizen10.0/ref/System.Runtime.Serialization.Json.dll",
-        "build/tizen10.0/ref/System.Runtime.Serialization.Json.xml",
-        "build/tizen10.0/ref/System.Runtime.Serialization.Primitives.dll",
-        "build/tizen10.0/ref/System.Runtime.Serialization.Primitives.xml",
-        "build/tizen10.0/ref/System.Runtime.Serialization.Xml.dll",
-        "build/tizen10.0/ref/System.Runtime.Serialization.Xml.xml",
-        "build/tizen10.0/ref/System.Runtime.Serialization.dll",
-        "build/tizen10.0/ref/System.Runtime.dll",
-        "build/tizen10.0/ref/System.Runtime.xml",
-        "build/tizen10.0/ref/System.Security.Claims.dll",
-        "build/tizen10.0/ref/System.Security.Claims.xml",
-        "build/tizen10.0/ref/System.Security.Cryptography.Algorithms.dll",
-        "build/tizen10.0/ref/System.Security.Cryptography.Algorithms.xml",
-        "build/tizen10.0/ref/System.Security.Cryptography.Csp.dll",
-        "build/tizen10.0/ref/System.Security.Cryptography.Csp.xml",
-        "build/tizen10.0/ref/System.Security.Cryptography.Encoding.dll",
-        "build/tizen10.0/ref/System.Security.Cryptography.Encoding.xml",
-        "build/tizen10.0/ref/System.Security.Cryptography.Primitives.dll",
-        "build/tizen10.0/ref/System.Security.Cryptography.Primitives.xml",
-        "build/tizen10.0/ref/System.Security.Cryptography.X509Certificates.dll",
-        "build/tizen10.0/ref/System.Security.Cryptography.X509Certificates.xml",
-        "build/tizen10.0/ref/System.Security.Principal.dll",
-        "build/tizen10.0/ref/System.Security.Principal.xml",
-        "build/tizen10.0/ref/System.Security.SecureString.dll",
-        "build/tizen10.0/ref/System.Security.dll",
-        "build/tizen10.0/ref/System.ServiceModel.Web.dll",
-        "build/tizen10.0/ref/System.ServiceProcess.dll",
-        "build/tizen10.0/ref/System.Text.Encoding.CodePages.dll",
-        "build/tizen10.0/ref/System.Text.Encoding.CodePages.xml",
-        "build/tizen10.0/ref/System.Text.Encoding.Extensions.dll",
-        "build/tizen10.0/ref/System.Text.Encoding.Extensions.xml",
-        "build/tizen10.0/ref/System.Text.Encoding.dll",
-        "build/tizen10.0/ref/System.Text.Encodings.Web.dll",
-        "build/tizen10.0/ref/System.Text.Encodings.Web.xml",
-        "build/tizen10.0/ref/System.Text.Json.dll",
-        "build/tizen10.0/ref/System.Text.Json.xml",
-        "build/tizen10.0/ref/System.Text.RegularExpressions.dll",
-        "build/tizen10.0/ref/System.Text.RegularExpressions.xml",
-        "build/tizen10.0/ref/System.Threading.Channels.dll",
-        "build/tizen10.0/ref/System.Threading.Channels.xml",
-        "build/tizen10.0/ref/System.Threading.Overlapped.dll",
-        "build/tizen10.0/ref/System.Threading.Overlapped.xml",
-        "build/tizen10.0/ref/System.Threading.Tasks.Dataflow.dll",
-        "build/tizen10.0/ref/System.Threading.Tasks.Dataflow.xml",
-        "build/tizen10.0/ref/System.Threading.Tasks.Extensions.dll",
-        "build/tizen10.0/ref/System.Threading.Tasks.Parallel.dll",
-        "build/tizen10.0/ref/System.Threading.Tasks.Parallel.xml",
-        "build/tizen10.0/ref/System.Threading.Tasks.dll",
-        "build/tizen10.0/ref/System.Threading.Tasks.xml",
-        "build/tizen10.0/ref/System.Threading.Thread.dll",
-        "build/tizen10.0/ref/System.Threading.Thread.xml",
-        "build/tizen10.0/ref/System.Threading.ThreadPool.dll",
-        "build/tizen10.0/ref/System.Threading.ThreadPool.xml",
-        "build/tizen10.0/ref/System.Threading.Timer.dll",
-        "build/tizen10.0/ref/System.Threading.Timer.xml",
-        "build/tizen10.0/ref/System.Threading.dll",
-        "build/tizen10.0/ref/System.Threading.xml",
-        "build/tizen10.0/ref/System.Transactions.Local.dll",
-        "build/tizen10.0/ref/System.Transactions.Local.xml",
-        "build/tizen10.0/ref/System.Transactions.dll",
-        "build/tizen10.0/ref/System.ValueTuple.dll",
-        "build/tizen10.0/ref/System.Web.HttpUtility.dll",
-        "build/tizen10.0/ref/System.Web.HttpUtility.xml",
-        "build/tizen10.0/ref/System.Web.dll",
-        "build/tizen10.0/ref/System.Windows.dll",
-        "build/tizen10.0/ref/System.Xml.Linq.dll",
-        "build/tizen10.0/ref/System.Xml.ReaderWriter.dll",
-        "build/tizen10.0/ref/System.Xml.ReaderWriter.xml",
-        "build/tizen10.0/ref/System.Xml.Serialization.dll",
-        "build/tizen10.0/ref/System.Xml.XDocument.dll",
-        "build/tizen10.0/ref/System.Xml.XDocument.xml",
-        "build/tizen10.0/ref/System.Xml.XPath.XDocument.dll",
-        "build/tizen10.0/ref/System.Xml.XPath.XDocument.xml",
-        "build/tizen10.0/ref/System.Xml.XPath.dll",
-        "build/tizen10.0/ref/System.Xml.XPath.xml",
-        "build/tizen10.0/ref/System.Xml.XmlDocument.dll",
-        "build/tizen10.0/ref/System.Xml.XmlSerializer.dll",
-        "build/tizen10.0/ref/System.Xml.XmlSerializer.xml",
-        "build/tizen10.0/ref/System.Xml.dll",
-        "build/tizen10.0/ref/System.dll",
-        "build/tizen10.0/ref/WindowsBase.dll",
-        "build/tizen10.0/ref/WindowsBase.xml",
-        "build/tizen10.0/ref/mscorlib.dll",
-        "build/tizen10.0/ref/netstandard.dll",
+        "build/netstandard2.0/Tizen.NET.API9.props",
+        "build/netstandard2.0/Tizen.NET.API9.targets",
+        "build/tizen90/LICENSE.Microsoft.NETCore.App.Ref.txt",
+        "build/tizen90/PlatformManifest.txt",
+        "build/tizen90/Tizen.NET.API9.props",
+        "build/tizen90/Tizen.NET.API9.targets",
+        "build/tizen90/ref/Microsoft.CSharp.dll",
+        "build/tizen90/ref/Microsoft.CSharp.xml",
+        "build/tizen90/ref/Microsoft.VisualBasic.Core.dll",
+        "build/tizen90/ref/Microsoft.VisualBasic.Core.xml",
+        "build/tizen90/ref/Microsoft.VisualBasic.dll",
+        "build/tizen90/ref/Microsoft.Win32.Primitives.dll",
+        "build/tizen90/ref/Microsoft.Win32.Primitives.xml",
+        "build/tizen90/ref/System.AppContext.dll",
+        "build/tizen90/ref/System.Buffers.dll",
+        "build/tizen90/ref/System.Buffers.xml",
+        "build/tizen90/ref/System.Collections.Concurrent.dll",
+        "build/tizen90/ref/System.Collections.Concurrent.xml",
+        "build/tizen90/ref/System.Collections.Immutable.dll",
+        "build/tizen90/ref/System.Collections.Immutable.xml",
+        "build/tizen90/ref/System.Collections.NonGeneric.dll",
+        "build/tizen90/ref/System.Collections.NonGeneric.xml",
+        "build/tizen90/ref/System.Collections.Specialized.dll",
+        "build/tizen90/ref/System.Collections.Specialized.xml",
+        "build/tizen90/ref/System.Collections.dll",
+        "build/tizen90/ref/System.Collections.xml",
+        "build/tizen90/ref/System.ComponentModel.Annotations.dll",
+        "build/tizen90/ref/System.ComponentModel.Annotations.xml",
+        "build/tizen90/ref/System.ComponentModel.DataAnnotations.dll",
+        "build/tizen90/ref/System.ComponentModel.EventBasedAsync.dll",
+        "build/tizen90/ref/System.ComponentModel.EventBasedAsync.xml",
+        "build/tizen90/ref/System.ComponentModel.Primitives.dll",
+        "build/tizen90/ref/System.ComponentModel.Primitives.xml",
+        "build/tizen90/ref/System.ComponentModel.TypeConverter.dll",
+        "build/tizen90/ref/System.ComponentModel.TypeConverter.xml",
+        "build/tizen90/ref/System.ComponentModel.dll",
+        "build/tizen90/ref/System.ComponentModel.xml",
+        "build/tizen90/ref/System.Configuration.dll",
+        "build/tizen90/ref/System.Console.dll",
+        "build/tizen90/ref/System.Console.xml",
+        "build/tizen90/ref/System.Core.dll",
+        "build/tizen90/ref/System.Data.Common.dll",
+        "build/tizen90/ref/System.Data.Common.xml",
+        "build/tizen90/ref/System.Data.DataSetExtensions.dll",
+        "build/tizen90/ref/System.Data.dll",
+        "build/tizen90/ref/System.Diagnostics.Contracts.dll",
+        "build/tizen90/ref/System.Diagnostics.Contracts.xml",
+        "build/tizen90/ref/System.Diagnostics.Debug.dll",
+        "build/tizen90/ref/System.Diagnostics.Debug.xml",
+        "build/tizen90/ref/System.Diagnostics.DiagnosticSource.dll",
+        "build/tizen90/ref/System.Diagnostics.DiagnosticSource.xml",
+        "build/tizen90/ref/System.Diagnostics.FileVersionInfo.dll",
+        "build/tizen90/ref/System.Diagnostics.FileVersionInfo.xml",
+        "build/tizen90/ref/System.Diagnostics.Process.dll",
+        "build/tizen90/ref/System.Diagnostics.Process.xml",
+        "build/tizen90/ref/System.Diagnostics.StackTrace.dll",
+        "build/tizen90/ref/System.Diagnostics.StackTrace.xml",
+        "build/tizen90/ref/System.Diagnostics.TextWriterTraceListener.dll",
+        "build/tizen90/ref/System.Diagnostics.TextWriterTraceListener.xml",
+        "build/tizen90/ref/System.Diagnostics.Tools.dll",
+        "build/tizen90/ref/System.Diagnostics.Tools.xml",
+        "build/tizen90/ref/System.Diagnostics.TraceSource.dll",
+        "build/tizen90/ref/System.Diagnostics.TraceSource.xml",
+        "build/tizen90/ref/System.Diagnostics.Tracing.dll",
+        "build/tizen90/ref/System.Diagnostics.Tracing.xml",
+        "build/tizen90/ref/System.Drawing.Primitives.dll",
+        "build/tizen90/ref/System.Drawing.Primitives.xml",
+        "build/tizen90/ref/System.Drawing.dll",
+        "build/tizen90/ref/System.Dynamic.Runtime.dll",
+        "build/tizen90/ref/System.Globalization.Calendars.dll",
+        "build/tizen90/ref/System.Globalization.Extensions.dll",
+        "build/tizen90/ref/System.Globalization.dll",
+        "build/tizen90/ref/System.IO.Compression.Brotli.dll",
+        "build/tizen90/ref/System.IO.Compression.Brotli.xml",
+        "build/tizen90/ref/System.IO.Compression.FileSystem.dll",
+        "build/tizen90/ref/System.IO.Compression.ZipFile.dll",
+        "build/tizen90/ref/System.IO.Compression.ZipFile.xml",
+        "build/tizen90/ref/System.IO.Compression.dll",
+        "build/tizen90/ref/System.IO.Compression.xml",
+        "build/tizen90/ref/System.IO.FileSystem.DriveInfo.dll",
+        "build/tizen90/ref/System.IO.FileSystem.DriveInfo.xml",
+        "build/tizen90/ref/System.IO.FileSystem.Primitives.dll",
+        "build/tizen90/ref/System.IO.FileSystem.Watcher.dll",
+        "build/tizen90/ref/System.IO.FileSystem.Watcher.xml",
+        "build/tizen90/ref/System.IO.FileSystem.dll",
+        "build/tizen90/ref/System.IO.FileSystem.xml",
+        "build/tizen90/ref/System.IO.IsolatedStorage.dll",
+        "build/tizen90/ref/System.IO.IsolatedStorage.xml",
+        "build/tizen90/ref/System.IO.MemoryMappedFiles.dll",
+        "build/tizen90/ref/System.IO.MemoryMappedFiles.xml",
+        "build/tizen90/ref/System.IO.Pipes.dll",
+        "build/tizen90/ref/System.IO.Pipes.xml",
+        "build/tizen90/ref/System.IO.UnmanagedMemoryStream.dll",
+        "build/tizen90/ref/System.IO.dll",
+        "build/tizen90/ref/System.Linq.Expressions.dll",
+        "build/tizen90/ref/System.Linq.Expressions.xml",
+        "build/tizen90/ref/System.Linq.Parallel.dll",
+        "build/tizen90/ref/System.Linq.Parallel.xml",
+        "build/tizen90/ref/System.Linq.Queryable.dll",
+        "build/tizen90/ref/System.Linq.Queryable.xml",
+        "build/tizen90/ref/System.Linq.dll",
+        "build/tizen90/ref/System.Linq.xml",
+        "build/tizen90/ref/System.Memory.dll",
+        "build/tizen90/ref/System.Memory.xml",
+        "build/tizen90/ref/System.Net.Http.dll",
+        "build/tizen90/ref/System.Net.Http.xml",
+        "build/tizen90/ref/System.Net.HttpListener.dll",
+        "build/tizen90/ref/System.Net.HttpListener.xml",
+        "build/tizen90/ref/System.Net.Mail.dll",
+        "build/tizen90/ref/System.Net.Mail.xml",
+        "build/tizen90/ref/System.Net.NameResolution.dll",
+        "build/tizen90/ref/System.Net.NameResolution.xml",
+        "build/tizen90/ref/System.Net.NetworkInformation.dll",
+        "build/tizen90/ref/System.Net.NetworkInformation.xml",
+        "build/tizen90/ref/System.Net.Ping.dll",
+        "build/tizen90/ref/System.Net.Ping.xml",
+        "build/tizen90/ref/System.Net.Primitives.dll",
+        "build/tizen90/ref/System.Net.Primitives.xml",
+        "build/tizen90/ref/System.Net.Requests.dll",
+        "build/tizen90/ref/System.Net.Requests.xml",
+        "build/tizen90/ref/System.Net.Security.dll",
+        "build/tizen90/ref/System.Net.Security.xml",
+        "build/tizen90/ref/System.Net.ServicePoint.dll",
+        "build/tizen90/ref/System.Net.ServicePoint.xml",
+        "build/tizen90/ref/System.Net.Sockets.dll",
+        "build/tizen90/ref/System.Net.Sockets.xml",
+        "build/tizen90/ref/System.Net.WebClient.dll",
+        "build/tizen90/ref/System.Net.WebClient.xml",
+        "build/tizen90/ref/System.Net.WebHeaderCollection.dll",
+        "build/tizen90/ref/System.Net.WebHeaderCollection.xml",
+        "build/tizen90/ref/System.Net.WebProxy.dll",
+        "build/tizen90/ref/System.Net.WebProxy.xml",
+        "build/tizen90/ref/System.Net.WebSockets.Client.dll",
+        "build/tizen90/ref/System.Net.WebSockets.Client.xml",
+        "build/tizen90/ref/System.Net.WebSockets.dll",
+        "build/tizen90/ref/System.Net.WebSockets.xml",
+        "build/tizen90/ref/System.Net.dll",
+        "build/tizen90/ref/System.Numerics.Vectors.dll",
+        "build/tizen90/ref/System.Numerics.Vectors.xml",
+        "build/tizen90/ref/System.Numerics.dll",
+        "build/tizen90/ref/System.ObjectModel.dll",
+        "build/tizen90/ref/System.ObjectModel.xml",
+        "build/tizen90/ref/System.Reflection.DispatchProxy.dll",
+        "build/tizen90/ref/System.Reflection.DispatchProxy.xml",
+        "build/tizen90/ref/System.Reflection.Emit.ILGeneration.dll",
+        "build/tizen90/ref/System.Reflection.Emit.ILGeneration.xml",
+        "build/tizen90/ref/System.Reflection.Emit.Lightweight.dll",
+        "build/tizen90/ref/System.Reflection.Emit.Lightweight.xml",
+        "build/tizen90/ref/System.Reflection.Emit.dll",
+        "build/tizen90/ref/System.Reflection.Emit.xml",
+        "build/tizen90/ref/System.Reflection.Extensions.dll",
+        "build/tizen90/ref/System.Reflection.Metadata.dll",
+        "build/tizen90/ref/System.Reflection.Metadata.xml",
+        "build/tizen90/ref/System.Reflection.Primitives.dll",
+        "build/tizen90/ref/System.Reflection.Primitives.xml",
+        "build/tizen90/ref/System.Reflection.TypeExtensions.dll",
+        "build/tizen90/ref/System.Reflection.TypeExtensions.xml",
+        "build/tizen90/ref/System.Reflection.dll",
+        "build/tizen90/ref/System.Resources.Reader.dll",
+        "build/tizen90/ref/System.Resources.ResourceManager.dll",
+        "build/tizen90/ref/System.Resources.ResourceManager.xml",
+        "build/tizen90/ref/System.Resources.Writer.dll",
+        "build/tizen90/ref/System.Resources.Writer.xml",
+        "build/tizen90/ref/System.Runtime.CompilerServices.Unsafe.dll",
+        "build/tizen90/ref/System.Runtime.CompilerServices.Unsafe.xml",
+        "build/tizen90/ref/System.Runtime.CompilerServices.VisualC.dll",
+        "build/tizen90/ref/System.Runtime.CompilerServices.VisualC.xml",
+        "build/tizen90/ref/System.Runtime.Extensions.dll",
+        "build/tizen90/ref/System.Runtime.Extensions.xml",
+        "build/tizen90/ref/System.Runtime.Handles.dll",
+        "build/tizen90/ref/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "build/tizen90/ref/System.Runtime.InteropServices.RuntimeInformation.xml",
+        "build/tizen90/ref/System.Runtime.InteropServices.WindowsRuntime.dll",
+        "build/tizen90/ref/System.Runtime.InteropServices.WindowsRuntime.xml",
+        "build/tizen90/ref/System.Runtime.InteropServices.dll",
+        "build/tizen90/ref/System.Runtime.InteropServices.xml",
+        "build/tizen90/ref/System.Runtime.Intrinsics.dll",
+        "build/tizen90/ref/System.Runtime.Intrinsics.xml",
+        "build/tizen90/ref/System.Runtime.Loader.dll",
+        "build/tizen90/ref/System.Runtime.Loader.xml",
+        "build/tizen90/ref/System.Runtime.Numerics.dll",
+        "build/tizen90/ref/System.Runtime.Numerics.xml",
+        "build/tizen90/ref/System.Runtime.Serialization.Formatters.dll",
+        "build/tizen90/ref/System.Runtime.Serialization.Formatters.xml",
+        "build/tizen90/ref/System.Runtime.Serialization.Json.dll",
+        "build/tizen90/ref/System.Runtime.Serialization.Json.xml",
+        "build/tizen90/ref/System.Runtime.Serialization.Primitives.dll",
+        "build/tizen90/ref/System.Runtime.Serialization.Primitives.xml",
+        "build/tizen90/ref/System.Runtime.Serialization.Xml.dll",
+        "build/tizen90/ref/System.Runtime.Serialization.Xml.xml",
+        "build/tizen90/ref/System.Runtime.Serialization.dll",
+        "build/tizen90/ref/System.Runtime.dll",
+        "build/tizen90/ref/System.Runtime.xml",
+        "build/tizen90/ref/System.Security.Claims.dll",
+        "build/tizen90/ref/System.Security.Claims.xml",
+        "build/tizen90/ref/System.Security.Cryptography.Algorithms.dll",
+        "build/tizen90/ref/System.Security.Cryptography.Algorithms.xml",
+        "build/tizen90/ref/System.Security.Cryptography.Csp.dll",
+        "build/tizen90/ref/System.Security.Cryptography.Csp.xml",
+        "build/tizen90/ref/System.Security.Cryptography.Encoding.dll",
+        "build/tizen90/ref/System.Security.Cryptography.Encoding.xml",
+        "build/tizen90/ref/System.Security.Cryptography.Primitives.dll",
+        "build/tizen90/ref/System.Security.Cryptography.Primitives.xml",
+        "build/tizen90/ref/System.Security.Cryptography.X509Certificates.dll",
+        "build/tizen90/ref/System.Security.Cryptography.X509Certificates.xml",
+        "build/tizen90/ref/System.Security.Principal.dll",
+        "build/tizen90/ref/System.Security.Principal.xml",
+        "build/tizen90/ref/System.Security.SecureString.dll",
+        "build/tizen90/ref/System.Security.dll",
+        "build/tizen90/ref/System.ServiceModel.Web.dll",
+        "build/tizen90/ref/System.ServiceProcess.dll",
+        "build/tizen90/ref/System.Text.Encoding.CodePages.dll",
+        "build/tizen90/ref/System.Text.Encoding.CodePages.xml",
+        "build/tizen90/ref/System.Text.Encoding.Extensions.dll",
+        "build/tizen90/ref/System.Text.Encoding.Extensions.xml",
+        "build/tizen90/ref/System.Text.Encoding.dll",
+        "build/tizen90/ref/System.Text.Encodings.Web.dll",
+        "build/tizen90/ref/System.Text.Encodings.Web.xml",
+        "build/tizen90/ref/System.Text.Json.dll",
+        "build/tizen90/ref/System.Text.Json.xml",
+        "build/tizen90/ref/System.Text.RegularExpressions.dll",
+        "build/tizen90/ref/System.Text.RegularExpressions.xml",
+        "build/tizen90/ref/System.Threading.Channels.dll",
+        "build/tizen90/ref/System.Threading.Channels.xml",
+        "build/tizen90/ref/System.Threading.Overlapped.dll",
+        "build/tizen90/ref/System.Threading.Overlapped.xml",
+        "build/tizen90/ref/System.Threading.Tasks.Dataflow.dll",
+        "build/tizen90/ref/System.Threading.Tasks.Dataflow.xml",
+        "build/tizen90/ref/System.Threading.Tasks.Extensions.dll",
+        "build/tizen90/ref/System.Threading.Tasks.Parallel.dll",
+        "build/tizen90/ref/System.Threading.Tasks.Parallel.xml",
+        "build/tizen90/ref/System.Threading.Tasks.dll",
+        "build/tizen90/ref/System.Threading.Tasks.xml",
+        "build/tizen90/ref/System.Threading.Thread.dll",
+        "build/tizen90/ref/System.Threading.Thread.xml",
+        "build/tizen90/ref/System.Threading.ThreadPool.dll",
+        "build/tizen90/ref/System.Threading.ThreadPool.xml",
+        "build/tizen90/ref/System.Threading.Timer.dll",
+        "build/tizen90/ref/System.Threading.Timer.xml",
+        "build/tizen90/ref/System.Threading.dll",
+        "build/tizen90/ref/System.Threading.xml",
+        "build/tizen90/ref/System.Transactions.Local.dll",
+        "build/tizen90/ref/System.Transactions.Local.xml",
+        "build/tizen90/ref/System.Transactions.dll",
+        "build/tizen90/ref/System.ValueTuple.dll",
+        "build/tizen90/ref/System.Web.HttpUtility.dll",
+        "build/tizen90/ref/System.Web.HttpUtility.xml",
+        "build/tizen90/ref/System.Web.dll",
+        "build/tizen90/ref/System.Windows.dll",
+        "build/tizen90/ref/System.Xml.Linq.dll",
+        "build/tizen90/ref/System.Xml.ReaderWriter.dll",
+        "build/tizen90/ref/System.Xml.ReaderWriter.xml",
+        "build/tizen90/ref/System.Xml.Serialization.dll",
+        "build/tizen90/ref/System.Xml.XDocument.dll",
+        "build/tizen90/ref/System.Xml.XDocument.xml",
+        "build/tizen90/ref/System.Xml.XPath.XDocument.dll",
+        "build/tizen90/ref/System.Xml.XPath.XDocument.xml",
+        "build/tizen90/ref/System.Xml.XPath.dll",
+        "build/tizen90/ref/System.Xml.XPath.xml",
+        "build/tizen90/ref/System.Xml.XmlDocument.dll",
+        "build/tizen90/ref/System.Xml.XmlSerializer.dll",
+        "build/tizen90/ref/System.Xml.XmlSerializer.xml",
+        "build/tizen90/ref/System.Xml.dll",
+        "build/tizen90/ref/System.dll",
+        "build/tizen90/ref/WindowsBase.dll",
+        "build/tizen90/ref/WindowsBase.xml",
+        "build/tizen90/ref/mscorlib.dll",
+        "build/tizen90/ref/netstandard.dll",
         "buildTransitive/Mono.Cecil.Mdb.dll",
         "buildTransitive/Mono.Cecil.Pdb.dll",
         "buildTransitive/Mono.Cecil.Rocks.dll",
@@ -6359,8 +6015,6 @@
         "ref/netstandard2.0/Tizen.Log.xml",
         "ref/netstandard2.0/Tizen.MachineLearning.Inference.dll",
         "ref/netstandard2.0/Tizen.MachineLearning.Inference.xml",
-        "ref/netstandard2.0/Tizen.MachineLearning.Train.dll",
-        "ref/netstandard2.0/Tizen.MachineLearning.Train.xml",
         "ref/netstandard2.0/Tizen.Maps.dll",
         "ref/netstandard2.0/Tizen.Maps.xml",
         "ref/netstandard2.0/Tizen.Messaging.Push.dll",
@@ -6395,10 +6049,6 @@
         "ref/netstandard2.0/Tizen.NUI.Components.xml",
         "ref/netstandard2.0/Tizen.NUI.Extension.dll",
         "ref/netstandard2.0/Tizen.NUI.Extension.xml",
-        "ref/netstandard2.0/Tizen.NUI.Gadget.dll",
-        "ref/netstandard2.0/Tizen.NUI.Gadget.xml",
-        "ref/netstandard2.0/Tizen.NUI.Scene3D.dll",
-        "ref/netstandard2.0/Tizen.NUI.Scene3D.xml",
         "ref/netstandard2.0/Tizen.NUI.Wearable.dll",
         "ref/netstandard2.0/Tizen.NUI.Wearable.xml",
         "ref/netstandard2.0/Tizen.NUI.WindowSystem.dll",
@@ -6453,478 +6103,6 @@
         "ref/netstandard2.0/Tizen.System.PlatformConfig.xml",
         "ref/netstandard2.0/Tizen.System.PowerUsage.dll",
         "ref/netstandard2.0/Tizen.System.PowerUsage.xml",
-        "ref/netstandard2.0/Tizen.System.Resource.dll",
-        "ref/netstandard2.0/Tizen.System.Resource.xml",
-        "ref/netstandard2.0/Tizen.System.Storage.dll",
-        "ref/netstandard2.0/Tizen.System.Storage.xml",
-        "ref/netstandard2.0/Tizen.System.SystemSettings.dll",
-        "ref/netstandard2.0/Tizen.System.SystemSettings.xml",
-        "ref/netstandard2.0/Tizen.System.Usb.dll",
-        "ref/netstandard2.0/Tizen.System.Usb.xml",
-        "ref/netstandard2.0/Tizen.System.dll",
-        "ref/netstandard2.0/Tizen.System.xml",
-        "ref/netstandard2.0/Tizen.Telephony.dll",
-        "ref/netstandard2.0/Tizen.Telephony.xml",
-        "ref/netstandard2.0/Tizen.Tracer.dll",
-        "ref/netstandard2.0/Tizen.Tracer.xml",
-        "ref/netstandard2.0/Tizen.Uix.InputMethod.dll",
-        "ref/netstandard2.0/Tizen.Uix.InputMethod.xml",
-        "ref/netstandard2.0/Tizen.Uix.InputMethodManager.dll",
-        "ref/netstandard2.0/Tizen.Uix.InputMethodManager.xml",
-        "ref/netstandard2.0/Tizen.Uix.Sticker.dll",
-        "ref/netstandard2.0/Tizen.Uix.Sticker.xml",
-        "ref/netstandard2.0/Tizen.Uix.Stt.dll",
-        "ref/netstandard2.0/Tizen.Uix.Stt.xml",
-        "ref/netstandard2.0/Tizen.Uix.SttEngine.dll",
-        "ref/netstandard2.0/Tizen.Uix.SttEngine.xml",
-        "ref/netstandard2.0/Tizen.Uix.Tts.dll",
-        "ref/netstandard2.0/Tizen.Uix.Tts.xml",
-        "ref/netstandard2.0/Tizen.Uix.TtsEngine.dll",
-        "ref/netstandard2.0/Tizen.Uix.TtsEngine.xml",
-        "ref/netstandard2.0/Tizen.Uix.VoiceControl.dll",
-        "ref/netstandard2.0/Tizen.Uix.VoiceControl.xml",
-        "ref/netstandard2.0/Tizen.Uix.VoiceControlManager.dll",
-        "ref/netstandard2.0/Tizen.Uix.VoiceControlManager.xml",
-        "ref/netstandard2.0/Tizen.WebView.dll",
-        "ref/netstandard2.0/Tizen.WebView.xml",
-        "ref/netstandard2.0/Tizen.dll",
-        "ref/netstandard2.0/Tizen.xml",
-        "tizen.net.api10.10.0.0.17804.nupkg.sha512",
-        "tizen.net.api10.nuspec"
-      ]
-    },
-    "Tizen.NET.API6/6.0.0.14995": {
-      "sha512": "j9aluiOXT/5uOi+J4Gj9dkeZCr5PXdKw6jyRjOncgQelZFUu7nU/L807YAN3brTapkgv/7cfoBvbcK9mWfwdwA==",
-      "type": "package",
-      "path": "tizen.net.api6/6.0.0.14995",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "build/tizen60/LICENSE.Microsoft.NETCore.App.Ref.txt",
-        "build/tizen60/PlatformManifest.txt",
-        "build/tizen60/Tizen.NET.API6.props",
-        "build/tizen60/Tizen.NET.API6.targets",
-        "build/tizen60/ref/Microsoft.CSharp.dll",
-        "build/tizen60/ref/Microsoft.CSharp.xml",
-        "build/tizen60/ref/Microsoft.VisualBasic.Core.dll",
-        "build/tizen60/ref/Microsoft.VisualBasic.Core.xml",
-        "build/tizen60/ref/Microsoft.VisualBasic.dll",
-        "build/tizen60/ref/Microsoft.VisualBasic.xml",
-        "build/tizen60/ref/Microsoft.Win32.Primitives.dll",
-        "build/tizen60/ref/Microsoft.Win32.Primitives.xml",
-        "build/tizen60/ref/System.AppContext.dll",
-        "build/tizen60/ref/System.Buffers.dll",
-        "build/tizen60/ref/System.Buffers.xml",
-        "build/tizen60/ref/System.Collections.Concurrent.dll",
-        "build/tizen60/ref/System.Collections.Concurrent.xml",
-        "build/tizen60/ref/System.Collections.Immutable.dll",
-        "build/tizen60/ref/System.Collections.Immutable.xml",
-        "build/tizen60/ref/System.Collections.NonGeneric.dll",
-        "build/tizen60/ref/System.Collections.NonGeneric.xml",
-        "build/tizen60/ref/System.Collections.Specialized.dll",
-        "build/tizen60/ref/System.Collections.Specialized.xml",
-        "build/tizen60/ref/System.Collections.dll",
-        "build/tizen60/ref/System.Collections.xml",
-        "build/tizen60/ref/System.ComponentModel.Annotations.dll",
-        "build/tizen60/ref/System.ComponentModel.Annotations.xml",
-        "build/tizen60/ref/System.ComponentModel.DataAnnotations.dll",
-        "build/tizen60/ref/System.ComponentModel.EventBasedAsync.dll",
-        "build/tizen60/ref/System.ComponentModel.EventBasedAsync.xml",
-        "build/tizen60/ref/System.ComponentModel.Primitives.dll",
-        "build/tizen60/ref/System.ComponentModel.Primitives.xml",
-        "build/tizen60/ref/System.ComponentModel.TypeConverter.dll",
-        "build/tizen60/ref/System.ComponentModel.TypeConverter.xml",
-        "build/tizen60/ref/System.ComponentModel.dll",
-        "build/tizen60/ref/System.ComponentModel.xml",
-        "build/tizen60/ref/System.Configuration.dll",
-        "build/tizen60/ref/System.Console.dll",
-        "build/tizen60/ref/System.Console.xml",
-        "build/tizen60/ref/System.Core.dll",
-        "build/tizen60/ref/System.Data.Common.dll",
-        "build/tizen60/ref/System.Data.Common.xml",
-        "build/tizen60/ref/System.Data.DataSetExtensions.dll",
-        "build/tizen60/ref/System.Data.dll",
-        "build/tizen60/ref/System.Diagnostics.Contracts.dll",
-        "build/tizen60/ref/System.Diagnostics.Contracts.xml",
-        "build/tizen60/ref/System.Diagnostics.Debug.dll",
-        "build/tizen60/ref/System.Diagnostics.Debug.xml",
-        "build/tizen60/ref/System.Diagnostics.DiagnosticSource.dll",
-        "build/tizen60/ref/System.Diagnostics.DiagnosticSource.xml",
-        "build/tizen60/ref/System.Diagnostics.FileVersionInfo.dll",
-        "build/tizen60/ref/System.Diagnostics.FileVersionInfo.xml",
-        "build/tizen60/ref/System.Diagnostics.Process.dll",
-        "build/tizen60/ref/System.Diagnostics.Process.xml",
-        "build/tizen60/ref/System.Diagnostics.StackTrace.dll",
-        "build/tizen60/ref/System.Diagnostics.StackTrace.xml",
-        "build/tizen60/ref/System.Diagnostics.TextWriterTraceListener.dll",
-        "build/tizen60/ref/System.Diagnostics.TextWriterTraceListener.xml",
-        "build/tizen60/ref/System.Diagnostics.Tools.dll",
-        "build/tizen60/ref/System.Diagnostics.Tools.xml",
-        "build/tizen60/ref/System.Diagnostics.TraceSource.dll",
-        "build/tizen60/ref/System.Diagnostics.TraceSource.xml",
-        "build/tizen60/ref/System.Diagnostics.Tracing.dll",
-        "build/tizen60/ref/System.Diagnostics.Tracing.xml",
-        "build/tizen60/ref/System.Drawing.Primitives.dll",
-        "build/tizen60/ref/System.Drawing.Primitives.xml",
-        "build/tizen60/ref/System.Drawing.dll",
-        "build/tizen60/ref/System.Dynamic.Runtime.dll",
-        "build/tizen60/ref/System.Globalization.Calendars.dll",
-        "build/tizen60/ref/System.Globalization.Extensions.dll",
-        "build/tizen60/ref/System.Globalization.dll",
-        "build/tizen60/ref/System.IO.Compression.Brotli.dll",
-        "build/tizen60/ref/System.IO.Compression.Brotli.xml",
-        "build/tizen60/ref/System.IO.Compression.FileSystem.dll",
-        "build/tizen60/ref/System.IO.Compression.ZipFile.dll",
-        "build/tizen60/ref/System.IO.Compression.ZipFile.xml",
-        "build/tizen60/ref/System.IO.Compression.dll",
-        "build/tizen60/ref/System.IO.Compression.xml",
-        "build/tizen60/ref/System.IO.FileSystem.DriveInfo.dll",
-        "build/tizen60/ref/System.IO.FileSystem.DriveInfo.xml",
-        "build/tizen60/ref/System.IO.FileSystem.Primitives.dll",
-        "build/tizen60/ref/System.IO.FileSystem.Watcher.dll",
-        "build/tizen60/ref/System.IO.FileSystem.Watcher.xml",
-        "build/tizen60/ref/System.IO.FileSystem.dll",
-        "build/tizen60/ref/System.IO.FileSystem.xml",
-        "build/tizen60/ref/System.IO.IsolatedStorage.dll",
-        "build/tizen60/ref/System.IO.IsolatedStorage.xml",
-        "build/tizen60/ref/System.IO.MemoryMappedFiles.dll",
-        "build/tizen60/ref/System.IO.MemoryMappedFiles.xml",
-        "build/tizen60/ref/System.IO.Pipes.dll",
-        "build/tizen60/ref/System.IO.Pipes.xml",
-        "build/tizen60/ref/System.IO.UnmanagedMemoryStream.dll",
-        "build/tizen60/ref/System.IO.dll",
-        "build/tizen60/ref/System.Linq.Expressions.dll",
-        "build/tizen60/ref/System.Linq.Expressions.xml",
-        "build/tizen60/ref/System.Linq.Parallel.dll",
-        "build/tizen60/ref/System.Linq.Parallel.xml",
-        "build/tizen60/ref/System.Linq.Queryable.dll",
-        "build/tizen60/ref/System.Linq.Queryable.xml",
-        "build/tizen60/ref/System.Linq.dll",
-        "build/tizen60/ref/System.Linq.xml",
-        "build/tizen60/ref/System.Memory.dll",
-        "build/tizen60/ref/System.Memory.xml",
-        "build/tizen60/ref/System.Net.Http.dll",
-        "build/tizen60/ref/System.Net.Http.xml",
-        "build/tizen60/ref/System.Net.HttpListener.dll",
-        "build/tizen60/ref/System.Net.HttpListener.xml",
-        "build/tizen60/ref/System.Net.Mail.dll",
-        "build/tizen60/ref/System.Net.Mail.xml",
-        "build/tizen60/ref/System.Net.NameResolution.dll",
-        "build/tizen60/ref/System.Net.NameResolution.xml",
-        "build/tizen60/ref/System.Net.NetworkInformation.dll",
-        "build/tizen60/ref/System.Net.NetworkInformation.xml",
-        "build/tizen60/ref/System.Net.Ping.dll",
-        "build/tizen60/ref/System.Net.Ping.xml",
-        "build/tizen60/ref/System.Net.Primitives.dll",
-        "build/tizen60/ref/System.Net.Primitives.xml",
-        "build/tizen60/ref/System.Net.Requests.dll",
-        "build/tizen60/ref/System.Net.Requests.xml",
-        "build/tizen60/ref/System.Net.Security.dll",
-        "build/tizen60/ref/System.Net.Security.xml",
-        "build/tizen60/ref/System.Net.ServicePoint.dll",
-        "build/tizen60/ref/System.Net.ServicePoint.xml",
-        "build/tizen60/ref/System.Net.Sockets.dll",
-        "build/tizen60/ref/System.Net.Sockets.xml",
-        "build/tizen60/ref/System.Net.WebClient.dll",
-        "build/tizen60/ref/System.Net.WebClient.xml",
-        "build/tizen60/ref/System.Net.WebHeaderCollection.dll",
-        "build/tizen60/ref/System.Net.WebHeaderCollection.xml",
-        "build/tizen60/ref/System.Net.WebProxy.dll",
-        "build/tizen60/ref/System.Net.WebProxy.xml",
-        "build/tizen60/ref/System.Net.WebSockets.Client.dll",
-        "build/tizen60/ref/System.Net.WebSockets.Client.xml",
-        "build/tizen60/ref/System.Net.WebSockets.dll",
-        "build/tizen60/ref/System.Net.WebSockets.xml",
-        "build/tizen60/ref/System.Net.dll",
-        "build/tizen60/ref/System.Numerics.Vectors.dll",
-        "build/tizen60/ref/System.Numerics.Vectors.xml",
-        "build/tizen60/ref/System.Numerics.dll",
-        "build/tizen60/ref/System.ObjectModel.dll",
-        "build/tizen60/ref/System.ObjectModel.xml",
-        "build/tizen60/ref/System.Reflection.DispatchProxy.dll",
-        "build/tizen60/ref/System.Reflection.DispatchProxy.xml",
-        "build/tizen60/ref/System.Reflection.Emit.ILGeneration.dll",
-        "build/tizen60/ref/System.Reflection.Emit.ILGeneration.xml",
-        "build/tizen60/ref/System.Reflection.Emit.Lightweight.dll",
-        "build/tizen60/ref/System.Reflection.Emit.Lightweight.xml",
-        "build/tizen60/ref/System.Reflection.Emit.dll",
-        "build/tizen60/ref/System.Reflection.Emit.xml",
-        "build/tizen60/ref/System.Reflection.Extensions.dll",
-        "build/tizen60/ref/System.Reflection.Metadata.dll",
-        "build/tizen60/ref/System.Reflection.Metadata.xml",
-        "build/tizen60/ref/System.Reflection.Primitives.dll",
-        "build/tizen60/ref/System.Reflection.Primitives.xml",
-        "build/tizen60/ref/System.Reflection.TypeExtensions.dll",
-        "build/tizen60/ref/System.Reflection.TypeExtensions.xml",
-        "build/tizen60/ref/System.Reflection.dll",
-        "build/tizen60/ref/System.Resources.Reader.dll",
-        "build/tizen60/ref/System.Resources.ResourceManager.dll",
-        "build/tizen60/ref/System.Resources.ResourceManager.xml",
-        "build/tizen60/ref/System.Resources.Writer.dll",
-        "build/tizen60/ref/System.Resources.Writer.xml",
-        "build/tizen60/ref/System.Runtime.CompilerServices.Unsafe.dll",
-        "build/tizen60/ref/System.Runtime.CompilerServices.Unsafe.xml",
-        "build/tizen60/ref/System.Runtime.CompilerServices.VisualC.dll",
-        "build/tizen60/ref/System.Runtime.CompilerServices.VisualC.xml",
-        "build/tizen60/ref/System.Runtime.Extensions.dll",
-        "build/tizen60/ref/System.Runtime.Extensions.xml",
-        "build/tizen60/ref/System.Runtime.Handles.dll",
-        "build/tizen60/ref/System.Runtime.InteropServices.RuntimeInformation.dll",
-        "build/tizen60/ref/System.Runtime.InteropServices.RuntimeInformation.xml",
-        "build/tizen60/ref/System.Runtime.InteropServices.WindowsRuntime.dll",
-        "build/tizen60/ref/System.Runtime.InteropServices.WindowsRuntime.xml",
-        "build/tizen60/ref/System.Runtime.InteropServices.dll",
-        "build/tizen60/ref/System.Runtime.InteropServices.xml",
-        "build/tizen60/ref/System.Runtime.Intrinsics.dll",
-        "build/tizen60/ref/System.Runtime.Intrinsics.xml",
-        "build/tizen60/ref/System.Runtime.Loader.dll",
-        "build/tizen60/ref/System.Runtime.Loader.xml",
-        "build/tizen60/ref/System.Runtime.Numerics.dll",
-        "build/tizen60/ref/System.Runtime.Numerics.xml",
-        "build/tizen60/ref/System.Runtime.Serialization.Formatters.dll",
-        "build/tizen60/ref/System.Runtime.Serialization.Formatters.xml",
-        "build/tizen60/ref/System.Runtime.Serialization.Json.dll",
-        "build/tizen60/ref/System.Runtime.Serialization.Json.xml",
-        "build/tizen60/ref/System.Runtime.Serialization.Primitives.dll",
-        "build/tizen60/ref/System.Runtime.Serialization.Primitives.xml",
-        "build/tizen60/ref/System.Runtime.Serialization.Xml.dll",
-        "build/tizen60/ref/System.Runtime.Serialization.Xml.xml",
-        "build/tizen60/ref/System.Runtime.Serialization.dll",
-        "build/tizen60/ref/System.Runtime.dll",
-        "build/tizen60/ref/System.Runtime.xml",
-        "build/tizen60/ref/System.Security.Claims.dll",
-        "build/tizen60/ref/System.Security.Claims.xml",
-        "build/tizen60/ref/System.Security.Cryptography.Algorithms.dll",
-        "build/tizen60/ref/System.Security.Cryptography.Algorithms.xml",
-        "build/tizen60/ref/System.Security.Cryptography.Csp.dll",
-        "build/tizen60/ref/System.Security.Cryptography.Csp.xml",
-        "build/tizen60/ref/System.Security.Cryptography.Encoding.dll",
-        "build/tizen60/ref/System.Security.Cryptography.Encoding.xml",
-        "build/tizen60/ref/System.Security.Cryptography.Primitives.dll",
-        "build/tizen60/ref/System.Security.Cryptography.Primitives.xml",
-        "build/tizen60/ref/System.Security.Cryptography.X509Certificates.dll",
-        "build/tizen60/ref/System.Security.Cryptography.X509Certificates.xml",
-        "build/tizen60/ref/System.Security.Principal.dll",
-        "build/tizen60/ref/System.Security.Principal.xml",
-        "build/tizen60/ref/System.Security.SecureString.dll",
-        "build/tizen60/ref/System.Security.dll",
-        "build/tizen60/ref/System.ServiceModel.Web.dll",
-        "build/tizen60/ref/System.ServiceProcess.dll",
-        "build/tizen60/ref/System.Text.Encoding.CodePages.dll",
-        "build/tizen60/ref/System.Text.Encoding.CodePages.xml",
-        "build/tizen60/ref/System.Text.Encoding.Extensions.dll",
-        "build/tizen60/ref/System.Text.Encoding.Extensions.xml",
-        "build/tizen60/ref/System.Text.Encoding.dll",
-        "build/tizen60/ref/System.Text.Encodings.Web.dll",
-        "build/tizen60/ref/System.Text.Encodings.Web.xml",
-        "build/tizen60/ref/System.Text.Json.dll",
-        "build/tizen60/ref/System.Text.Json.xml",
-        "build/tizen60/ref/System.Text.RegularExpressions.dll",
-        "build/tizen60/ref/System.Text.RegularExpressions.xml",
-        "build/tizen60/ref/System.Threading.Channels.dll",
-        "build/tizen60/ref/System.Threading.Channels.xml",
-        "build/tizen60/ref/System.Threading.Overlapped.dll",
-        "build/tizen60/ref/System.Threading.Overlapped.xml",
-        "build/tizen60/ref/System.Threading.Tasks.Dataflow.dll",
-        "build/tizen60/ref/System.Threading.Tasks.Dataflow.xml",
-        "build/tizen60/ref/System.Threading.Tasks.Extensions.dll",
-        "build/tizen60/ref/System.Threading.Tasks.Extensions.xml",
-        "build/tizen60/ref/System.Threading.Tasks.Parallel.dll",
-        "build/tizen60/ref/System.Threading.Tasks.Parallel.xml",
-        "build/tizen60/ref/System.Threading.Tasks.dll",
-        "build/tizen60/ref/System.Threading.Tasks.xml",
-        "build/tizen60/ref/System.Threading.Thread.dll",
-        "build/tizen60/ref/System.Threading.Thread.xml",
-        "build/tizen60/ref/System.Threading.ThreadPool.dll",
-        "build/tizen60/ref/System.Threading.ThreadPool.xml",
-        "build/tizen60/ref/System.Threading.Timer.dll",
-        "build/tizen60/ref/System.Threading.Timer.xml",
-        "build/tizen60/ref/System.Threading.dll",
-        "build/tizen60/ref/System.Threading.xml",
-        "build/tizen60/ref/System.Transactions.Local.dll",
-        "build/tizen60/ref/System.Transactions.Local.xml",
-        "build/tizen60/ref/System.Transactions.dll",
-        "build/tizen60/ref/System.ValueTuple.dll",
-        "build/tizen60/ref/System.Web.HttpUtility.dll",
-        "build/tizen60/ref/System.Web.HttpUtility.xml",
-        "build/tizen60/ref/System.Web.dll",
-        "build/tizen60/ref/System.Windows.dll",
-        "build/tizen60/ref/System.Xml.Linq.dll",
-        "build/tizen60/ref/System.Xml.ReaderWriter.dll",
-        "build/tizen60/ref/System.Xml.ReaderWriter.xml",
-        "build/tizen60/ref/System.Xml.Serialization.dll",
-        "build/tizen60/ref/System.Xml.XDocument.dll",
-        "build/tizen60/ref/System.Xml.XDocument.xml",
-        "build/tizen60/ref/System.Xml.XPath.XDocument.dll",
-        "build/tizen60/ref/System.Xml.XPath.XDocument.xml",
-        "build/tizen60/ref/System.Xml.XPath.dll",
-        "build/tizen60/ref/System.Xml.XPath.xml",
-        "build/tizen60/ref/System.Xml.XmlDocument.dll",
-        "build/tizen60/ref/System.Xml.XmlSerializer.dll",
-        "build/tizen60/ref/System.Xml.XmlSerializer.xml",
-        "build/tizen60/ref/System.Xml.dll",
-        "build/tizen60/ref/System.dll",
-        "build/tizen60/ref/WindowsBase.dll",
-        "build/tizen60/ref/WindowsBase.xml",
-        "build/tizen60/ref/mscorlib.dll",
-        "build/tizen60/ref/netstandard.dll",
-        "ref/netstandard2.0/Design/Tizen.NUI.Design.dll",
-        "ref/netstandard2.0/ElmSharp.Wearable.dll",
-        "ref/netstandard2.0/ElmSharp.Wearable.xml",
-        "ref/netstandard2.0/ElmSharp.dll",
-        "ref/netstandard2.0/ElmSharp.xml",
-        "ref/netstandard2.0/Tizen.Account.AccountManager.dll",
-        "ref/netstandard2.0/Tizen.Account.AccountManager.xml",
-        "ref/netstandard2.0/Tizen.Account.FidoClient.dll",
-        "ref/netstandard2.0/Tizen.Account.FidoClient.xml",
-        "ref/netstandard2.0/Tizen.Account.OAuth2.dll",
-        "ref/netstandard2.0/Tizen.Account.OAuth2.xml",
-        "ref/netstandard2.0/Tizen.Account.SyncManager.dll",
-        "ref/netstandard2.0/Tizen.Account.SyncManager.xml",
-        "ref/netstandard2.0/Tizen.Applications.Alarm.dll",
-        "ref/netstandard2.0/Tizen.Applications.Alarm.xml",
-        "ref/netstandard2.0/Tizen.Applications.AttachPanel.dll",
-        "ref/netstandard2.0/Tizen.Applications.AttachPanel.xml",
-        "ref/netstandard2.0/Tizen.Applications.Badge.dll",
-        "ref/netstandard2.0/Tizen.Applications.Badge.xml",
-        "ref/netstandard2.0/Tizen.Applications.Common.dll",
-        "ref/netstandard2.0/Tizen.Applications.Common.xml",
-        "ref/netstandard2.0/Tizen.Applications.ComponentBased.ComponentManager.dll",
-        "ref/netstandard2.0/Tizen.Applications.ComponentBased.ComponentManager.xml",
-        "ref/netstandard2.0/Tizen.Applications.ComponentBased.Default.dll",
-        "ref/netstandard2.0/Tizen.Applications.ComponentBased.Default.xml",
-        "ref/netstandard2.0/Tizen.Applications.ComponentBased.dll",
-        "ref/netstandard2.0/Tizen.Applications.ComponentBased.xml",
-        "ref/netstandard2.0/Tizen.Applications.DataControl.dll",
-        "ref/netstandard2.0/Tizen.Applications.DataControl.xml",
-        "ref/netstandard2.0/Tizen.Applications.EventManager.dll",
-        "ref/netstandard2.0/Tizen.Applications.EventManager.xml",
-        "ref/netstandard2.0/Tizen.Applications.MessagePort.dll",
-        "ref/netstandard2.0/Tizen.Applications.MessagePort.xml",
-        "ref/netstandard2.0/Tizen.Applications.Notification.dll",
-        "ref/netstandard2.0/Tizen.Applications.Notification.xml",
-        "ref/netstandard2.0/Tizen.Applications.NotificationEventListener.dll",
-        "ref/netstandard2.0/Tizen.Applications.NotificationEventListener.xml",
-        "ref/netstandard2.0/Tizen.Applications.PackageManager.dll",
-        "ref/netstandard2.0/Tizen.Applications.PackageManager.xml",
-        "ref/netstandard2.0/Tizen.Applications.Preference.dll",
-        "ref/netstandard2.0/Tizen.Applications.Preference.xml",
-        "ref/netstandard2.0/Tizen.Applications.RemoteView.dll",
-        "ref/netstandard2.0/Tizen.Applications.RemoteView.xml",
-        "ref/netstandard2.0/Tizen.Applications.Service.dll",
-        "ref/netstandard2.0/Tizen.Applications.Service.xml",
-        "ref/netstandard2.0/Tizen.Applications.Shortcut.dll",
-        "ref/netstandard2.0/Tizen.Applications.Shortcut.xml",
-        "ref/netstandard2.0/Tizen.Applications.ToastMessage.dll",
-        "ref/netstandard2.0/Tizen.Applications.ToastMessage.xml",
-        "ref/netstandard2.0/Tizen.Applications.UI.dll",
-        "ref/netstandard2.0/Tizen.Applications.UI.xml",
-        "ref/netstandard2.0/Tizen.Applications.WatchApplication.dll",
-        "ref/netstandard2.0/Tizen.Applications.WatchApplication.xml",
-        "ref/netstandard2.0/Tizen.Applications.WatchfaceComplication.dll",
-        "ref/netstandard2.0/Tizen.Applications.WatchfaceComplication.xml",
-        "ref/netstandard2.0/Tizen.Applications.WidgetApplication.dll",
-        "ref/netstandard2.0/Tizen.Applications.WidgetApplication.xml",
-        "ref/netstandard2.0/Tizen.Applications.WidgetControl.dll",
-        "ref/netstandard2.0/Tizen.Applications.WidgetControl.xml",
-        "ref/netstandard2.0/Tizen.Content.Download.dll",
-        "ref/netstandard2.0/Tizen.Content.Download.xml",
-        "ref/netstandard2.0/Tizen.Content.MediaContent.dll",
-        "ref/netstandard2.0/Tizen.Content.MediaContent.xml",
-        "ref/netstandard2.0/Tizen.Content.MimeType.dll",
-        "ref/netstandard2.0/Tizen.Content.MimeType.xml",
-        "ref/netstandard2.0/Tizen.Context.dll",
-        "ref/netstandard2.0/Tizen.Context.xml",
-        "ref/netstandard2.0/Tizen.Location.Geofence.dll",
-        "ref/netstandard2.0/Tizen.Location.Geofence.xml",
-        "ref/netstandard2.0/Tizen.Location.dll",
-        "ref/netstandard2.0/Tizen.Location.xml",
-        "ref/netstandard2.0/Tizen.Log.dll",
-        "ref/netstandard2.0/Tizen.Log.xml",
-        "ref/netstandard2.0/Tizen.MachineLearning.Inference.dll",
-        "ref/netstandard2.0/Tizen.MachineLearning.Inference.xml",
-        "ref/netstandard2.0/Tizen.Maps.dll",
-        "ref/netstandard2.0/Tizen.Maps.xml",
-        "ref/netstandard2.0/Tizen.Messaging.Push.dll",
-        "ref/netstandard2.0/Tizen.Messaging.Push.xml",
-        "ref/netstandard2.0/Tizen.Messaging.dll",
-        "ref/netstandard2.0/Tizen.Messaging.xml",
-        "ref/netstandard2.0/Tizen.Multimedia.AudioIO.dll",
-        "ref/netstandard2.0/Tizen.Multimedia.AudioIO.xml",
-        "ref/netstandard2.0/Tizen.Multimedia.Camera.dll",
-        "ref/netstandard2.0/Tizen.Multimedia.Camera.xml",
-        "ref/netstandard2.0/Tizen.Multimedia.MediaCodec.dll",
-        "ref/netstandard2.0/Tizen.Multimedia.MediaCodec.xml",
-        "ref/netstandard2.0/Tizen.Multimedia.MediaPlayer.dll",
-        "ref/netstandard2.0/Tizen.Multimedia.MediaPlayer.xml",
-        "ref/netstandard2.0/Tizen.Multimedia.Metadata.dll",
-        "ref/netstandard2.0/Tizen.Multimedia.Metadata.xml",
-        "ref/netstandard2.0/Tizen.Multimedia.Radio.dll",
-        "ref/netstandard2.0/Tizen.Multimedia.Radio.xml",
-        "ref/netstandard2.0/Tizen.Multimedia.Recorder.dll",
-        "ref/netstandard2.0/Tizen.Multimedia.Recorder.xml",
-        "ref/netstandard2.0/Tizen.Multimedia.Remoting.dll",
-        "ref/netstandard2.0/Tizen.Multimedia.Remoting.xml",
-        "ref/netstandard2.0/Tizen.Multimedia.StreamRecorder.dll",
-        "ref/netstandard2.0/Tizen.Multimedia.StreamRecorder.xml",
-        "ref/netstandard2.0/Tizen.Multimedia.Util.dll",
-        "ref/netstandard2.0/Tizen.Multimedia.Util.xml",
-        "ref/netstandard2.0/Tizen.Multimedia.Vision.dll",
-        "ref/netstandard2.0/Tizen.Multimedia.Vision.xml",
-        "ref/netstandard2.0/Tizen.Multimedia.dll",
-        "ref/netstandard2.0/Tizen.Multimedia.xml",
-        "ref/netstandard2.0/Tizen.NUI.Components.dll",
-        "ref/netstandard2.0/Tizen.NUI.Components.xml",
-        "ref/netstandard2.0/Tizen.NUI.Wearable.dll",
-        "ref/netstandard2.0/Tizen.NUI.Wearable.xml",
-        "ref/netstandard2.0/Tizen.NUI.dll",
-        "ref/netstandard2.0/Tizen.NUI.xml",
-        "ref/netstandard2.0/Tizen.Network.Bluetooth.dll",
-        "ref/netstandard2.0/Tizen.Network.Bluetooth.xml",
-        "ref/netstandard2.0/Tizen.Network.Connection.dll",
-        "ref/netstandard2.0/Tizen.Network.Connection.xml",
-        "ref/netstandard2.0/Tizen.Network.IoTConnectivity.dll",
-        "ref/netstandard2.0/Tizen.Network.IoTConnectivity.xml",
-        "ref/netstandard2.0/Tizen.Network.Nfc.dll",
-        "ref/netstandard2.0/Tizen.Network.Nfc.xml",
-        "ref/netstandard2.0/Tizen.Network.Nsd.dll",
-        "ref/netstandard2.0/Tizen.Network.Nsd.xml",
-        "ref/netstandard2.0/Tizen.Network.Smartcard.dll",
-        "ref/netstandard2.0/Tizen.Network.Smartcard.xml",
-        "ref/netstandard2.0/Tizen.Network.Stc.dll",
-        "ref/netstandard2.0/Tizen.Network.Stc.xml",
-        "ref/netstandard2.0/Tizen.Network.WiFi.dll",
-        "ref/netstandard2.0/Tizen.Network.WiFi.xml",
-        "ref/netstandard2.0/Tizen.Network.WiFiDirect.dll",
-        "ref/netstandard2.0/Tizen.Network.WiFiDirect.xml",
-        "ref/netstandard2.0/Tizen.Nlp.dll",
-        "ref/netstandard2.0/Tizen.Nlp.xml",
-        "ref/netstandard2.0/Tizen.PhonenumberUtils.dll",
-        "ref/netstandard2.0/Tizen.PhonenumberUtils.xml",
-        "ref/netstandard2.0/Tizen.Pims.Calendar.dll",
-        "ref/netstandard2.0/Tizen.Pims.Calendar.xml",
-        "ref/netstandard2.0/Tizen.Pims.Contacts.dll",
-        "ref/netstandard2.0/Tizen.Pims.Contacts.xml",
-        "ref/netstandard2.0/Tizen.Security.DevicePolicyManager.dll",
-        "ref/netstandard2.0/Tizen.Security.DevicePolicyManager.xml",
-        "ref/netstandard2.0/Tizen.Security.PrivacyPrivilegeManager.dll",
-        "ref/netstandard2.0/Tizen.Security.PrivacyPrivilegeManager.xml",
-        "ref/netstandard2.0/Tizen.Security.SecureRepository.dll",
-        "ref/netstandard2.0/Tizen.Security.SecureRepository.xml",
-        "ref/netstandard2.0/Tizen.Security.TEEC.dll",
-        "ref/netstandard2.0/Tizen.Security.TEEC.xml",
-        "ref/netstandard2.0/Tizen.Security.dll",
-        "ref/netstandard2.0/Tizen.Security.xml",
-        "ref/netstandard2.0/Tizen.Sensor.dll",
-        "ref/netstandard2.0/Tizen.Sensor.xml",
-        "ref/netstandard2.0/Tizen.System.Feedback.dll",
-        "ref/netstandard2.0/Tizen.System.Feedback.xml",
-        "ref/netstandard2.0/Tizen.System.Information.dll",
-        "ref/netstandard2.0/Tizen.System.Information.xml",
-        "ref/netstandard2.0/Tizen.System.MediaKey.dll",
-        "ref/netstandard2.0/Tizen.System.MediaKey.xml",
-        "ref/netstandard2.0/Tizen.System.PlatformConfig.dll",
-        "ref/netstandard2.0/Tizen.System.PlatformConfig.xml",
         "ref/netstandard2.0/Tizen.System.Storage.dll",
         "ref/netstandard2.0/Tizen.System.Storage.xml",
         "ref/netstandard2.0/Tizen.System.SystemSettings.dll",
@@ -6957,86 +6135,53 @@
         "ref/netstandard2.0/Tizen.WebView.xml",
         "ref/netstandard2.0/Tizen.dll",
         "ref/netstandard2.0/Tizen.xml",
-        "tizen.net.api6.6.0.0.14995.nupkg.sha512",
-        "tizen.net.api6.nuspec"
-      ]
-    },
-    "Tizen.NET.TV/6.6.0.5599517": {
-      "sha512": "og9FZpFOdI91PPVrz/C7o204YNnSxGq9yVdZJt5r9v+PIuG7KGF2OyBdj9jEH1OdaQXFzsg2Ph2K1zS0vLRCgQ==",
-      "type": "package",
-      "path": "tizen.net.tv/6.6.0.5599517",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "ref/netstandard2.0/Tizen.TV.Accessory.dll",
-        "ref/netstandard2.0/Tizen.TV.Accessory.xml",
-        "ref/netstandard2.0/Tizen.TV.Application.Window.dll",
-        "ref/netstandard2.0/Tizen.TV.Application.Window.xml",
-        "ref/netstandard2.0/Tizen.TV.Multimedia.ESPlayer.dll",
-        "ref/netstandard2.0/Tizen.TV.Multimedia.ESPlayer.xml",
-        "ref/netstandard2.0/Tizen.TV.Multimedia.MediaPlayer.dll",
-        "ref/netstandard2.0/Tizen.TV.Multimedia.MediaPlayer.xml",
-        "ref/netstandard2.0/Tizen.TV.NUI.GLApplication.dll",
-        "ref/netstandard2.0/Tizen.TV.NUI.GLApplication.xml",
-        "ref/netstandard2.0/Tizen.TV.Security.dll",
-        "ref/netstandard2.0/Tizen.TV.Security.xml",
-        "ref/netstandard2.0/Tizen.TV.Service.Billing.dll",
-        "ref/netstandard2.0/Tizen.TV.Service.Billing.xml",
-        "ref/netstandard2.0/Tizen.TV.Service.Sso.dll",
-        "ref/netstandard2.0/Tizen.TV.Service.Sso.xml",
-        "ref/netstandard2.0/Tizen.TV.System.dll",
-        "ref/netstandard2.0/Tizen.TV.System.xml",
-        "ref/netstandard2.0/Tizen.TV.dll",
-        "ref/netstandard2.0/Tizen.TV.xml",
-        "tizen.net.tv.6.6.0.5599517.nupkg.sha512",
-        "tizen.net.tv.nuspec"
+        "tizen.net.api9.9.0.0.16908.nupkg.sha512",
+        "tizen.net.api9.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
-    "Tizen,Version=v7.0": [
+    "Tizen,Version=v9.0": [
       "Fizzler >= 1.3.0",
       "Fizzler.Systems.HtmlAgilityPack >= 1.2.1",
       "Newtonsoft.Json >= 13.0.3",
       "System.Net.Http.Json >= 8.0.0",
-      "Tizen.NET >= 6.0.0.14995",
-      "Tizen.NET.API10 >= 10.0.0.17804",
-      "Tizen.NET.TV >= 6.6.0.5599517"
+      "Tizen.NET >= 9.0.0.16760",
+      "Tizen.NET.API9 >= 9.0.0.16908"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\P\\.nuget\\packages\\": {},
-    "E:\\VisualStudioTools\\Shared\\NuGetPackages": {}
+    "C:\\Users\\jamestang\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\tizen-project\\AnimeTV\\TVAnime\\TVAnime.csproj",
+      "projectUniqueName": "C:\\Users\\jamestang\\Desktop\\Projects\\AnimeTV\\TVAnime\\TVAnime.csproj",
       "projectName": "TVAnime",
-      "projectPath": "E:\\tizen-project\\AnimeTV\\TVAnime\\TVAnime.csproj",
-      "packagesPath": "C:\\Users\\P\\.nuget\\packages\\",
-      "outputPath": "E:\\tizen-project\\AnimeTV\\TVAnime\\obj\\",
+      "projectPath": "C:\\Users\\jamestang\\Desktop\\Projects\\AnimeTV\\TVAnime\\TVAnime.csproj",
+      "packagesPath": "C:\\Users\\jamestang\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jamestang\\Desktop\\Projects\\AnimeTV\\TVAnime\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "E:\\VisualStudioTools\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\P\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jamestang\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "tizen70"
+        "tizen90"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://tizen.myget.org/F/dotnet/api/v3/index.json": {}
       },
       "frameworks": {
-        "tizen70": {
-          "targetAlias": "tizen70",
+        "tizen90": {
+          "targetAlias": "tizen90",
           "projectReferences": {}
         }
       },
@@ -7047,8 +6192,8 @@
       }
     },
     "frameworks": {
-      "tizen70": {
-        "targetAlias": "tizen70",
+      "tizen90": {
+        "targetAlias": "tizen90",
         "dependencies": {
           "Fizzler": {
             "target": "Package",
@@ -7070,17 +6215,12 @@
             "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[6.0.0.14995, )",
+            "version": "[9.0.0.16760, )",
             "autoReferenced": true
           },
-          "Tizen.NET.API10": {
+          "Tizen.NET.API9": {
             "target": "Package",
-            "version": "[10.0.0.17804, )"
-          },
-          "Tizen.NET.TV": {
-            "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-            "target": "Package",
-            "version": "[6.6.0.5599517, )"
+            "version": "[9.0.0.16908, )"
           }
         },
         "imports": [
