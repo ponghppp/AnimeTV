@@ -11,12 +11,12 @@ using Tizen.System;
 using Tizen.Applications;
 using Tizen.Network.Connection;
 using Tizen.Content.MediaContent;
+using Tizen.NUI.BaseComponents;
 
 namespace TVAnime
 {
     internal class Api
     {
-        public static Action<string> callback;
         public static async Task<List<LatestAnime>> GetLatestList()
         {
             try
@@ -78,7 +78,7 @@ namespace TVAnime
             }
         }
 
-        public static async void DownloadAnime(string apireq, Action<string> cb)
+        public static async Task DownloadAnime(string apireq, TextLabel loadingLabel)
         {
             using (var request = new HttpRequestMessage())
             {
@@ -105,39 +105,21 @@ namespace TVAnime
                     var jsonStr = await response.Content.ReadAsStringAsync();
                     JObject json = JsonConvert.DeserializeObject<JObject>(jsonStr);
                     var downloadUrl = "https:" + json["s"][0].Value<string>("src");
-                    callback = cb;
 
                     var dest = StorageManager.Storages.FirstOrDefault().GetAbsolutePath(DirectoryType.Downloads);
                     var dir = new System.IO.DirectoryInfo(dest);
-                    foreach (var file in dir.GetFiles())
+                    foreach (var file in dir.GetFiles("*.mp4"))
                     {
                         file.Delete();
                     }
                     dest += "/anime.mp4";
-                    var uri = new Uri(downloadUrl);
-                    await HttpHelper.DownloadFileTaskAsync(uri, dest, downloadHeaders);
-
-                    //var file = new File
-                    //Application.Current.DirectoryInfo.Data
-                    //var dest = StorageManager.Storages.FirstOrDefault().GetAbsolutePath(DirectoryType.Downloads);
-                    //var type = Tizen.Content.Download.NetworkType.All;
-                    //var req = new Tizen.Content.Download.Request(downloadUrl, dest, "anime.mp4", type, downloadHeaders);
-                    //req.StateChanged += DownloadStateChanged;
-                    //req.Start();
-
-                    //callback(req.DestinationPath);
+                    await HttpHelper.DownloadFileTaskAsync(downloadUrl, dest, downloadHeaders, loadingLabel);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
             }
-        }
-
-        public static void Test()
-        {
-            var apireq = "%7B%22c%22%3A%221357%22%2C%22e%22%3A%222s%22%2C%22t%22%3A1706172809%2C%22p%22%3A0%2C%22s%22%3A%22ed5aaeae077e9969eee5c520f0d40e5d%22%7D";
-            DownloadAnime(apireq, null);
         }
     }
 }

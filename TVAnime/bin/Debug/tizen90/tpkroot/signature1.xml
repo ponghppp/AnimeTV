@@ -12,7 +12,7 @@
     </Reference>
     <Reference URI="shared%2Fres%2FTVAnime.png">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
-      <DigestValue>cI5amtjSdPPxN2ZpqYaAXIUjxKMUbzwJwFs/Jd7nFo+/nB0gpKGysBrP4JLzlhEO0bXuNApr5FJzXAIfTUNX3g==</DigestValue>
+      <DigestValue>Yedz9x4vt3r9AUyzaD8+DnO9IMb8tB9LkUroeHU6Vqm55CIPvLkC375/Z5j7SrOzs1ezlEt8riTAntBKLj3oFw==</DigestValue>
     </Reference>
     <Reference URI="res%2FlatestAnime.txt">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
@@ -20,11 +20,11 @@
     </Reference>
     <Reference URI="bin%2FTVAnime.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
-      <DigestValue>RbEJ4cQkta3kybk3SJz0E8c4YIu2xd1zp1rlSc86zV4E+uCxq9n9tpYJZwRLc4JgWsu9H1in3PVWWdjsSrLbNg==</DigestValue>
+      <DigestValue>qI4tukg9gNk3fNo9e2rTVoOkcXSPystgFm+9YBlwmZpP729/w6Z8Ssyrje1sT74gOuQnDQjjzKHPBlJLfGbBgA==</DigestValue>
     </Reference>
     <Reference URI="bin%2FTVAnime.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
-      <DigestValue>YveNmqPf2gKWU/U7xxxdpFBpypHgR1bBb65yw7xbrqLKV4UlknEKD2wT0+rPxjWiQQjD1ycfTxyxK9Q8CJdJWg==</DigestValue>
+      <DigestValue>dpS8qh9VzYsRLK0aVRCDlGVD9frN53qaQxYw8+FRydRgv5ipMxze2NP1OqJMPjqbbvFpeWegqoSnz7Fh8OlL5g==</DigestValue>
     </Reference>
     <Reference URI="bin%2FSystem.Xml.XPath.XmlDocument.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
@@ -68,7 +68,7 @@
     </Reference>
     <Reference URI="author-signature.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
-      <DigestValue>YdJ6fEaSqY6YhWF3N1dphNYhNECmHeIDB5nwx3TB0OgM3zR1neWBWP/saqBnCkfoNvrQj0FOJEnl1xA4Dv4b7A==</DigestValue>
+      <DigestValue>5MCI2bu0fxIU/r8wjCzav2KPIffuwHxpocvxi3bTm6A80r/I3Na65sWaKNdAG/MsnOzp4TAdbQYqtCzkLHJ+dw==</DigestValue>
     </Reference>
     <Reference URI="#prop">
       <Transforms>
@@ -79,11 +79,11 @@
     </Reference>
   </SignedInfo>
   <SignatureValue>
-iu7q+cpFLrLzVrdczOmzYAztYJDiQuG3cxmup5/pRoib4sjhb7cdN0h+U1fGflpsbyAVOckRUvGB
-GpSCPdZN5zUXyRmqRnN0nt91VgYt1ZSiLebHSXQfII+xNGue+xakEa9zdoaq741Hn/9W+qYKM7pP
-DuBtwtL3xOL0V2S3Puu2IfCSCRkHU8BQIIFSdnFd3mEO6GQock/Y2iIWi/UkXE2wTUgw1+LfIE9w
-Y7A0ZLrzJDNqsJY3O9Dh/80BOrHyrwiHqrQmmtw1e84S4iAxhy5HKLFZQOMVsGv/rH8yjIxNm5py
-ogQVell4dKnTFcZX6NShXPw21ehCyYd3DIWcUg==
+lO27vucmXEh/2/GgeJRoGFGzNqgJ5TV4LN5Gw2pLmveAGo9x9ebjA9VtKodtxRXF2wWiGBodtrnz
+XJkwLKqutJVzQoL6t7Exy66ECMN6haCAl8jQ73mL7xPjamx3u7S6VvxaQrWx7a5qaHIWmlwzf162
+uKNWbtKiMIIZ7DPojsixMQNNF3fSl7UXQodqbesScIQIt7Q7uw2PsktGIOGELakkqVUa4MQRM0G/
+TFD2vOOyFf0uEPsDP3MbktyYXm2gxd9j+o9lis0Dgdq1cau18wO3UjHzCmF0nwTqyL568ePfUBCj
+CPhxHDTewChMVJWcESRFTwl5c//wSrNmfEk6KA==
 </SignatureValue>
   <KeyInfo>
     <X509Data>

@@ -1,28 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using Tizen.Pims.Contacts.ContactsViews;
-using System.Net.WebSockets;
-using TVAnime.Component;
-using System.Net.Mime;
 using System.IO;
-using System.Net.NetworkInformation;
-using Microsoft.VisualBasic;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Tizen.NUI.BaseComponents;
-using Newtonsoft.Json;
-using System.Net.Http.Json;
-using Tizen.Network.IoTConnectivity;
-using Tizen.Content.Download;
 
 namespace TVAnime.Helper
 {
     internal class HttpHelper
     {
         static bool connected = true;
+        static TextLabel loadingViewLabel;
         public static async Task<HttpResponseMessage> MakeHttpRequest(string url, HttpMethod method, Dictionary<string, object> body = null, Dictionary<string, string> headers = null)
         {
             if (!connected)
@@ -80,12 +71,8 @@ namespace TVAnime.Helper
         {
             try
             {
-                using (HttpClient client = new HttpClient())
-                {
-                    client.Timeout = TimeSpan.FromSeconds(30);
-                    var response = await client.GetAsync("https://google.com");
-                    connected = response.StatusCode == System.Net.HttpStatusCode.OK;
-                }
+                //var network = Tizen.
+                //connected = true;
             }
             catch (Exception ex)
             {
@@ -108,25 +95,19 @@ namespace TVAnime.Helper
             response.Content = new StringContent(text);
             return response;
         }
-        public static async Task DownloadFileTaskAsync(Uri uri, string FileName, Dictionary<string, string> headers)
+        public static async Task DownloadFileTaskAsync(string url, string destinationFilePath, Dictionary<string, string> headers, TextLabel loadingLabel)
         {
-            using (var client = new HttpClient())
+            loadingViewLabel = loadingLabel;
+            using (var client = new DownloadHelper(url, destinationFilePath, headers))
             {
-                if (headers != null)
-                {
-                    foreach (var h in headers)
-                    {
-                        client.DefaultRequestHeaders.Add(h.Key, h.Value);
-                    }
-                }
-                using (var s = await client.GetStreamAsync(uri))
-                {
-                    using (var fs = new FileStream(FileName, FileMode.OpenOrCreate))
-                    {
-                        await s.CopyToAsync(fs);
-                    }
-                }
+                client.ProgressChanged += ProgressChanged;
+                await client.StartDownload();
             }
+        }
+
+        private static void ProgressChanged(long? totalFileSize, long totalBytesDownloaded, double? progressPercentage)
+        {
+            loadingViewLabel.Text = "下載中..." + (int)progressPercentage + "%";
         }
     }
 }

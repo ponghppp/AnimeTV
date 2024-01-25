@@ -6,72 +6,77 @@ using Tizen.NUI.Components;
 using Tizen.NUI.Binding;
 using TVAnime.Models;
 using TVAnime.Page;
+using System.Collections.Generic;
 
 namespace TVAnime.Component
 {
     internal class ItemSelectionView
     {
         public int selectedIndex = 0;
-        public View view { get; set; }
+        public int previousSelectedIndex = 0;
         public BasePage page { get; set; }
-        public CollectionView collectionView { get; set; }
-        
+        public ScrollableBase scrollView { get; set; }
+        private View view { get; set; }
+        public List<SelectionItem> ItemsSource { get; set; }
+        public List<TextLabel> Items { get; set; }
+
         public ItemSelectionView(BasePage page)
         {
             this.page = page;
             page.OnKeyEvents += OnKeyEvent;
 
-            View v = new View()
+            scrollView = new ScrollableBase()
             {
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.MatchParent
+                HeightResizePolicy = ResizePolicyType.FillToParent,
+                WidthResizePolicy = ResizePolicyType.FillToParent
             };
 
-            collectionView = new CollectionView()
+            view = new View()
             {
-                ItemsLayouter = new LinearLayouter(),
-                ScrollingDirection = ScrollableBase.Direction.Vertical,
-                SelectionMode = ItemSelectionMode.SingleAlways,
-                WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.MatchParent,
-                
-                ItemTemplate = new DataTemplate(() =>
-                {
-                    var item = new DefaultLinearItem()
-                    {
-                        WidthSpecification = LayoutParamPolicies.MatchParent,
-                        HeightSpecification = LayoutParamPolicies.WrapContent
-                    };
-                    item.Label.TextColor = Color.Black;
-                    item.Label.SetBinding(TextLabel.BackgroundColorProperty, "BackgroundColor");
-                    item.Label.SetBinding(TextLabel.TextProperty, "Name");
-                    return item;
-                })
+                HeightResizePolicy = ResizePolicyType.FillToParent,
+                WidthResizePolicy = ResizePolicyType.FillToParent
             };
-            collectionView.SelectionChanged += SelectionChanged;
-            v.Add(collectionView);
-            view = v;
+
+            var layout = new LinearLayout()
+            {
+                LinearOrientation = LinearLayout.Orientation.Vertical
+            };
+
+            view.Layout = layout;
+            scrollView.Add(view);
         }
 
-        private void SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void SetItemsSource(List<SelectionItem> source)
         {
-            foreach (object item in e.PreviousSelection)
+            this.ItemsSource = source;
+            Items = new List<TextLabel>() { };
+            for (var i = 0; i < source.Count; i++)
             {
-                SelectionItem episode = (SelectionItem)item;
-                episode.BackgroundColor = Color.White;
+                var item = source[i];
+                TextLabel textLabel = new TextLabel()
+                {
+                    Text = item.Name,
+                    TextColor = Color.Black,
+                    PointSize = 50,
+                    WidthResizePolicy = ResizePolicyType.FillToParent,
+                    HeightResizePolicy = ResizePolicyType.SizeRelativeToParent,
+                };
+                Items.Add(textLabel);
+                view.Add(textLabel);
             }
-            foreach (object item in e.CurrentSelection)
-            {
-                SelectionItem episode = (SelectionItem)item;
-                episode.BackgroundColor = Color.Cyan;
-            }
+            SelectItem(0, 0);
+        }
+        public void SelectItem(int selectedIndex, int previousSelectedIndex)
+        {
+            Items[previousSelectedIndex].BackgroundColor = Color.White;
+            Items[selectedIndex].BackgroundColor = Color.Cyan;
         }
 
         public void OnKeyEvent(object sender, Window.KeyEventArgs e)
         {
-            if (e.Key.State == Key.StateType.Down && collectionView.ItemsSource != null)
+            if (e.Key.State == Key.StateType.Down && ItemsSource != null)
             {
-                var source = collectionView.ItemsSource.Cast<SelectionItem>().ToList();
+                var source = ItemsSource.ToList();
                 if (e.Key.KeyPressedName == "Return")
                 {
                     var param = source[selectedIndex].Param;
@@ -86,26 +91,15 @@ namespace TVAnime.Component
                 if (e.Key.KeyPressedName == "Up")
                 {
                     nextSelectedIndex = Math.Max(0, selectedIndex - 1);
-                }               
+                }
                 if (e.Key.KeyPressedName == "Down" || e.Key.KeyPressedName == "Up")
                 {
                     if (nextSelectedIndex != selectedIndex)
                     {
+                        previousSelectedIndex = selectedIndex;
                         selectedIndex = nextSelectedIndex;
-                        collectionView.SelectedItem = source[selectedIndex];
-                    }
-                    if (selectedIndex == 0)
-                    {
-                        collectionView.ScrollToIndex(0);
-                    }
-                    else if (selectedIndex == source.Count - 1)
-                    {
-                        collectionView.ScrollToIndex(source.Count - 1);
-                    }
-                    else
-                    {
-                        var increment = e.Key.KeyPressedName == "Down" ? 1 : -1;
-                        collectionView.ScrollTo(Math.Max(0, selectedIndex + increment), true, CollectionView.ItemScrollTo.Nearest);
+                        SelectItem(selectedIndex, previousSelectedIndex);
+                        scrollView.ScrollTo(Items[0].SizeHeight * selectedIndex, true);
                     }
                 }
             }

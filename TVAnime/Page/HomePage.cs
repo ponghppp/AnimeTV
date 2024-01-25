@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
@@ -24,7 +25,7 @@ namespace TVAnime.Page
             view.Add(header.view);
 
             itemSelectionView = new ItemSelectionView(this);
-            content.view.Add(itemSelectionView.view);
+            content.view.Add(itemSelectionView.scrollView);
             view.Add(content.view);
             view.Add(footer.view);
             GetList();
@@ -33,6 +34,7 @@ namespace TVAnime.Page
         private async void GetList()
         {
             ShowLoading();
+            Thread.Sleep(2000);
             var latestAnimeList = await Api.GetLatestList();
             HideLoading();
            
@@ -48,11 +50,7 @@ namespace TVAnime.Page
                 return new SelectionItem(title, id, param);
             }).ToList();
 
-            itemSelectionView.collectionView.ItemsSource = episodes;
-            if (episodes.Count > 0)
-            {
-                itemSelectionView.collectionView.SelectedItem = episodes[0];
-            }
+            itemSelectionView.SetItemsSource(episodes);
         }
     }
 }

@@ -12,7 +12,7 @@
     </Reference>
     <Reference URI="shared%2Fres%2FTVAnime.png">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
-      <DigestValue>cI5amtjSdPPxN2ZpqYaAXIUjxKMUbzwJwFs/Jd7nFo+/nB0gpKGysBrP4JLzlhEO0bXuNApr5FJzXAIfTUNX3g==</DigestValue>
+      <DigestValue>Yedz9x4vt3r9AUyzaD8+DnO9IMb8tB9LkUroeHU6Vqm55CIPvLkC375/Z5j7SrOzs1ezlEt8riTAntBKLj3oFw==</DigestValue>
     </Reference>
     <Reference URI="res%2FlatestAnime.txt">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
@@ -20,11 +20,11 @@
     </Reference>
     <Reference URI="bin%2FTVAnime.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
-      <DigestValue>RbEJ4cQkta3kybk3SJz0E8c4YIu2xd1zp1rlSc86zV4E+uCxq9n9tpYJZwRLc4JgWsu9H1in3PVWWdjsSrLbNg==</DigestValue>
+      <DigestValue>qI4tukg9gNk3fNo9e2rTVoOkcXSPystgFm+9YBlwmZpP729/w6Z8Ssyrje1sT74gOuQnDQjjzKHPBlJLfGbBgA==</DigestValue>
     </Reference>
     <Reference URI="bin%2FTVAnime.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
-      <DigestValue>YveNmqPf2gKWU/U7xxxdpFBpypHgR1bBb65yw7xbrqLKV4UlknEKD2wT0+rPxjWiQQjD1ycfTxyxK9Q8CJdJWg==</DigestValue>
+      <DigestValue>dpS8qh9VzYsRLK0aVRCDlGVD9frN53qaQxYw8+FRydRgv5ipMxze2NP1OqJMPjqbbvFpeWegqoSnz7Fh8OlL5g==</DigestValue>
     </Reference>
     <Reference URI="bin%2FSystem.Xml.XPath.XmlDocument.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
@@ -75,11 +75,11 @@
     </Reference>
   </SignedInfo>
   <SignatureValue>
-IOc74XWDY/gMYSlY6KSH7JyM555c9eHSzpuaky8wIsHLWC/E/c1EIK6XQCkc+qPxVp0M3+tKGAZ3
-G9lySf+JT9NyRW2dXDa6rVsJkI5QiLmhBwHtgUOsqNQLZceue8Cz8iLhl5tA2JS9qHU4XPTuPa1n
-IZV5Pk8qQdYIbJsWzn0GJL2aOMCa9Zq4N57ps0PHVYZ7Wu+es1aEWwE5i0FpCa/xxt80m4/rrLr6
-c0CrCutaEZd0GuCJw2XzfCyxv+8VZLZC2VZKAr5Dc3B2g1F/XfXx00mlNWeunTWMn9hqO3EQaVD6
-416/1DLWt5zaQ5fMdmsycj2wy4gmXSUMz8IyGw==
+Giu2mE6gJsWGVy/zkp7zEDh/WtaGuJx448CwQo5iBgiCaQlYgGF+5ghuR3Qc+AqNKI5IIF5T1nGU
+ORvJdWc+aFxec5LJhegCIVUnQvh4iMFs5Qp5SJ+jkyDFT+8ltNVPZS2LP4vHDB040CRp8V624IIe
+4hPG38I/t+eWr1nYi3xY7ZzNHZzLSzeBpZCgQJDJAUvD6wGnhAVVn5G+4rk2BIX+Jpn/Ivf76XnJ
+vNLRVWE4YewG5uzv43jkEq8YwxRh1dLNk4VH13nMwJKUnV7iwZabOra1Zl8ueqYbub18DmTraT6E
+uqL42Bhcwi19YQtLAJkLtCME/TM5Su8wnViVlQ==
 </SignatureValue>
   <KeyInfo>
     <X509Data>

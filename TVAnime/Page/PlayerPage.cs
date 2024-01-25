@@ -4,32 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tizen.NUI.BaseComponents;
+using Tizen.System;
 using TVAnime.Component;
 
 namespace TVAnime.Page
 {
     internal class PlayerPage: BasePage
     {
+        private Player player;
         public override void Init()
         {
             var content = new Content();
-            var player = new Player();
+            player = new Player(this);
             content.view.Add(player.view);
             view.Add(content.view);
             GetVideo();
         }
 
-        private void GetVideo()
+        private async void GetVideo()
         {
             ShowLoading();
-            Api.DownloadAnime(param["ApiReq"].ToString(), SetupPlayer);
-            
+            await Api.DownloadAnime(param["ApiReq"].ToString(), loadingViewLabel);
+            HideLoading();
+            var videoUrl = StorageManager.Storages.FirstOrDefault().GetAbsolutePath(DirectoryType.Downloads) + "/anime.mp4";
+            player.videoView.ResourceUrl = videoUrl;
+            player.isPlaying = true;
+            player.videoView.Play();
         }
 
-        private void SetupPlayer(string downloadPath)
-        {
-            HideLoading();
-            Console.WriteLine(downloadPath);
-        }
     }
 }

@@ -9,18 +9,20 @@ namespace TVAnime
 {
     internal class Program : NUIApplication
     {
-        protected override async void OnCreate()
+        protected override void OnCreate()
         {
             base.OnCreate();
-            //await HttpHelper.CheckNetworkConnectivity();
             Initialize();
         }
 
         void Initialize()
         {
-            Thread.Sleep(2000);
-            Api.Test();
-            return;
+            //var playerPage = new PlayerPage();
+            //Tizen.NUI.Window.Instance.Add(playerPage.view);
+            //playerPage.Init();
+            //Globals.AddPageStack(playerPage.GetType(), null);
+            //return;
+            
             var homePage = new HomePage();
             Tizen.NUI.Window.Instance.Add(homePage.view);
             homePage.Init();

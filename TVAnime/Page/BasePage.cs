@@ -15,6 +15,7 @@ namespace TVAnime.Page
         List<EventHandler<Window.KeyEventArgs>> delegates = new List<EventHandler<Window.KeyEventArgs>>();
         public View view { get; set; }
         public View loadingView { get; set; }
+        public TextLabel loadingViewLabel { get; set; }
         public Window window = Window.Instance;
         public Dictionary<string, object> param { get; set; }
 
@@ -93,7 +94,7 @@ namespace TVAnime.Page
                     LinearOrientation = LinearLayout.Orientation.Vertical
                 };
                 container.Layout = containerLayout;
-                TextLabel textLabel = new TextLabel()
+                loadingViewLabel = new TextLabel()
                 {
                     Text = "載入中...",
                     TextColor = Color.White,
@@ -112,7 +113,7 @@ namespace TVAnime.Page
                 animation.Play();
 
                 container.Add(spinner);
-                container.Add(textLabel);
+                container.Add(loadingViewLabel);
                 loadingView.Add(container);
             }
             window.Add(loadingView);
