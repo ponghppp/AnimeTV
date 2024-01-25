@@ -28,6 +28,7 @@ namespace TVAnime.Helper
         }
         public static string GetNodeAttribute(string nodeHtml, string attr)
         {
+            if (!nodeHtml.StartsWith('<')) return "";
             HtmlDocument htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(nodeHtml);
             return htmlDocument.DocumentNode.FirstChild.Attributes[attr].Value;

@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 using TVAnime.Models;
 using Newtonsoft.Json.Linq;
 using Tizen.System;
+using Tizen.Applications;
+using Tizen.Network.Connection;
+using Tizen.Content.MediaContent;
 
 namespace TVAnime
 {
@@ -82,7 +85,6 @@ namespace TVAnime
                 try
                 {
                     var values = "d=" + apireq;
-                    //var content = new StringContent(values);
                     var url = "https://v.anime1.me/api";
                     var body = new Dictionary<string, object>
                     {
@@ -92,22 +94,37 @@ namespace TVAnime
                     var response = await HttpHelper.MakeHttpRequest(url, HttpMethod.Post, body);
                     var setCookieHeaders = response.Headers.GetValues("Set-Cookie");
                     var downloadHeaders = new Dictionary<string, string>();
+                    downloadHeaders["Cookie"] = "";
                     foreach (var header in setCookieHeaders)
                     {
                         var key = header.Substring(0, header.IndexOf('='));
-                        var value = header.Substring(header.IndexOf('=') + 1, header.IndexOf(';'));
-                        downloadHeaders[key] = value;
+                        var value = header.Substring(header.IndexOf('=') + 1, header.IndexOf(';') - 1);
+                        downloadHeaders["Cookie"] += (key + "=" + value);
                     }
+                    downloadHeaders["Range"] = "bytes=0-";
                     var jsonStr = await response.Content.ReadAsStringAsync();
                     JObject json = JsonConvert.DeserializeObject<JObject>(jsonStr);
-                    var downloadUrl = json["s"][0].Value<string>("src");
-                    var dest = StorageManager.Storages.FirstOrDefault().GetAbsolutePath(DirectoryType.Downloads) + "/anime.mp4";
-                    //var req = new Tizen.Content.Download.Request("https://google.com");
-                    //var dest = "/opt/usr/home/owner/content/Downloads/";
-                    var req = new Tizen.Content.Download.Request(downloadUrl, dest, "anime.mp4", Tizen.Content.Download.NetworkType.All, downloadHeaders);
-                    req.StateChanged += DownloadStateChanged;
-                    req.Start();
+                    var downloadUrl = "https:" + json["s"][0].Value<string>("src");
                     callback = cb;
+
+                    var dest = StorageManager.Storages.FirstOrDefault().GetAbsolutePath(DirectoryType.Downloads);
+                    var dir = new System.IO.DirectoryInfo(dest);
+                    foreach (var file in dir.GetFiles())
+                    {
+                        file.Delete();
+                    }
+                    dest += "/anime.mp4";
+                    var uri = new Uri(downloadUrl);
+                    await HttpHelper.DownloadFileTaskAsync(uri, dest, downloadHeaders);
+
+                    //var file = new File
+                    //Application.Current.DirectoryInfo.Data
+                    //var dest = StorageManager.Storages.FirstOrDefault().GetAbsolutePath(DirectoryType.Downloads);
+                    //var type = Tizen.Content.Download.NetworkType.All;
+                    //var req = new Tizen.Content.Download.Request(downloadUrl, dest, "anime.mp4", type, downloadHeaders);
+                    //req.StateChanged += DownloadStateChanged;
+                    //req.Start();
+
                     //callback(req.DestinationPath);
                 }
                 catch (Exception ex)
@@ -117,12 +134,10 @@ namespace TVAnime
             }
         }
 
-        private static void DownloadStateChanged(object sender, Tizen.Content.Download.StateChangedEventArgs e)
+        public static void Test()
         {
-            if (e.State == Tizen.Content.Download.DownloadState.Completed)
-            {
-                callback(((Tizen.Content.Download.Request)sender).DestinationPath);
-            }
+            var apireq = "%7B%22c%22%3A%221357%22%2C%22e%22%3A%222s%22%2C%22t%22%3A1706172809%2C%22p%22%3A0%2C%22s%22%3A%22ed5aaeae077e9969eee5c520f0d40e5d%22%7D";
+            DownloadAnime(apireq, null);
         }
     }
 }

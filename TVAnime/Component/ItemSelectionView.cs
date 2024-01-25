@@ -29,6 +29,7 @@ namespace TVAnime.Component
 
             collectionView = new CollectionView()
             {
+                ItemsLayouter = new LinearLayouter(),
                 ScrollingDirection = ScrollableBase.Direction.Vertical,
                 SelectionMode = ItemSelectionMode.SingleAlways,
                 WidthSpecification = LayoutParamPolicies.MatchParent,

@@ -16,13 +16,14 @@ using Tizen.NUI.BaseComponents;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
 using Tizen.Network.IoTConnectivity;
+using Tizen.Content.Download;
 
 namespace TVAnime.Helper
 {
     internal class HttpHelper
     {
-        static bool connected = false;
-        public static async Task<HttpResponseMessage> MakeHttpRequest(string url, HttpMethod method, Dictionary<string, object> body = null, Dictionary<string, string> headers = null) 
+        static bool connected = true;
+        public static async Task<HttpResponseMessage> MakeHttpRequest(string url, HttpMethod method, Dictionary<string, object> body = null, Dictionary<string, string> headers = null)
         {
             if (!connected)
             {
@@ -30,14 +31,15 @@ namespace TVAnime.Helper
             }
 
             HttpResponseMessage response = null;
+            HttpContent content = null;
             using (var request = new HttpRequestMessage())
             {
                 try
                 {
-                    if (method == HttpMethod.Get && body != null) 
+                    if (method == HttpMethod.Get && body != null)
                     {
                         url += "?";
-                        foreach (var p in body) 
+                        foreach (var p in body)
                         {
                             url += (p.Key + "=" + p.Value);
                             if (p.Key != body.LastOrDefault().Key) url += "&";
@@ -49,11 +51,9 @@ namespace TVAnime.Helper
                     {
                         var data = body.GetValueOrDefault("data");
                         var type = body.GetValueOrDefault("type");
-                        if (type.ToString() == "application/x-www-form-urlencoded")
-                        {
-                            request.Content = new StringContent(data.ToString());
-                            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
-                        }
+                        content = new StringContent(data.ToString());
+                        content.Headers.ContentType = new MediaTypeHeaderValue(type.ToString());
+                        request.Content = content;
                     }
                     if (headers != null)
                     {
@@ -64,7 +64,7 @@ namespace TVAnime.Helper
                     }
                     using (HttpClient client = new HttpClient())
                     {
-                        client.Timeout = TimeSpan.FromSeconds(30);
+                        client.Timeout = TimeSpan.FromSeconds(60);
                         response = await client.SendAsync(request);
                     }
                 }
@@ -76,13 +76,13 @@ namespace TVAnime.Helper
             return response;
         }
 
-        public static async void CheckNetworkConnectivity()
+        public static async Task CheckNetworkConnectivity()
         {
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    client.Timeout = TimeSpan.FromSeconds(10);
+                    client.Timeout = TimeSpan.FromSeconds(30);
                     var response = await client.GetAsync("https://google.com");
                     connected = response.StatusCode == System.Net.HttpStatusCode.OK;
                 }
@@ -103,10 +103,30 @@ namespace TVAnime.Helper
                     fileName = "latestAnime";
                     break;
             }
-            
+
             string text = File.ReadAllText(Path.Combine(Tizen.Applications.Application.Current.DirectoryInfo.Resource, fileName + ".txt"));
             response.Content = new StringContent(text);
             return response;
+        }
+        public static async Task DownloadFileTaskAsync(Uri uri, string FileName, Dictionary<string, string> headers)
+        {
+            using (var client = new HttpClient())
+            {
+                if (headers != null)
+                {
+                    foreach (var h in headers)
+                    {
+                        client.DefaultRequestHeaders.Add(h.Key, h.Value);
+                    }
+                }
+                using (var s = await client.GetStreamAsync(uri))
+                {
+                    using (var fs = new FileStream(FileName, FileMode.OpenOrCreate))
+                    {
+                        await s.CopyToAsync(fs);
+                    }
+                }
+            }
         }
     }
 }

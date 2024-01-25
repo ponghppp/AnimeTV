@@ -25,7 +25,6 @@ namespace TVAnime.Page
 
             itemSelectionView = new ItemSelectionView(this);
             content.view.Add(itemSelectionView.view);
-            itemSelectionView.collectionView.ItemsLayouter = new LinearLayouter();
             view.Add(content.view);
             view.Add(footer.view);
             GetList();
