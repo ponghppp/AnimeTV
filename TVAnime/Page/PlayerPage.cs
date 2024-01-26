@@ -27,7 +27,7 @@ namespace TVAnime.Page
             ShowLoading();
             await Api.DownloadAnime(this, param["Id"].ToString(), param["ApiReq"].ToString(), loadingViewLabel);
             HideLoading();
-            var videoUrl = StorageManager.Storages.FirstOrDefault().GetAbsolutePath(DirectoryType.Downloads) + "/anime.mp4";
+            var videoUrl = StorageManager.Storages.FirstOrDefault().GetAbsolutePath(DirectoryType.Downloads) + "/" + param["Id"].ToString() + ".mp4";
             player.SetVideoSource(videoUrl);
         }
 

@@ -16,13 +16,20 @@ namespace TVAnime.Helper
         public static string recordJsonPath = StorageManager.Storages.FirstOrDefault().GetAbsolutePath(DirectoryType.Downloads) + "/record.json";
         public static void RecordCurrentVideo(string id)
         {
-            File.CreateText(videoRecordPath).Close();
-            File.WriteAllText(videoRecordPath, id);
+            try
+            {
+                File.CreateText(videoRecordPath).Close();
+                File.WriteAllText(videoRecordPath, id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         public static string GetCurrentVideo()
         {
             var id = "";
-            using (StreamReader r = new StreamReader(recordJsonPath))
+            using (StreamReader r = new StreamReader(videoRecordPath))
             {
                 id = r.ReadToEnd();
             }
@@ -50,7 +57,7 @@ namespace TVAnime.Helper
                     playTime = playTime,
                     duration = duration
                 });
-            } 
+            }
             else
             {
                 rec.playTime = playTime;

@@ -95,6 +95,7 @@ namespace TVAnime.Component
             var videoName = source.Split('/').LastOrDefault();
             duration = VideoHelper.GetVideoDuration(videoName);
             progressLabel.Text = TimeHelper.MillisecondsToMinute(currentTime) + "/" + TimeHelper.MillisecondsToMinute(duration);
+            Play();
         }
 
         private void SetupControlView()
@@ -183,7 +184,7 @@ namespace TVAnime.Component
             Tizen.NUI.Window.Instance.Add(controlView);
         }
 
-        private async void OnKeyEvent(object sender, Window.KeyEventArgs e)
+        private void OnKeyEvent(object sender, Window.KeyEventArgs e)
         {
             if (e.Key.State == Key.StateType.Down)
             {
@@ -196,17 +197,11 @@ namespace TVAnime.Component
                 {
                     videoView.Forward(10000);
                     currentTime = Math.Min(duration, currentTime + 10000);
-                    controlView.Show();
-                    await Task.Delay(2000);
-                    controlView.Hide();
                 }
                 if (e.Key.KeyPressedName == "Left")
                 {
                     videoView.Backward(10000);
                     currentTime = Math.Max(0, currentTime - 10000);
-                    controlView.Show();
-                    await Task.Delay(2000);
-                    controlView.Hide();
                 }
                 if (e.Key.KeyPressedName == "XF86Back" || e.Key.KeyPressedName == "Escape")
                 {
