@@ -1,5 +1,8 @@
-﻿using System.Threading;
+﻿using System.IO;
+using System.Linq;
+using System.Threading;
 using Tizen.NUI;
+using Tizen.System;
 using TVAnime.Helper;
 using TVAnime.Models;
 using TVAnime.Page;
@@ -13,7 +16,18 @@ namespace TVAnime
         {
             base.OnCreate();
             HttpHelper.CheckNetworkConnectivity();
+            //DeleteEverything();
             Initialize();
+            
+        }
+
+        void DeleteEverything()
+        {
+            var dirInfo = new DirectoryInfo(StorageManager.Storages.FirstOrDefault().GetAbsolutePath(DirectoryType.Downloads));
+            foreach (var f in dirInfo.GetFiles())
+            {
+                f.Delete();
+            }
         }
 
         void Initialize()
@@ -22,9 +36,7 @@ namespace TVAnime
             //Tizen.NUI.Window.Instance.Add(playerPage.view);
             //playerPage.Init();
             //Globals.AddPageStack(playerPage.GetType(), null);
-
-            VideoHelper.GetVideoDuration("anime.mp4");
-            return;
+            //return;
             
             var homePage = new HomePage();
             Tizen.NUI.Window.Instance.Add(homePage.view);

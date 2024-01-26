@@ -161,10 +161,11 @@ namespace TVAnime.Page
             }
         }
 
-        public virtual void OnBackPressed(object sender, Window.KeyEventArgs e)
+        public virtual async void OnBackPressed(object sender, Window.KeyEventArgs e)
         {
             if (e.Key.State == Key.StateType.Down && (e.Key.KeyPressedName == "XF86Back" || e.Key.KeyPressedName == "Escape"))
             {
+                await Task.Delay(100);
                 if (Globals.pageStacks.Count == 1)
                 {
                     NUIApplication.Current.Exit();

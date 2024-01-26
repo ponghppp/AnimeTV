@@ -73,8 +73,8 @@ namespace TVAnime.Helper
 
         public static void CheckNetworkConnectivity()
         {
-            connected = false;
-            return;
+            //connected = false;
+            //return;
 
             try
             {
@@ -82,7 +82,7 @@ namespace TVAnime.Helper
                 ConnectionState state = connection.State;
                 if (state == ConnectionState.Connected)
                 {
-                    //connected = true;
+                    connected = true;
                 }
             }
             catch (Exception ex)

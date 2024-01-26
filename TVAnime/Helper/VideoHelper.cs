@@ -20,7 +20,7 @@ namespace TVAnime.Helper
             {
                 var mediaSelectArguments = new SelectArguments()
                 {
-                    FilterExpression = $"{MediaInfoColumns.MediaType}={(int)Media​Type.Video} AND {MediaInfoColumns.DisplayName}={videoName}",
+                    FilterExpression = $"{MediaInfoColumns.MediaType}={(int)Media​Type.Video} AND {MediaInfoColumns.DisplayName}='{videoName}'",
                 };
                 while (mediaDataReader.Read())
                 {

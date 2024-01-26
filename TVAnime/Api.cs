@@ -42,26 +42,31 @@ namespace TVAnime
             }
         }
 
-        public static async Task<List<Episode>> GetSeries(BasePage page, string seriesId)
+        public static async Task<List<Episode>> GetSeries(BasePage page, string url)
         {
             try
             {
-                var url = "https://anime1.me/";
-                var body = new Dictionary<string, object>
-                {
-                    ["cat"] = seriesId
-                };
-                var response = await HttpHelper.MakeHttpRequest(page, url, HttpMethod.Get, body);
+                List<Episode> episodeList = new List<Episode>() { };
+                var response = await HttpHelper.MakeHttpRequest(page, url, HttpMethod.Get);
                 var html = await response.Content.ReadAsStringAsync();
 
-                var h2s = HtmlHelper.GetTags(html, "h2").Select(h => HtmlHelper.GetInnerHtml(h));
+                if (html.Contains("nav-previous"))
+                {
+                    var divs = HtmlHelper.GetTags(html, "div", "class=nav-previous");
+                    var firstA = HtmlHelper.GetInnerHtml(divs[0]);
+                    var otherPageUrl = HtmlHelper.GetNodeAttribute(firstA, "href");
+                    episodeList = await GetSeries(page, otherPageUrl);
+                }
+
+                var h2s = HtmlHelper.GetTags(html, "h2", "class=entry-title").Select(h => HtmlHelper.GetInnerHtml(h));
                 var animeNames = h2s.Select(a => HtmlHelper.GetInnerHtml(a)).ToList();
                 var hrefs = h2s.Select(a => HtmlHelper.GetNodeAttribute(a, "href"));
 
                 var animeIds = hrefs.Select(h => h.Substring(h.LastIndexOf('/') + 1)).ToList();
+                animeIds.RemoveAll(a => a == "");
                 var videos = HtmlHelper.GetTags(html, "video");
                 var apireqs = videos.Select(v => HtmlHelper.GetNodeAttribute(v, "data-apireq")).ToList();
-                List<Episode> episodeList = new List<Episode>() { };
+                
                 for (var i = 0; i < animeIds.Count(); i++)
                 {
                     episodeList.Add(new Episode()
@@ -71,6 +76,27 @@ namespace TVAnime
                         ApiReq = apireqs[i]
                     });
                 }
+                episodeList = episodeList.OrderByDescending(e => e.Id).ToList();
+                return episodeList;
+            }
+            catch (Exception ex)
+            {
+                return new List<Episode>() { };
+            }
+        }
+        public static async Task<List<Episode>> GetSeriesByEpisode(BasePage page, string episodeId)
+        {
+            try
+            {
+                var url = "https://anime1.me/" + episodeId;
+                var response = await HttpHelper.MakeHttpRequest(page, url, HttpMethod.Get);
+                var html = await response.Content.ReadAsStringAsync();
+                var searchText = "cat=";
+                var searchTextIndex = html.IndexOf(searchText);
+                var firstQuote = html.IndexOf("\"", searchTextIndex);
+                var catId = html.Substring(searchTextIndex + searchText.Length, firstQuote - searchTextIndex - searchText.Length);
+                var seriesUrl = "https://anime1.me?cat=" + catId;
+                var episodeList = await GetSeries(page, seriesUrl);
                 return episodeList;
             }
             catch (Exception ex)
@@ -79,12 +105,17 @@ namespace TVAnime
             }
         }
 
-        public static async Task DownloadAnime(BasePage page, string apireq, TextLabel loadingLabel)
+        public static async Task DownloadAnime(BasePage page, string id, string apireq, TextLabel loadingLabel)
         {
             using (var request = new HttpRequestMessage())
             {
                 try
                 {
+                    if (id == RecordHelper.GetCurrentVideo())
+                    {
+                        return;
+                    }
+
                     var values = "d=" + apireq;
                     var url = "https://v.anime1.me/api";
                     var body = new Dictionary<string, object>
@@ -115,6 +146,7 @@ namespace TVAnime
                     }
                     dest += "/anime.mp4";
                     await HttpHelper.DownloadFileTaskAsync(page, downloadUrl, dest, downloadHeaders, loadingLabel);
+                    RecordHelper.RecordCurrentVideo(id);
                 }
                 catch (Exception ex)
                 {

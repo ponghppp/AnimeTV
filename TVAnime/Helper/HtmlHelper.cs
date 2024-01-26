@@ -12,11 +12,12 @@ namespace TVAnime.Helper
 {
     internal class HtmlHelper
     {
-        public static List<string> GetTags(string html, string tag)
+        public static List<string> GetTags(string html, string tag, string attr = "")
         {
             List<string> tags = new List<string>();
             HtmlDocument htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(html);
+            if (attr != "") tag += $"[{attr}]";
             tags = htmlDocument.DocumentNode.QuerySelectorAll(tag).Select(x => x.OuterHtml).ToList();
             return tags;
         }

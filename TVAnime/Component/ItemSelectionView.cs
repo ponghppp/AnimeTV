@@ -50,21 +50,24 @@ namespace TVAnime.Component
         {
             this.ItemsSource = source;
             Items = new List<TextLabel>() { };
-            for (var i = 0; i < source.Count; i++)
+            if (source.Count > 0)
             {
-                var item = source[i];
-                TextLabel textLabel = new TextLabel()
+                for (var i = 0; i < source.Count; i++)
                 {
-                    Text = item.Name,
-                    TextColor = Color.Black,
-                    PointSize = 50,
-                    WidthResizePolicy = ResizePolicyType.FillToParent,
-                    HeightResizePolicy = ResizePolicyType.SizeRelativeToParent,
-                };
-                Items.Add(textLabel);
-                view.Add(textLabel);
+                    var item = source[i];
+                    TextLabel textLabel = new TextLabel()
+                    {
+                        Text = item.Name,
+                        TextColor = Color.Black,
+                        PointSize = 50,
+                        WidthResizePolicy = ResizePolicyType.FillToParent,
+                        HeightResizePolicy = ResizePolicyType.SizeRelativeToParent,
+                    };
+                    Items.Add(textLabel);
+                    view.Add(textLabel);
+                }
+                SelectItem(0, 0);
             }
-            SelectItem(0, 0);
         }
         public void SelectItem(int selectedIndex, int previousSelectedIndex)
         {

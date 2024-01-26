@@ -15,7 +15,6 @@ namespace TVAnime.Page
 {
     internal class HomePage : BasePage
     {
-        private List<SelectionItem> episodes = new List<SelectionItem>();
         private ItemSelectionView itemSelectionView;
         public override void Init()
         {
@@ -37,13 +36,13 @@ namespace TVAnime.Page
             var latestAnimeList = await Api.GetLatestList(this);
             HideLoading();
            
-            episodes = latestAnimeList.Select(a => 
+            var episodes = latestAnimeList.Select(a => 
             {
                 var title = a.animeName + " " + a.episode;
                 var id = a.categoryId.ToString();
                 var param = new Dictionary<string, object>()
                 {
-                    ["Id"] = a.categoryId.ToString(),
+                    ["SeriesId"] = a.categoryId.ToString(),
                     ["Page"] = typeof(SeriesPage)
                 };
                 return new SelectionItem(title, id, param);

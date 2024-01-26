@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Tizen.NUI.BaseComponents;
 using TVAnime.Component;
 using TVAnime.Models;
+using static System.Net.WebRequestMethods;
 
 namespace TVAnime.Page
 {
@@ -30,7 +31,17 @@ namespace TVAnime.Page
             if (param != null)
             {
                 ShowLoading();
-                var series = await Api.GetSeries(this, param["Id"].ToString());
+                List<Episode> series = new List<Episode>() { };
+                object pId = "";
+                if (param.TryGetValue("SeriesId", out pId))
+                {
+                    var url = "https://anime1.me?cat=" + pId.ToString();
+                    series = await Api.GetSeries(this, url);
+                }
+                else if (param.TryGetValue("EpisodeId", out pId))
+                {
+                    series = await Api.GetSeriesByEpisode(this, pId.ToString());
+                }
                 HideLoading();
                 episodes = series.Select(a =>
                 {
