@@ -12,6 +12,7 @@ namespace TVAnime
         protected override void OnCreate()
         {
             base.OnCreate();
+            HttpHelper.CheckNetworkConnectivity();
             Initialize();
         }
 
@@ -21,7 +22,9 @@ namespace TVAnime
             //Tizen.NUI.Window.Instance.Add(playerPage.view);
             //playerPage.Init();
             //Globals.AddPageStack(playerPage.GetType(), null);
-            //return;
+
+            VideoHelper.GetVideoDuration("anime.mp4");
+            return;
             
             var homePage = new HomePage();
             Tizen.NUI.Window.Instance.Add(homePage.view);

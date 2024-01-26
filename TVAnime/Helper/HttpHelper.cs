@@ -6,7 +6,9 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using Tizen.Network.Connection;
 using Tizen.NUI.BaseComponents;
+using TVAnime.Page;
 
 namespace TVAnime.Helper
 {
@@ -14,11 +16,11 @@ namespace TVAnime.Helper
     {
         static bool connected = true;
         static TextLabel loadingViewLabel;
-        public static async Task<HttpResponseMessage> MakeHttpRequest(string url, HttpMethod method, Dictionary<string, object> body = null, Dictionary<string, string> headers = null)
+        public static async Task<HttpResponseMessage> MakeHttpRequest(BasePage page, string url, HttpMethod method, Dictionary<string, object> body = null, Dictionary<string, string> headers = null)
         {
             if (!connected)
             {
-                return GetMockData(url);
+                return GetMockData(url, body);
             }
 
             HttpResponseMessage response = null;
@@ -55,8 +57,10 @@ namespace TVAnime.Helper
                     }
                     using (HttpClient client = new HttpClient())
                     {
+                        page.client = client;
                         client.Timeout = TimeSpan.FromSeconds(60);
                         response = await client.SendAsync(request);
+                        page.client = null;
                     }
                 }
                 catch (Exception ex)
@@ -67,12 +71,19 @@ namespace TVAnime.Helper
             return response;
         }
 
-        public static async Task CheckNetworkConnectivity()
+        public static void CheckNetworkConnectivity()
         {
+            connected = false;
+            return;
+
             try
             {
-                //var network = Tizen.
-                //connected = true;
+                ConnectionItem connection = ConnectionManager.CurrentConnection;
+                ConnectionState state = connection.State;
+                if (state == ConnectionState.Connected)
+                {
+                    //connected = true;
+                }
             }
             catch (Exception ex)
             {
@@ -80,28 +91,31 @@ namespace TVAnime.Helper
             }
         }
 
-        public static HttpResponseMessage GetMockData(string url)
+        public static HttpResponseMessage GetMockData(string url, Dictionary<string, object> body)
         {
             var response = new HttpResponseMessage();
             var fileName = "";
-            switch (url)
+            if (url.Contains("https://d1zquzjgwo9yb.cloudfront.net/"))
             {
-                case "https://d1zquzjgwo9yb.cloudfront.net/":
-                    fileName = "latestAnime";
-                    break;
+                fileName = "latestAnime";
             }
-
+            if (body != null && body["cat"] != null)
+            {
+                fileName = "cat";
+            }
             string text = File.ReadAllText(Path.Combine(Tizen.Applications.Application.Current.DirectoryInfo.Resource, fileName + ".txt"));
             response.Content = new StringContent(text);
             return response;
         }
-        public static async Task DownloadFileTaskAsync(string url, string destinationFilePath, Dictionary<string, string> headers, TextLabel loadingLabel)
+        public static async Task DownloadFileTaskAsync(BasePage page, string url, string destinationFilePath, Dictionary<string, string> headers, TextLabel loadingLabel)
         {
             loadingViewLabel = loadingLabel;
             using (var client = new DownloadHelper(url, destinationFilePath, headers))
             {
+                page.client = client._httpClient;
                 client.ProgressChanged += ProgressChanged;
                 await client.StartDownload();
+                page.client = null;
             }
         }
 

@@ -30,7 +30,7 @@ namespace TVAnime.Page
             if (param != null)
             {
                 ShowLoading();
-                var series = await Api.GetSeries(param["Id"].ToString());
+                var series = await Api.GetSeries(this, param["Id"].ToString());
                 HideLoading();
                 episodes = series.Select(a =>
                 {

@@ -7,6 +7,10 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System;
 using System.Runtime.CompilerServices;
 using System.Linq;
+using Tizen.Applications;
+using System.Threading.Tasks;
+using System.Threading;
+using System.Net.Http;
 
 namespace TVAnime.Page
 {
@@ -18,6 +22,7 @@ namespace TVAnime.Page
         public TextLabel loadingViewLabel { get; set; }
         public Window window = Window.Instance;
         public Dictionary<string, object> param { get; set; }
+        public HttpClient client { get; set; }
 
         public BasePage()
         {
@@ -39,18 +44,24 @@ namespace TVAnime.Page
 
         public virtual void Init() { }
 
-        public void TransferToView(Type pageType, Dictionary<string, object> param = null, bool addStack = true)
+        public async void TransferToView(Type pageType, Dictionary<string, object> param = null, bool addStack = true)
         {
+            if (client != null)
+            {
+                client.CancelPendingRequests();
+            }
+            ShowLoading();
+            await Task.Delay(500);
             if (Globals.pageStacks.Count >= 2)
             {
-                var previousPageType = Globals.pageStacks[Globals.pageStacks.Count - 2];
-                if (pageType == previousPageType.Keys.FirstOrDefault())
+                var previousStack = Globals.pageStacks[Globals.pageStacks.Count - 2];
+                var previousStackPageType = previousStack.Keys.FirstOrDefault();
+                if (pageType == previousStackPageType)
                 {
                     GoBack();
                     return;
                 }
             }
-
             if (pageType != this.GetType())
             {
                 Unload();
@@ -63,6 +74,7 @@ namespace TVAnime.Page
                 }
                 page.Init();
             }
+            HideLoading();
         }
 
         public void ShowLoading()
@@ -74,7 +86,7 @@ namespace TVAnime.Page
                     WidthResizePolicy = ResizePolicyType.FillToParent,
                     HeightResizePolicy = ResizePolicyType.FillToParent,
                     BackgroundColor = Color.Black,
-                    Opacity = 0.6f
+                    Opacity = 0.8f
                 };
                 var loadingLayout = new LinearLayout()
                 {
@@ -99,23 +111,15 @@ namespace TVAnime.Page
                     Text = "載入中...",
                     TextColor = Color.White,
                 };
-                View spinner = new View()
+                ImageView loadingImageView = new ImageView() 
                 {
-                    WidthSpecification = 100,
-                    HeightSpecification = 100,
-                    BackgroundColor = Color.Cyan
+                    ResourceUrl = Tizen.Applications.Application.Current.DirectoryInfo.Resource + "little_twin_stars.gif"
                 };
-                var animation = new Animation(1000)
-                {
-                    Looping = true
-                };
-                animation.AnimateTo(spinner, "Orientation", new Rotation(new Radian(new Degree(180.0f)), PositionAxis.X), 0, 500, new AlphaFunction(AlphaFunction.BuiltinFunctions.EaseInOutSine));
-                animation.Play();
-
-                container.Add(spinner);
+                container.Add(loadingImageView);
                 container.Add(loadingViewLabel);
                 loadingView.Add(container);
             }
+
             window.Add(loadingView);
         }
 
@@ -138,7 +142,9 @@ namespace TVAnime.Page
         {
             var previousPageType = Globals.pageStacks[Globals.pageStacks.Count - 2];
             Globals.pageStacks.RemoveAt(Globals.pageStacks.Count - 1);
-            TransferToView(previousPageType.Keys.FirstOrDefault(), previousPageType.Values.FirstOrDefault(), false);
+            var key = previousPageType.Keys.FirstOrDefault();
+            var value = previousPageType.Values.FirstOrDefault();
+            TransferToView(key, value, false);
         }
 
         public event EventHandler<Window.KeyEventArgs> OnKeyEvents

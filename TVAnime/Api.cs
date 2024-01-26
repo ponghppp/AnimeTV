@@ -12,17 +12,18 @@ using Tizen.Applications;
 using Tizen.Network.Connection;
 using Tizen.Content.MediaContent;
 using Tizen.NUI.BaseComponents;
+using TVAnime.Page;
 
 namespace TVAnime
 {
     internal class Api
     {
-        public static async Task<List<LatestAnime>> GetLatestList()
+        public static async Task<List<LatestAnime>> GetLatestList(BasePage page)
         {
             try
             {
                 var url = "https://d1zquzjgwo9yb.cloudfront.net/";
-                var response = await HttpHelper.MakeHttpRequest(url, HttpMethod.Get);
+                var response = await HttpHelper.MakeHttpRequest(page, url, HttpMethod.Get);
                 var jsonStr = await response.Content.ReadAsStringAsync();
                 var list = JsonConvert.DeserializeObject<string[][]>(jsonStr);
                 List<LatestAnime> animeList = list.Select(l => new LatestAnime()
@@ -41,7 +42,7 @@ namespace TVAnime
             }
         }
 
-        public static async Task<List<Episode>> GetSeries(string seriesId)
+        public static async Task<List<Episode>> GetSeries(BasePage page, string seriesId)
         {
             try
             {
@@ -50,7 +51,7 @@ namespace TVAnime
                 {
                     ["cat"] = seriesId
                 };
-                var response = await HttpHelper.MakeHttpRequest(url, HttpMethod.Get, body);
+                var response = await HttpHelper.MakeHttpRequest(page, url, HttpMethod.Get, body);
                 var html = await response.Content.ReadAsStringAsync();
 
                 var h2s = HtmlHelper.GetTags(html, "h2").Select(h => HtmlHelper.GetInnerHtml(h));
@@ -78,7 +79,7 @@ namespace TVAnime
             }
         }
 
-        public static async Task DownloadAnime(string apireq, TextLabel loadingLabel)
+        public static async Task DownloadAnime(BasePage page, string apireq, TextLabel loadingLabel)
         {
             using (var request = new HttpRequestMessage())
             {
@@ -91,7 +92,7 @@ namespace TVAnime
                         ["data"] = values,
                         ["type"] = "application/x-www-form-urlencoded"
                     };
-                    var response = await HttpHelper.MakeHttpRequest(url, HttpMethod.Post, body);
+                    var response = await HttpHelper.MakeHttpRequest(page, url, HttpMethod.Post, body);
                     var setCookieHeaders = response.Headers.GetValues("Set-Cookie");
                     var downloadHeaders = new Dictionary<string, string>();
                     downloadHeaders["Cookie"] = "";
@@ -113,7 +114,7 @@ namespace TVAnime
                         file.Delete();
                     }
                     dest += "/anime.mp4";
-                    await HttpHelper.DownloadFileTaskAsync(downloadUrl, dest, downloadHeaders, loadingLabel);
+                    await HttpHelper.DownloadFileTaskAsync(page, downloadUrl, dest, downloadHeaders, loadingLabel);
                 }
                 catch (Exception ex)
                 {

@@ -17,7 +17,7 @@ namespace TVAnime.Helper
         private readonly string _destinationFilePath;
         private readonly Dictionary<string, string> _headers;
 
-        private HttpClient _httpClient;
+        public HttpClient _httpClient;
 
         public delegate void ProgressChangedHandler(long? totalFileSize, long totalBytesDownloaded, double? progressPercentage);
 

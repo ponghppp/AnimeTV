@@ -34,8 +34,7 @@ namespace TVAnime.Page
         private async void GetList()
         {
             ShowLoading();
-            Thread.Sleep(2000);
-            var latestAnimeList = await Api.GetLatestList();
+            var latestAnimeList = await Api.GetLatestList(this);
             HideLoading();
            
             episodes = latestAnimeList.Select(a => 

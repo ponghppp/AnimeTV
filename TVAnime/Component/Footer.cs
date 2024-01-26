@@ -16,6 +16,7 @@ namespace TVAnime.Component
             new FooterItem("列表", typeof(HomePage)),
             new FooterItem("記錄", typeof(RecordPage)),
             new FooterItem("新番", typeof(BangumiPage)),
+            new FooterItem("搜尋", typeof(SearchPage)),
         };
 
         public BasePage currentPage { get; set; }

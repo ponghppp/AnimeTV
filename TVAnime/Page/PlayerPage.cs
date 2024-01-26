@@ -15,7 +15,7 @@ namespace TVAnime.Page
         public override void Init()
         {
             var content = new Content();
-            player = new Player(this);
+            player = new Player(this, param["Title"].ToString());
             content.view.Add(player.view);
             view.Add(content.view);
             GetVideo();
@@ -24,7 +24,7 @@ namespace TVAnime.Page
         private async void GetVideo()
         {
             ShowLoading();
-            await Api.DownloadAnime(param["ApiReq"].ToString(), loadingViewLabel);
+            await Api.DownloadAnime(this, param["ApiReq"].ToString(), loadingViewLabel);
             HideLoading();
             var videoUrl = StorageManager.Storages.FirstOrDefault().GetAbsolutePath(DirectoryType.Downloads) + "/anime.mp4";
             player.videoView.ResourceUrl = videoUrl;

@@ -18,7 +18,7 @@ namespace TVAnime.Models
                 Globals.pageStacks = new List<Dictionary<Type, Dictionary<string, object>>> { };
             }
             Dictionary<Type, Dictionary<string, object>> dict = new Dictionary<Type, Dictionary<string, object>> { };
-            dict[pageType] = null;
+            dict[pageType] = param;
             Globals.pageStacks.Add(dict);
         }
     }
