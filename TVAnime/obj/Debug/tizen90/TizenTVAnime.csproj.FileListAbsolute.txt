@@ -17,6 +17,7 @@ C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\re
 C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\res\cat.txt
 C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\res\latestAnime.txt
 C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\res\little_twin_stars.gif
+C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\res\ms_quick.dict.txt
 C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\shared\res\TVAnime.png
 C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\tpkroot\tizen-manifest.xml
 C:\Users\jamestang\Desktop\Projects\AnimeTV\TVAnime\bin\Debug\tizen90\com.pong.animetv-1.0.0.tpk

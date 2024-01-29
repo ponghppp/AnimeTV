@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Reflection.Emit;
-using System.Threading.Tasks;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 using Tizen.NUI.Components;
 using TVAnime.Helper;
 using TVAnime.Page;
-using static Tizen.NUI.Timer;
 
 namespace TVAnime.Component
 {
@@ -61,7 +56,8 @@ namespace TVAnime.Component
 
         private bool Tick(object source, Timer.TickEventArgs e)
         {
-            if (duration - currentTime <= 100) {
+            if (duration - currentTime <= 100)
+            {
                 timer.Stop();
             }
             currentTime += 1000;

@@ -14,6 +14,7 @@ using Tizen.Content.MediaContent;
 using Tizen.NUI.BaseComponents;
 using TVAnime.Page;
 using System.IO;
+using Tizen.NUI.Components;
 
 namespace TVAnime
 {
@@ -157,6 +158,31 @@ namespace TVAnime
             var destPath = Constant.Download + "/" + resourceFileName;
             byte[] bytes = File.ReadAllBytes(resPath);
             File.WriteAllBytes(destPath, bytes);
+        }
+
+        public static async Task<List<Episode>> GetSeason(BasePage page, string season)
+        {
+            try
+            {
+                var url = "https://anime1.me/" + season;
+                var response = await HttpHelper.MakeHttpRequest(page, url, HttpMethod.Get);
+                var html = await response.Content.ReadAsStringAsync();
+                var tagAs = HtmlHelper.GetTags(html, "a", "href^=\"/?cat=\"");
+                tagAs = tagAs.Where(a => !a.Contains("anime1.pw")).ToList();
+                var episodeList = tagAs.Select(a =>
+                {
+                    return new Episode()
+                    {
+                        Id = int.Parse(HtmlHelper.GetNodeAttribute(a, "href").Split("=").LastOrDefault()),
+                        Title = HtmlHelper.GetInnerHtml(a),
+                    };
+                }).ToList();
+                return episodeList;
+            }
+            catch (Exception ex)
+            {
+                return new List<Episode>() { };
+            }
         }
     }
 }

@@ -52,6 +52,7 @@ namespace TVAnime.Page
                         ["Id"] = id,
                         ["Title"] = title,
                         ["ApiReq"] = a.ApiReq,
+                        ["Series"] = series,
                         ["Page"] = typeof(PlayerPage)
                     };
                     return new SelectionItem(title, id, param);

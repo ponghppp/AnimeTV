@@ -16,13 +16,21 @@ namespace TVAnime.Page
         {
             var header = new Header();
             var content = new Content();
-            var footer = new Footer(1, this);
+            var keyboard = new QuickKeyboard(this, searchAction);
+            var footer = new Footer(3, this);
 
             view.Add(header.view);
+            content.view.Add(keyboard.view);
             view.Add(content.view);
             view.Add(footer.view);
             GetList();
         }
+
+        private void searchAction (string action)
+        {
+
+        }
+
         private async void GetList()
         {
             

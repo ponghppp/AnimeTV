@@ -19,7 +19,7 @@ namespace TVAnime
             HttpHelper.CheckNetworkConnectivity();
             //DeleteEverything();
             Initialize();
-            
+
         }
 
         void DeleteEverything()
@@ -43,7 +43,12 @@ namespace TVAnime
             //Tizen.NUI.Window.Instance.Add(playerPage.view);
             //playerPage.Init();
             //Globals.AddPageStack(playerPage.GetType(), null);
-            //return;
+
+            var searchPage = new SearchPage();
+            Tizen.NUI.Window.Instance.Add(searchPage.view);
+            searchPage.Init();
+            Globals.AddPageStack(searchPage.GetType(), null);
+            return;
 
             var homePage = new HomePage();
             Tizen.NUI.Window.Instance.Add(homePage.view);
