@@ -13,6 +13,7 @@ using Tizen.Network.Connection;
 using Tizen.Content.MediaContent;
 using Tizen.NUI.BaseComponents;
 using TVAnime.Page;
+using System.IO;
 
 namespace TVAnime
 {
@@ -66,7 +67,7 @@ namespace TVAnime
                 animeIds.RemoveAll(a => a == "");
                 var videos = HtmlHelper.GetTags(html, "video");
                 var apireqs = videos.Select(v => HtmlHelper.GetNodeAttribute(v, "data-apireq")).ToList();
-                
+
                 for (var i = 0; i < animeIds.Count(); i++)
                 {
                     episodeList.Add(new Episode()
@@ -138,21 +139,24 @@ namespace TVAnime
                     JObject json = JsonConvert.DeserializeObject<JObject>(jsonStr);
                     var downloadUrl = "https:" + json["s"][0].Value<string>("src");
 
-                    var dest = StorageManager.Storages.FirstOrDefault().GetAbsolutePath(DirectoryType.Downloads);
-                    var dir = new System.IO.DirectoryInfo(dest);
-                    foreach (var file in dir.GetFiles("*.mp4"))
-                    {
-                        file.Delete();
-                    }
-                    dest += "/" + id + ".mp4";
+                    var dest = Constant.Download + "/" + id + ".mp4";
                     await HttpHelper.DownloadFileTaskAsync(page, downloadUrl, dest, downloadHeaders, loadingLabel);
                     RecordHelper.RecordCurrentVideo(id);
+                    VideoHelper.DeleteOldVideos();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
             }
+        }
+
+        public static void CopyVideoFromResource(string resourceFileName)
+        {
+            var resPath = Constant.Resource + resourceFileName;
+            var destPath = Constant.Download + "/" + resourceFileName;
+            byte[] bytes = File.ReadAllBytes(resPath);
+            File.WriteAllBytes(destPath, bytes);
         }
     }
 }

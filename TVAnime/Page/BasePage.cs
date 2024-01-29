@@ -113,7 +113,7 @@ namespace TVAnime.Page
                 };
                 ImageView loadingImageView = new ImageView() 
                 {
-                    ResourceUrl = Tizen.Applications.Application.Current.DirectoryInfo.Resource + "little_twin_stars.gif"
+                    ResourceUrl = Constant.Resource + "little_twin_stars.gif"
                 };
                 container.Add(loadingImageView);
                 container.Add(loadingViewLabel);

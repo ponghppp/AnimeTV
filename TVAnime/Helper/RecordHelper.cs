@@ -12,8 +12,8 @@ namespace TVAnime.Helper
 {
     internal class RecordHelper
     {
-        public static string videoRecordPath = StorageManager.Storages.FirstOrDefault().GetAbsolutePath(DirectoryType.Downloads) + "/video.txt";
-        public static string recordJsonPath = StorageManager.Storages.FirstOrDefault().GetAbsolutePath(DirectoryType.Downloads) + "/record.json";
+        public static string videoRecordPath = Constant.Download + "/video.txt";
+        public static string recordJsonPath = Constant.Download + "/record.json";
         public static void RecordCurrentVideo(string id)
         {
             try

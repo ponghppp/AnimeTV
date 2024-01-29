@@ -10,7 +10,7 @@ using TVAnime.Helper;
 
 namespace TVAnime.Page
 {
-    internal class PlayerPage: BasePage
+    internal class PlayerPage : BasePage
     {
         private Player player;
         public override void Init()
@@ -26,8 +26,9 @@ namespace TVAnime.Page
         {
             ShowLoading();
             await Api.DownloadAnime(this, param["Id"].ToString(), param["ApiReq"].ToString(), loadingViewLabel);
+            //await Task.Run(() => Api.CopyVideoFromResource("29109.mp4"));
             HideLoading();
-            var videoUrl = StorageManager.Storages.FirstOrDefault().GetAbsolutePath(DirectoryType.Downloads) + "/" + param["Id"].ToString() + ".mp4";
+            var videoUrl = Constant.Download + "/" + param["Id"].ToString() + ".mp4";
             player.SetVideoSource(videoUrl);
         }
 

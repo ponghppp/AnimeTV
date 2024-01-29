@@ -73,8 +73,8 @@ namespace TVAnime.Helper
 
         public static void CheckNetworkConnectivity()
         {
-            //connected = false;
-            //return;
+            connected = false;
+            return;
 
             try
             {
@@ -103,7 +103,7 @@ namespace TVAnime.Helper
             {
                 fileName = "cat";
             }
-            string text = File.ReadAllText(Path.Combine(Tizen.Applications.Application.Current.DirectoryInfo.Resource, fileName + ".txt"));
+            string text = File.ReadAllText(Path.Combine(Constant.Resource, fileName + ".txt"));
             response.Content = new StringContent(text);
             return response;
         }

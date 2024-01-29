@@ -88,12 +88,12 @@ namespace TVAnime.Component
             RecordHelper.RecordVideoPlayTime(id, title, currentTime, duration);
         }
 
-        public void SetVideoSource(string source, int lastPlayTime = 0)
+        public async void SetVideoSource(string source, int lastPlayTime = 0)
         {
             currentTime = lastPlayTime;
             videoView.ResourceUrl = source;
             var videoName = source.Split('/').LastOrDefault();
-            duration = VideoHelper.GetVideoDuration(videoName);
+            duration = await VideoHelper.GetVideoDuration(videoName);
             progressLabel.Text = TimeHelper.MillisecondsToMinute(currentTime) + "/" + TimeHelper.MillisecondsToMinute(duration);
             Play();
         }
@@ -131,6 +131,7 @@ namespace TVAnime.Component
             {
                 Text = title,
                 TextColor = Color.White,
+                PointSize = 40,
                 WidthResizePolicy = ResizePolicyType.SizeRelativeToParent,
                 HeightResizePolicy = ResizePolicyType.FillToParent,
                 HorizontalAlignment = HorizontalAlignment.Begin,
@@ -177,6 +178,7 @@ namespace TVAnime.Component
             progressLabel = new TextLabel()
             {
                 TextColor = Color.White,
+                PointSize = 40
             };
             bottomView.Add(progressLabel);
             controlView.Add(bottomView);

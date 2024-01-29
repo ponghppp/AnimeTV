@@ -1,26 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest package="org.tizen.example.TVAnime" version="1.0.0" api-version="5.5" xmlns="http://tizen.org/ns/packages">
-	<profile name="common" />
-	<ui-application appid="org.tizen.example.TVAnime" exec="TVAnime.dll" multiple="false" nodisplay="false" taskmanage="true" type="dotnet" launch_mode="single">
-		<label>TVAnime</label>
-		<icon>TVAnime.png</icon>
-		<background-category value="background-network" />
-		<splash-screens />
-	</ui-application>
-	<shortcut-list />
-	<privileges>
-		<privilege>http://tizen.org/privilege/internet</privilege>
-		<privilege>http://tizen.org/privilege/download</privilege>
-		<privilege>http://tizen.org/privilege/content.write</privilege>
-		<privilege>http://tizen.org/privilege/mediastorage</privilege>
-		<privilege>http://tizen.org/privilege/network.get</privilege>
-		<privilege>http://tizen.org/privilege/network.set</privilege>
-		<privilege>http://tizen.org/privilege/network.profile</privilege>
-	</privileges>
-	<dependencies />
-	<provides-appdefined-privileges />
-	<feature name="http://tizen.org/feature/screen.size.normal.1080.1920">true</feature>
-	<feature name="http://tizen.org/feature/network.wifi">true</feature>
-	<feature name="http://tizen.org/feature/network.telephony">true</feature>
-	<feature name="http://tizen.org/feature/network.wifi.direct">true</feature>
+<manifest package="com.pong.animetv" version="1.0.0" api-version="5.5" xmlns="http://tizen.org/ns/packages">
+    <profile name="common" />
+    <ui-application appid="com.pong.animetv" exec="TVAnime.dll" multiple="false" nodisplay="false" taskmanage="true" type="dotnet" launch_mode="single">
+        <label>AnimeTV</label>
+        <icon>TVAnime.png</icon>
+        <background-category value="background-network" />
+        <splash-screens />
+    </ui-application>
+    <shortcut-list />
+    <privileges>
+        <privilege>http://tizen.org/privilege/internet</privilege>
+        <privilege>http://tizen.org/privilege/download</privilege>
+        <privilege>http://tizen.org/privilege/content.write</privilege>
+        <privilege>http://tizen.org/privilege/mediastorage</privilege>
+        <privilege>http://tizen.org/privilege/network.get</privilege>
+        <privilege>http://tizen.org/privilege/network.set</privilege>
+        <privilege>http://tizen.org/privilege/network.profile</privilege>
+    </privileges>
+    <dependencies />
+    <provides-appdefined-privileges />
+    <feature name="http://tizen.org/feature/screen.size.normal.1080.1920">true</feature>
+    <feature name="http://tizen.org/feature/network.wifi">true</feature>
+    <feature name="http://tizen.org/feature/network.telephony">true</feature>
+    <feature name="http://tizen.org/feature/network.wifi.direct">true</feature>
 </manifest>

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using Tizen.NUI;
@@ -23,7 +24,7 @@ namespace TVAnime
 
         void DeleteEverything()
         {
-            var dirInfo = new DirectoryInfo(StorageManager.Storages.FirstOrDefault().GetAbsolutePath(DirectoryType.Downloads));
+            var dirInfo = new DirectoryInfo(Constant.Download);
             foreach (var f in dirInfo.GetFiles())
             {
                 f.Delete();
@@ -32,12 +33,18 @@ namespace TVAnime
 
         void Initialize()
         {
+            //var param = new Dictionary<string, object>()
+            //{
+            //    ["Id"] = "29109",
+            //    ["Title"] = "Example"
+            //};
             //var playerPage = new PlayerPage();
+            //playerPage.param = param;
             //Tizen.NUI.Window.Instance.Add(playerPage.view);
             //playerPage.Init();
             //Globals.AddPageStack(playerPage.GetType(), null);
             //return;
-            
+
             var homePage = new HomePage();
             Tizen.NUI.Window.Instance.Add(homePage.view);
             homePage.Init();
