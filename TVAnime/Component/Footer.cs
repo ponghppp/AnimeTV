@@ -22,6 +22,7 @@ namespace TVAnime.Component
         public BasePage currentPage { get; set; }
         public View view { get; set; }
         public int activeIndex { get; set; }
+        public bool changePageAction = true;
 
         public Footer(int activeIndex, BasePage currentPage)
         {
@@ -60,7 +61,7 @@ namespace TVAnime.Component
 
         private void OnKeyEvent(object sender, Window.KeyEventArgs e)
         {
-            if (e.Key.State == Key.StateType.Down)
+            if (e.Key.State == Key.StateType.Down && changePageAction)
             {
                 var nextIndex = activeIndex;
                 if (e.Key.KeyPressedName == "Left")

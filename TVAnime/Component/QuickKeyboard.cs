@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.IO;
 using System.Linq;
+using System.Text;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 using Tizen.NUI.Components;
@@ -13,14 +15,16 @@ namespace TVAnime.Component
     internal class QuickKeyboard
     {
         public BasePage page { get; set; }
+        public Action<string> selectWordAction { get; set; }
         public Action<string> searchAction { get; set; }
         public View view { get; set; }
         public Grid selectedGrid = new Grid(0, 0);
-        public Grid previousSelectedGrid = new Grid(0, 0);
+        public Grid previousSelectedGrid = new Grid(1, 1);
         public TextLabel inputLabel { get; set; }
         public View selectWordView { get; set; }
+        public ScrollableBase selectWordScrollView { get; set; }
         public List<List<Button>> buttons = new List<List<Button>>() { };
-        public List<Button> wordButtons { get; set; }
+        public List<Button> wordButtons = new List<Button>() { };
         public string searchText = "";
         public string input = "";
         public bool selectingWord = false;
@@ -28,15 +32,17 @@ namespace TVAnime.Component
         public int previousSelectedIndex = 0;
         public List<ButtonKey> quickWords = new List<ButtonKey>() { };
 
-        public QuickKeyboard(BasePage page, Action<string> searchAction)
+        public QuickKeyboard(BasePage page, Action<string> searchAction, Action<string> selectWordAction)
         {
             this.page = page;
             this.searchAction = searchAction;
+            this.selectWordAction = selectWordAction;
             page.OnKeyEvents += OnKeyEvent;
             view = new View()
             {
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.WrapContent
+                HeightSpecification = LayoutParamPolicies.WrapContent,
+                BackgroundColor = Color.White
             };
             var layout = new LinearLayout()
             {
@@ -49,7 +55,8 @@ namespace TVAnime.Component
             var selectWordContainer = new View()
             {
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.MatchParent
+                HeightSpecification = LayoutParamPolicies.MatchParent,
+                BackgroundColor = Color.White
             };
             var sLayout = new LinearLayout()
             {
@@ -61,25 +68,22 @@ namespace TVAnime.Component
 
             inputLabel = new TextLabel()
             {
-                WidthSpecification = 100,
+                WidthSpecification = 150,
                 HeightSpecification = LayoutParamPolicies.MatchParent,
                 PointSize = 50
             };
             selectWordContainer.Add(inputLabel);
 
-            selectWordView = new View()
+            selectWordScrollView = new ScrollableBase()
             {
+                ScrollingDirection = ScrollableBase.Direction.Horizontal,
                 WidthSpecification = LayoutParamPolicies.MatchParent,
-                HeightSpecification = LayoutParamPolicies.MatchParent
+                HeightSpecification = LayoutParamPolicies.MatchParent,
+                BackgroundColor = Color.White
             };
-            var swLayout = new LinearLayout()
-            {
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-                LinearOrientation = LinearLayout.Orientation.Horizontal
-            };
-            selectWordView.Layout = swLayout;
-            selectWordContainer.Add(selectWordView);
+            CreateSelectWordView();
+            selectWordContainer.Add(selectWordScrollView);
+            view.Add(selectWordContainer);
 
             for (int i = 0; i < Constant.buttonKeys.Count; i++)
             {
@@ -104,8 +108,10 @@ namespace TVAnime.Component
                     {
                         WidthSpecification = LayoutParamPolicies.WrapContent,
                         HeightSpecification = LayoutParamPolicies.WrapContent,
+                        Margin = new Extents(10, 10, 10, 10),
                         Text = button.Word,
-                        PointSize = button.Word.Length > 1 ? 30 : 40
+                        PointSize = button.Word.Length > 1 ? 30 : 40,
+                        TextColor = Color.Black
                     };
                     btnRows.Add(btn);
                     vRows.Add(btn);
@@ -114,30 +120,73 @@ namespace TVAnime.Component
                 view.Add(vRows);
             }
 
-            var lines = File.ReadAllLines(Constant.Resource + "ms_quick.dict.txt");
-            quickWords = lines.Select(l => new ButtonKey(l.Split(' ').LastOrDefault(), l.Split(' ').FirstOrDefault())).ToList();
+            var lines = File.ReadAllLines(Constant.Resource + "ms_quick.dict.txt", new UTF8Encoding(true));
+            quickWords = lines.Select(l => new ButtonKey(l.Split('\t').LastOrDefault(), l.Split('\t').FirstOrDefault())).ToList();
+            SelectItem();
+
         }
 
-        public void SelectItem()
+        private void CreateSelectWordView()
         {
-            if (selectedGrid != previousSelectedGrid) { 
-                buttons[previousSelectedGrid.row][previousSelectedGrid.column].BackgroundColor = Color.White;
-                previousSelectedGrid = selectedGrid;
-                buttons[selectedGrid.row][selectedGrid.column].BackgroundColor = Color.Cyan;
+            if (selectWordView != null)
+            {
+                selectWordScrollView.Remove(selectWordView);
+            }
+
+            selectWordView = new View()
+            {
+                WidthSpecification = LayoutParamPolicies.MatchParent,
+                HeightSpecification = LayoutParamPolicies.MatchParent,
+                BackgroundColor = Color.White
+            };
+            var swLayout = new LinearLayout()
+            {
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                LinearOrientation = LinearLayout.Orientation.Horizontal
+            };
+            selectWordView.Layout = swLayout;
+            selectWordScrollView.Add(selectWordView);
+        }
+
+        public void SelectItem(bool force = false)
+        {
+            if (!selectingWord)
+            {
+                if (buttons[selectedGrid.row].Count < selectedGrid.column)
+                {
+                    selectedGrid.column = buttons[selectedGrid.row].Count - 1;
+                }
+                if (selectedGrid != previousSelectedGrid || force)
+                {
+                    buttons[previousSelectedGrid.row][previousSelectedGrid.column].BackgroundColor = Color.White;
+                    previousSelectedGrid = selectedGrid;
+                    buttons[selectedGrid.row][selectedGrid.column].BackgroundColor = Color.Cyan;
+                }
             }
         }
-        public void SelectWord(int selectedIndex, int previousSelectedIndex)
+        public void SelectWord()
         {
-            wordButtons[previousSelectedIndex].BackgroundColor = Color.White;
-            wordButtons[selectedIndex].BackgroundColor = Color.Cyan;
+            if (selectingWord)
+            {
+                if (wordButtons.Count > 0)
+                {
+                    if (previousSelectedIndex <= wordButtons.Count)
+                    {
+                        wordButtons[previousSelectedIndex].BackgroundColor = Color.White;
+                    }
+                    previousSelectedIndex = selectedIndex;
+                    wordButtons[selectedIndex].BackgroundColor = Color.Cyan;
+                    selectWordScrollView.ScrollTo(selectedIndex * wordButtons[0].SizeWidth, true);
+                }
+            }
         }
         public void MatchWords()
         {
             wordButtons.Clear();
-            foreach (var v in selectWordView.Children)
-            {
-                selectWordView.Remove(v);
-            }
+            CreateSelectWordView();
+            var buttonKeys = Constant.buttonKeys.SelectMany(x => x).ToList();
+            inputLabel.Text = string.Join("", input.Select(i => buttonKeys.FirstOrDefault(b => b.Key == i.ToString()).Word));
             if (input.Length == 0)
             {
                 return;
@@ -151,7 +200,9 @@ namespace TVAnime.Component
                     WidthSpecification = LayoutParamPolicies.WrapContent,
                     HeightSpecification = LayoutParamPolicies.WrapContent,
                     Text = v,
-                    PointSize = 30
+                    PointSize = 30,
+                    TextColor = Color.Black,
+                    Margin = new Extents(10, 10, 0, 0),
                 };
                 wordButtons.Add(btn);
                 selectWordView.Add(btn);
@@ -182,6 +233,8 @@ namespace TVAnime.Component
             {
                 input = "";
                 searchText += wordButtons[selectedIndex].Text;
+                selectWordAction(searchText);
+                selectingWord = false;
                 MatchWords();
             }
             else
@@ -196,6 +249,7 @@ namespace TVAnime.Component
             if (selectingWord)
             {
                 selectedIndex = Math.Max(0, selectedIndex - 1);
+                SelectWord();
             }
             else
             {
@@ -207,7 +261,8 @@ namespace TVAnime.Component
         {
             if (selectingWord)
             {
-                selectedIndex = Math.Max(0, selectedIndex - 1);
+                selectedIndex = Math.Min(wordButtons.Count - 1, selectedIndex + 1);
+                SelectWord();
             }
             else
             {
@@ -220,7 +275,8 @@ namespace TVAnime.Component
             if (selectedGrid.row == 0 || selectingWord)
             {
                 selectingWord = true;
-                SelectWord(selectedIndex, previousSelectedIndex);
+                buttons[selectedGrid.row][selectedGrid.column].BackgroundColor = Color.White;
+                SelectWord();
                 return;
             }
             selectedGrid.row = Math.Max(0, selectedGrid.row - 1);
@@ -228,7 +284,13 @@ namespace TVAnime.Component
 
         private void DownAction()
         {
-            selectingWord = false;
+            if (selectingWord)
+            {
+                selectingWord = false;
+                wordButtons[selectedIndex].BackgroundColor = Color.White;
+                SelectItem(true);
+                return;
+            }
             selectedGrid.row = Math.Min(Constant.buttonKeys.Count - 1, selectedGrid.row + 1);
         }
 
@@ -251,7 +313,7 @@ namespace TVAnime.Component
                 }
                 if (e.Key.KeyPressedName == "Down")
                 {
-                    DownAction(); 
+                    DownAction();
                 }
                 if (e.Key.KeyPressedName == "Up")
                 {
