@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,8 +14,9 @@ namespace TVAnime.Component
     internal class QuickKeyboard
     {
         public BasePage page { get; set; }
-        public Action<string> selectWordAction { get; set; }
-        public Action<string> searchAction { get; set; }
+        public Action searchAction { get; set; }
+        public Action changeAction { get; set; }
+        public TextLabel resultLabel { get; set; }
         public View view { get; set; }
         public Grid selectedGrid = new Grid(0, 0);
         public Grid previousSelectedGrid = new Grid(1, 1);
@@ -25,19 +25,21 @@ namespace TVAnime.Component
         public ScrollableBase selectWordScrollView { get; set; }
         public List<List<Button>> buttons = new List<List<Button>>() { };
         public List<Button> wordButtons = new List<Button>() { };
-        public string searchText = "";
         public string input = "";
         public bool selectingWord = false;
         public int selectedIndex = 0;
         public int previousSelectedIndex = 0;
         public List<ButtonKey> quickWords = new List<ButtonKey>() { };
 
-        public QuickKeyboard(BasePage page, Action<string> searchAction, Action<string> selectWordAction)
+        public QuickKeyboard(BasePage page, TextLabel resultLabel, Action searchAction, Action changeAction)
         {
             this.page = page;
+            this.resultLabel = resultLabel;
             this.searchAction = searchAction;
-            this.selectWordAction = selectWordAction;
+            this.changeAction = changeAction;
+            ((SearchPage)page).keyEvent = OnKeyEvent;
             page.OnKeyEvents += OnKeyEvent;
+
             view = new View()
             {
                 WidthSpecification = LayoutParamPolicies.MatchParent,
@@ -153,15 +155,12 @@ namespace TVAnime.Component
         {
             if (!selectingWord)
             {
-                if (buttons[selectedGrid.row].Count < selectedGrid.column)
-                {
-                    selectedGrid.column = buttons[selectedGrid.row].Count - 1;
-                }
+                selectedGrid.column = Math.Min(selectedGrid.column, buttons[selectedGrid.row].Count - 1);
                 if (selectedGrid != previousSelectedGrid || force)
                 {
                     buttons[previousSelectedGrid.row][previousSelectedGrid.column].BackgroundColor = Color.White;
-                    previousSelectedGrid = selectedGrid;
                     buttons[selectedGrid.row][selectedGrid.column].BackgroundColor = Color.Cyan;
+                    previousSelectedGrid = selectedGrid;
                 }
             }
         }
@@ -171,7 +170,7 @@ namespace TVAnime.Component
             {
                 if (wordButtons.Count > 0)
                 {
-                    if (previousSelectedIndex <= wordButtons.Count)
+                    if (previousSelectedIndex <= wordButtons.Count - 1)
                     {
                         wordButtons[previousSelectedIndex].BackgroundColor = Color.White;
                     }
@@ -184,13 +183,15 @@ namespace TVAnime.Component
         public void MatchWords()
         {
             wordButtons.Clear();
-            CreateSelectWordView();
+            CreateSelectWordView();            
             var buttonKeys = Constant.buttonKeys.SelectMany(x => x).ToList();
             inputLabel.Text = string.Join("", input.Select(i => buttonKeys.FirstOrDefault(b => b.Key == i.ToString()).Word));
             if (input.Length == 0)
             {
                 return;
             }
+            selectedIndex = 0;
+            previousSelectedIndex = 0;
             var matches = quickWords.Where(w => w.Key.Contains(input)).ToList();
             var words = matches.Select(m => m.Word).ToList();
             foreach (var v in words)
@@ -220,25 +221,29 @@ namespace TVAnime.Component
                 }
                 else
                 {
-                    searchText = searchText.Remove(Math.Max(0, searchText.Length - 1), searchText.Length == 0 ? 0 : 1);
+                    resultLabel.Text = resultLabel.Text.Remove(Math.Max(0, resultLabel.Text.Length - 1), resultLabel.Text.Length == 0 ? 0 : 1);
                 }
                 return;
             }
+            if (Constant.buttonKeys[selectedGrid.row][selectedGrid.column].Key == "change")
+            {
+                changeAction();
+            }
             if (Constant.buttonKeys[selectedGrid.row][selectedGrid.column].Key == "search")
             {
-                searchAction(input);
+                searchAction();
                 return;
             }
             if (selectingWord)
             {
                 input = "";
-                searchText += wordButtons[selectedIndex].Text;
-                selectWordAction(searchText);
+                resultLabel.Text += wordButtons[selectedIndex].Text;
                 selectingWord = false;
                 MatchWords();
             }
             else
             {
+                if (input.Length >= 2) return;
                 input += Constant.buttonKeys[selectedGrid.row][selectedGrid.column].Key;
                 MatchWords();
             }

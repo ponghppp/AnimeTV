@@ -57,6 +57,7 @@ internal class Constant
             new ButtonKey("b", "月"),
             new ButtonKey("n", "弓"),
             new ButtonKey("m", "一"),
+            new ButtonKey("change", "🌍"),
             new ButtonKey("search", "搜尋"),
          }
     };
