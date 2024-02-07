@@ -10,18 +10,18 @@ internal class Constant
 
     public static List<List<ButtonKey>> buttonKeys = new List<List<ButtonKey>>()
     {
-        //new List<ButtonKey> {
-        //    new ButtonKey("1", "1"),
-        //    new ButtonKey("2", "2"),
-        //    new ButtonKey("3", "3"),
-        //    new ButtonKey("4", "4"),
-        //    new ButtonKey("5", "5"),
-        //    new ButtonKey("6", "6"),
-        //    new ButtonKey("7", "7"),
-        //    new ButtonKey("8", "8"),
-        //    new ButtonKey("9", "9"),
-        //    new ButtonKey("0", "0"),
-        //    },
+        new List<ButtonKey> {
+            new ButtonKey("1", "1"),
+            new ButtonKey("2", "2"),
+            new ButtonKey("3", "3"),
+            new ButtonKey("4", "4"),
+            new ButtonKey("5", "5"),
+            new ButtonKey("6", "6"),
+            new ButtonKey("7", "7"),
+            new ButtonKey("8", "8"),
+            new ButtonKey("9", "9"),
+            new ButtonKey("0", "0"),
+            },
          new List<ButtonKey>
          {
             new ButtonKey("q", "手"),

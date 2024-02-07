@@ -39,13 +39,12 @@ namespace TVAnime.Page
             var episodes = latestAnimeList.Select(a => 
             {
                 var title = a.animeName + " " + a.episode;
-                var id = a.categoryId.ToString();
                 var param = new Dictionary<string, object>()
                 {
                     ["SeriesId"] = a.categoryId.ToString(),
                     ["Page"] = typeof(SeriesPage)
                 };
-                return new SelectionItem(title, id, param);
+                return new SelectionItem(title, param);
             }).ToList();
 
             itemSelectionView.SetItemsSource(episodes);

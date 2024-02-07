@@ -47,20 +47,20 @@ namespace TVAnime.Helper
                 string j = r.ReadToEnd();
                 if (j != "") data = JsonConvert.DeserializeObject<List<Record>>(j);
             }
-            var rec = data.FirstOrDefault(d => d.id == id);
+            var rec = data.FirstOrDefault(d => d.Id == id);
             if (rec == null)
             {
                 data.Add(new Record()
                 {
-                    id = id,
-                    title = title,
-                    playTime = playTime,
-                    duration = duration
+                    Id = id,
+                    Title = title,
+                    PlayTime = playTime,
+                    Duration = duration
                 });
             }
             else
             {
-                rec.playTime = playTime;
+                rec.PlayTime = playTime;
             }
             string json = JsonConvert.SerializeObject(data.ToArray());
             File.WriteAllText(recordJsonPath, json);

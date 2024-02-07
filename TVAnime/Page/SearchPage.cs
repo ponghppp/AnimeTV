@@ -72,7 +72,13 @@ namespace TVAnime.Page
 
         private void searchAction()
         {
-            //search btn pressed
+            var pageType = typeof(SearchResultPage);
+            var param = new Dictionary<string, object>()
+            {
+                ["Title"] = textLabel.Text,
+                ["Page"] = pageType
+            };
+            TransferToView(pageType, param);
         }
 
         private void changeAction()

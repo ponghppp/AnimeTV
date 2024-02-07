@@ -78,8 +78,7 @@ namespace TVAnime
                         ApiReq = apireqs[i]
                     });
                 }
-                episodeList = episodeList.OrderByDescending(e => e.Id).ToList();
-                return episodeList;
+                return episodeList.OrderByDescending(e => e.Id).ToList();
             }
             catch (Exception ex)
             {
@@ -182,6 +181,40 @@ namespace TVAnime
             catch (Exception ex)
             {
                 return new List<Episode>() { };
+            }
+        }
+
+        public static async Task<List<Category>> GetSearchResult(BasePage page, string searchText, int resultPage = 1, int times = 1)
+        {
+            try
+            {
+                List<Category> categories = new List<Category>() { };
+                var url = $"https://anime1.me/page/{resultPage}?s={searchText}";
+                var response = await HttpHelper.MakeHttpRequest(page, url, HttpMethod.Get);
+                var html = await response.Content.ReadAsStringAsync();
+
+                if (html.Contains("nav-previous") && times <= 5)
+                {
+                    categories = await GetSearchResult(page, searchText, resultPage + 1, times + 1);
+                }
+
+                var articles = HtmlHelper.GetTags(html, "article");
+                var cats = articles.Select(a =>
+                {
+                    var footer = HtmlHelper.GetTags(a, "footer").FirstOrDefault();
+                    var span = HtmlHelper.GetTags(footer, "span", "class=\"cat-links\"").FirstOrDefault();
+                    var firstA = HtmlHelper.GetTags(span, "a").FirstOrDefault();
+                    var title = HtmlHelper.GetInnerHtml(firstA);
+                    var id = HtmlHelper.GetNodeAttribute(firstA, "href").Replace("https://anime1.me/category/", "");
+                    return new Category(id, title);
+                }).Distinct();
+
+                categories.AddRange(cats);
+                return categories;
+            }
+            catch (Exception ex)
+            {
+                return new List<Category>() { };
             }
         }
     }

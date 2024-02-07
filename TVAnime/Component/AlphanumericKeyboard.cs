@@ -115,26 +115,6 @@ namespace TVAnime.Component
             resultLabel.Text += buttons[selectedGrid.row][selectedGrid.column].Text;
         }
 
-        private void LeftAction()
-        {
-            selectedGrid.column = Math.Max(0, selectedGrid.column - 1);
-        }
-
-        private void RightAction()
-        {
-            selectedGrid.column = Math.Min(Constant.buttonKeys[selectedGrid.row].Count - 1, selectedGrid.column + 1);
-        }
-
-        private void UpAction()
-        {
-            selectedGrid.row = Math.Max(0, selectedGrid.row - 1);
-        }
-
-        private void DownAction()
-        {
-            selectedGrid.row = Math.Min(Constant.buttonKeys.Count - 1, selectedGrid.row + 1);
-        }
-
         private void OnKeyEvent(object sender, Window.KeyEventArgs e)
         {
             if (e.Key.State == Key.StateType.Down)
@@ -146,19 +126,19 @@ namespace TVAnime.Component
                 }
                 if (e.Key.KeyPressedName == "Left")
                 {
-                    LeftAction();
+                    selectedGrid.column = Math.Max(0, selectedGrid.column - 1);
                 }
                 if (e.Key.KeyPressedName == "Right")
                 {
-                    RightAction();
+                    selectedGrid.column = Math.Min(Constant.buttonKeys[selectedGrid.row].Count - 1, selectedGrid.column + 1);
                 }
                 if (e.Key.KeyPressedName == "Down")
                 {
-                    DownAction();
+                    selectedGrid.row = Math.Min(Constant.buttonKeys.Count - 1, selectedGrid.row + 1);
                 }
                 if (e.Key.KeyPressedName == "Up")
                 {
-                    UpAction();
+                    selectedGrid.row = Math.Max(0, selectedGrid.row - 1);
                 }
                 SelectItem();
             }

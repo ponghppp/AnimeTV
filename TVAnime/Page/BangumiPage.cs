@@ -38,7 +38,7 @@ namespace TVAnime.Page
                     ["SelectedYear"] = year,
                     ["Page"] = typeof(BangumiYearPage)
                 };
-                var item = new SelectionItem(year, year, param);
+                var item = new SelectionItem(year, param);
                 items.Add(item);
             }
             itemSelectionView.SetItemsSource(items);

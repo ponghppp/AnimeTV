@@ -32,15 +32,15 @@ namespace TVAnime.Page
             var records = RecordHelper.GetAllRecords();
             var rs = records.Select(a =>
             {
-                var title = a.title;
-                var id = a.id;
+                var title = a.Title;
+                var id = a.Id;
                 var param = new Dictionary<string, object>()
                 {
                     ["EpisodeId"] = id,
                     ["Title"] = title,
                     ["Page"] = typeof(SeriesPage)
                 };
-                return new SelectionItem(title, id, param);
+                return new SelectionItem(title, param);
             }).ToList();
 
             itemSelectionView.SetItemsSource(rs);

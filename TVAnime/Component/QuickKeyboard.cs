@@ -30,6 +30,7 @@ namespace TVAnime.Component
         public int selectedIndex = 0;
         public int previousSelectedIndex = 0;
         public List<ButtonKey> quickWords = new List<ButtonKey>() { };
+        public List<List<ButtonKey>> buttonKeys;
 
         public QuickKeyboard(BasePage page, TextLabel resultLabel, Action searchAction, Action changeAction)
         {
@@ -37,6 +38,9 @@ namespace TVAnime.Component
             this.resultLabel = resultLabel;
             this.searchAction = searchAction;
             this.changeAction = changeAction;
+            buttonKeys = Constant.buttonKeys;
+            buttonKeys.RemoveAt(0);
+
             ((SearchPage)page).keyEvent = OnKeyEvent;
             page.OnKeyEvents += OnKeyEvent;
 
@@ -87,10 +91,10 @@ namespace TVAnime.Component
             selectWordContainer.Add(selectWordScrollView);
             view.Add(selectWordContainer);
 
-            for (int i = 0; i < Constant.buttonKeys.Count; i++)
+            for (int i = 0; i < buttonKeys.Count; i++)
             {
                 var btnRows = new List<Button>() { };
-                var buttonRows = Constant.buttonKeys[i];
+                var buttonRows = buttonKeys[i];
                 var vRows = new View()
                 {
                     WidthSpecification = LayoutParamPolicies.MatchParent,
@@ -184,8 +188,8 @@ namespace TVAnime.Component
         {
             wordButtons.Clear();
             CreateSelectWordView();            
-            var buttonKeys = Constant.buttonKeys.SelectMany(x => x).ToList();
-            inputLabel.Text = string.Join("", input.Select(i => buttonKeys.FirstOrDefault(b => b.Key == i.ToString()).Word));
+            var bks = buttonKeys.SelectMany(x => x).ToList();
+            inputLabel.Text = string.Join("", input.Select(i => bks.FirstOrDefault(b => b.Key == i.ToString()).Word));
             if (input.Length == 0)
             {
                 return;
@@ -212,7 +216,7 @@ namespace TVAnime.Component
 
         private void EnterAction()
         {
-            if (Constant.buttonKeys[selectedGrid.row][selectedGrid.column].Key == "delete")
+            if (buttonKeys[selectedGrid.row][selectedGrid.column].Key == "delete")
             {
                 if (input.Length != 0)
                 {
@@ -225,11 +229,11 @@ namespace TVAnime.Component
                 }
                 return;
             }
-            if (Constant.buttonKeys[selectedGrid.row][selectedGrid.column].Key == "change")
+            if (buttonKeys[selectedGrid.row][selectedGrid.column].Key == "change")
             {
                 changeAction();
             }
-            if (Constant.buttonKeys[selectedGrid.row][selectedGrid.column].Key == "search")
+            if (buttonKeys[selectedGrid.row][selectedGrid.column].Key == "search")
             {
                 searchAction();
                 return;
@@ -244,7 +248,7 @@ namespace TVAnime.Component
             else
             {
                 if (input.Length >= 2) return;
-                input += Constant.buttonKeys[selectedGrid.row][selectedGrid.column].Key;
+                input += buttonKeys[selectedGrid.row][selectedGrid.column].Key;
                 MatchWords();
             }
         }
@@ -271,7 +275,7 @@ namespace TVAnime.Component
             }
             else
             {
-                selectedGrid.column = Math.Min(Constant.buttonKeys[selectedGrid.row].Count - 1, selectedGrid.column + 1);
+                selectedGrid.column = Math.Min(buttonKeys[selectedGrid.row].Count - 1, selectedGrid.column + 1);
             }
         }
 
@@ -296,7 +300,7 @@ namespace TVAnime.Component
                 SelectItem(true);
                 return;
             }
-            selectedGrid.row = Math.Min(Constant.buttonKeys.Count - 1, selectedGrid.row + 1);
+            selectedGrid.row = Math.Min(buttonKeys.Count - 1, selectedGrid.row + 1);
         }
 
         private void OnKeyEvent(object sender, Window.KeyEventArgs e)

@@ -46,7 +46,7 @@ namespace TVAnime.Page
                     ["Title"] = title,
                     ["Page"] = typeof(SeasonPage)
                 };
-                return new SelectionItem(title, title, param);
+                return new SelectionItem(title, param);
             }).ToList();
 
             itemSelectionView.SetItemsSource(items);

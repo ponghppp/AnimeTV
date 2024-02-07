@@ -39,7 +39,7 @@ namespace TVAnime.Page
                     ["SeriesId"] = a.Id.ToString(),
                     ["Page"] = typeof(SeriesPage)
                 };
-                return new SelectionItem(a.Title, a.Id.ToString(), param);
+                return new SelectionItem(a.Title, param);
             }).ToList();
 
             itemSelectionView.SetItemsSource(episodes);
