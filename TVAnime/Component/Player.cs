@@ -21,9 +21,11 @@ namespace TVAnime.Component
         public TextLabel progressLabel { get; set; }
         public string title { get; set; }
         public string id { get; set; }
+        public string categoryId { get; set; }
 
-        public Player(BasePage page, string title, string id)
+        public Player(BasePage page, string categoryId, string title, string id)
         {
+            this.categoryId = categoryId;
             this.id = id;
             this.title = title;
             page.OnKeyEvents += OnKeyEvent;
@@ -81,7 +83,7 @@ namespace TVAnime.Component
             isPlaying = false;
             videoView.Pause();
             controlView.Show();
-            RecordHelper.RecordVideoPlayTime(id, title, currentTime, duration);
+            RecordHelper.RecordVideoPlayTime(categoryId, id, title, currentTime, duration);
         }
 
         public async void SetVideoSource(string source, int lastPlayTime = 0)
@@ -203,7 +205,7 @@ namespace TVAnime.Component
                 }
                 if (e.Key.KeyPressedName == "XF86Back" || e.Key.KeyPressedName == "Escape")
                 {
-                    RecordHelper.RecordVideoPlayTime(id, title, currentTime, duration);
+                    RecordHelper.RecordVideoPlayTime(categoryId, id, title, currentTime, duration);
                     timer.Stop();
                     videoView.Stop();
                 }

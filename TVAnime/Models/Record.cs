@@ -8,6 +8,7 @@ namespace TVAnime.Models
 {
     internal class Record
     {
+        public string CategoryId { get; set; }
         public string Id { get; set; }
         public string Title { get; set; }
         public int PlayTime { get; set; }

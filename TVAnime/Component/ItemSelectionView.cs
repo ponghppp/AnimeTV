@@ -55,23 +55,48 @@ namespace TVAnime.Component
                 for (var i = 0; i < source.Count; i++)
                 {
                     var item = source[i];
+
                     TextLabel textLabel = new TextLabel()
                     {
                         Text = item.Name,
                         TextColor = Color.Black,
                         PointSize = 50,
+                        Position = new Position(0, 0, 1),
                         WidthResizePolicy = ResizePolicyType.FillToParent,
-                        HeightResizePolicy = ResizePolicyType.SizeRelativeToParent,
+                        //HeightResizePolicy = ResizePolicyType.SizeRelativeToParent,
                     };
+                    var v = new View()
+                    {
+                        HeightResizePolicy = ResizePolicyType.FillToParent,
+                        WidthResizePolicy = ResizePolicyType.FillToParent
+                    };
+                    var vLayout = new AbsoluteLayout();
+                    v.Layout = vLayout;
+
+                    if (item.Percentage > 0)
+                    {
+                        var bg = new View()
+                        {
+                            HeightResizePolicy = ResizePolicyType.FillToParent,
+                            WidthSpecification = (int)(1920 * ((double)item.Percentage / 100)),
+                            Position = new Position(0, 0, 2),
+                            BackgroundColor = Color.Green
+                        };
+                        v.Add(bg);
+                    }
+
+                    v.Add(textLabel);
+                    view.Add(v);
+
                     Items.Add(textLabel);
-                    view.Add(textLabel);
+                    //view.Add(textLabel);
                 }
                 SelectItem(0, 0);
             }
         }
         public void SelectItem(int selectedIndex, int previousSelectedIndex)
         {
-            Items[previousSelectedIndex].BackgroundColor = Color.White;
+            Items[previousSelectedIndex].BackgroundColor = Color.Transparent; //Color.White;
             Items[selectedIndex].BackgroundColor = Color.Cyan;
         }
 
