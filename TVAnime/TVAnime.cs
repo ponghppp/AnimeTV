@@ -18,8 +18,17 @@ namespace TVAnime
             base.OnCreate();
             HttpHelper.CheckNetworkConnectivity();
             //DeleteEverything();
+            DeleteOldVideos();
             Initialize();
 
+        }
+        void DeleteOldVideos()
+        {
+            var dirInfo = new DirectoryInfo(Constant.Download);
+            foreach (var f in dirInfo.GetFiles("*.mp4").OrderBy(f => f.CreationTime))
+            {
+                f.Delete();
+            }
         }
 
         void DeleteEverything()
