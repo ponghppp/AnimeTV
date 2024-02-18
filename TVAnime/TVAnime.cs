@@ -25,7 +25,7 @@ namespace TVAnime
         void DeleteOldVideos()
         {
             var dirInfo = new DirectoryInfo(Constant.Download);
-            foreach (var f in dirInfo.GetFiles("*.mp4").OrderBy(f => f.CreationTime))
+            foreach (var f in dirInfo.GetFiles("*.mp4").OrderBy(f => f.CreationTime).Take(5))
             {
                 f.Delete();
             }
@@ -53,11 +53,11 @@ namespace TVAnime
             //playerPage.Init();
             //Globals.AddPageStack(playerPage.GetType(), null);
 
-            var searchPage = new SearchPage();
-            Tizen.NUI.Window.Instance.Add(searchPage.view);
-            searchPage.Init();
-            Globals.AddPageStack(searchPage.GetType(), null);
-            return;
+            //var searchPage = new SearchPage();
+            //Tizen.NUI.Window.Instance.Add(searchPage.view);
+            //searchPage.Init();
+            //Globals.AddPageStack(searchPage.GetType(), null);
+            //return;
 
             var homePage = new HomePage();
             Tizen.NUI.Window.Instance.Add(homePage.view);
