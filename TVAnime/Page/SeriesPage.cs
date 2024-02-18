@@ -45,7 +45,7 @@ namespace TVAnime.Page
                 }
                 else if (param.TryGetValue("CategoryId", out pId))
                 {
-                    var url = "https://anime1.me?category/" + pId.ToString();
+                    var url = "https://anime1.me/category/" + pId.ToString();
                     series = await Api.GetSeries(this, url);
                 }
                 HideLoading();

@@ -108,46 +108,43 @@ namespace TVAnime
 
         public static async Task DownloadAnime(BasePage page, string id, string apireq, TextLabel loadingLabel)
         {
-            using (var request = new HttpRequestMessage())
+            try
             {
-                try
+                if (id == RecordHelper.GetCurrentVideo())
                 {
-                    if (id == RecordHelper.GetCurrentVideo())
-                    {
-                        return;
-                    }
-
-                    var values = "d=" + apireq;
-                    var url = "https://v.anime1.me/api";
-                    var body = new Dictionary<string, object>
-                    {
-                        ["data"] = values,
-                        ["type"] = "application/x-www-form-urlencoded"
-                    };
-                    var response = await HttpHelper.MakeHttpRequest(page, url, HttpMethod.Post, body);
-                    var setCookieHeaders = response.Headers.GetValues("Set-Cookie");
-                    var downloadHeaders = new Dictionary<string, string>();
-                    downloadHeaders["Cookie"] = "";
-                    foreach (var header in setCookieHeaders)
-                    {
-                        var key = header.Substring(0, header.IndexOf('='));
-                        var value = header.Substring(header.IndexOf('=') + 1, header.IndexOf(';') - 1);
-                        downloadHeaders["Cookie"] += (key + "=" + value);
-                    }
-                    downloadHeaders["Range"] = "bytes=0-";
-                    var jsonStr = await response.Content.ReadAsStringAsync();
-                    JObject json = JsonConvert.DeserializeObject<JObject>(jsonStr);
-                    var downloadUrl = "https:" + json["s"][0].Value<string>("src");
-
-                    var dest = Constant.Download + "/" + id + ".mp4";
-                    await HttpHelper.DownloadFileTaskAsync(page, downloadUrl, dest, downloadHeaders, loadingLabel);
-                    RecordHelper.RecordCurrentVideo(id);
-                    VideoHelper.DeleteOldVideos();
+                    return;
                 }
-                catch (Exception ex)
+
+                var values = "d=" + apireq;
+                var url = "https://v.anime1.me/api";
+                var body = new Dictionary<string, object>
                 {
-                    Console.WriteLine(ex.Message);
+                    ["data"] = values,
+                    ["type"] = "application/x-www-form-urlencoded"
+                };
+                var response = await HttpHelper.MakeHttpRequest(page, url, HttpMethod.Post, body);
+                var setCookieHeaders = response.Headers.GetValues("Set-Cookie");
+                var downloadHeaders = new Dictionary<string, string>();
+                downloadHeaders["Cookie"] = "";
+                foreach (var header in setCookieHeaders)
+                {
+                    var key = header.Substring(0, header.IndexOf('='));
+                    var value = header.Substring(header.IndexOf('=') + 1, header.IndexOf(';') - 1);
+                    downloadHeaders["Cookie"] += (key + "=" + value);
                 }
+                downloadHeaders["Range"] = "bytes=0-";
+                var jsonStr = await response.Content.ReadAsStringAsync();
+                JObject json = JsonConvert.DeserializeObject<JObject>(jsonStr);
+                var downloadUrl = "https:" + json["s"][0].Value<string>("src");
+
+                var dest = Constant.Download + "/" + id + ".mp4";
+                await HttpHelper.DownloadFileTaskAsync(page, downloadUrl, dest, downloadHeaders, loadingLabel);
+                RecordHelper.RecordCurrentVideo(id);
+                VideoHelper.DeleteOldVideos();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -207,10 +204,10 @@ namespace TVAnime
                     var title = HtmlHelper.GetInnerHtml(firstA);
                     var id = HtmlHelper.GetNodeAttribute(firstA, "href").Replace("https://anime1.me/category/", "");
                     return new Category(id, title);
-                }).Distinct();
+                }).GroupBy(c => c.Id).Select(c => c.FirstOrDefault());
 
                 categories.AddRange(cats);
-                return categories;
+                return categories.GroupBy(c => c.Id).Select(c => c.FirstOrDefault()).ToList();
             }
             catch (Exception ex)
             {

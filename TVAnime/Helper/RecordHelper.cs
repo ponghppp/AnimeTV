@@ -29,6 +29,10 @@ namespace TVAnime.Helper
         public static string GetCurrentVideo()
         {
             var id = "";
+            if (!File.Exists(videoRecordPath))
+            {
+                File.Create(videoRecordPath).Close();
+            }
             using (StreamReader r = new StreamReader(videoRecordPath))
             {
                 id = r.ReadToEnd();

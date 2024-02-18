@@ -36,7 +36,7 @@ namespace TVAnime.Page
             var latestAnimeList = await Api.GetLatestList(this);
             HideLoading();
            
-            var episodes = latestAnimeList.Select(a => 
+            var episodes = latestAnimeList.Take(200).Select(a => 
             {
                 var title = a.animeName + " " + a.episode;
                 var param = new Dictionary<string, object>()

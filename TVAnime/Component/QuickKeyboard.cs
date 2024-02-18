@@ -38,8 +38,7 @@ namespace TVAnime.Component
             this.resultLabel = resultLabel;
             this.searchAction = searchAction;
             this.changeAction = changeAction;
-            buttonKeys = Constant.buttonKeys;
-            buttonKeys.RemoveAt(0);
+            buttonKeys = Constant.buttonKeys.Skip(1).ToList();
 
             ((SearchPage)page).keyEvent = OnKeyEvent;
             page.OnKeyEvents += OnKeyEvent;
@@ -196,7 +195,7 @@ namespace TVAnime.Component
             }
             selectedIndex = 0;
             previousSelectedIndex = 0;
-            var matches = quickWords.Where(w => w.Key.Contains(input)).ToList();
+            var matches = quickWords.Where(w => w.Key.Contains(input)).Take(100).ToList();
             var words = matches.Select(m => m.Word).ToList();
             foreach (var v in words)
             {
