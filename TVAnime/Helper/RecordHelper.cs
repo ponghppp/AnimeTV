@@ -39,7 +39,7 @@ namespace TVAnime.Helper
             }
             return id;
         }
-        public static void RecordVideoPlayTime(string id, string title, int playTime, int duration)
+        public static void RecordVideoPlayTime(string categoryId, string id, string title, int playTime, int duration)
         {
             if (!File.Exists(recordJsonPath))
             {
@@ -56,6 +56,7 @@ namespace TVAnime.Helper
             {
                 data.Add(new Record()
                 {
+                    CategoryId = categoryId,
                     Id = id,
                     Title = title,
                     PlayTime = playTime,

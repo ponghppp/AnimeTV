@@ -10,6 +10,7 @@ namespace TVAnime.Models
     {
         public string Name { get; set; }
         public Dictionary<string, object> Param { get; set; }
+        public int Percentage { get; set; }
 
         private Color BackgroundColorValue { get; set; }
         public Color BackgroundColor
@@ -28,11 +29,12 @@ namespace TVAnime.Models
             }
         }
 
-        public SelectionItem(string name, Dictionary<string, object> param = null)
+        public SelectionItem(string name, Dictionary<string, object> param = null, int percentage = 0)
         {
             this.Name = name;
             this.BackgroundColor = Color.White;
             this.Param = param;
+            this.Percentage = percentage;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

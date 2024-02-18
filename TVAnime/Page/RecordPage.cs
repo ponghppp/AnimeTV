@@ -30,18 +30,19 @@ namespace TVAnime.Page
         private void GetList()
         {
             var records = RecordHelper.GetAllRecords();
-            var rs = records.Select(a =>
+            var rs = records.GroupBy(r => r.CategoryId).Select(g => g.OrderByDescending(r => r.Id).FirstOrDefault()).Select(a =>
             {
                 var title = a.Title;
                 var id = a.Id;
+                var percentage = (double)a.PlayTime / (double)a.Duration * 100;
                 var param = new Dictionary<string, object>()
                 {
                     ["EpisodeId"] = id,
                     ["Title"] = title,
                     ["Page"] = typeof(SeriesPage)
                 };
-                return new SelectionItem(title, param);
-            }).ToList();
+                return new SelectionItem(title, param, (int)percentage);
+            }).Reverse().ToList();
 
             itemSelectionView.SetItemsSource(rs);
         }
