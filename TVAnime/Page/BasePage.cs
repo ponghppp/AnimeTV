@@ -1,16 +1,12 @@
-﻿using Tizen.NUI.BaseComponents;
-using Tizen.NUI;
-using Tizen.NUI.Components;
+﻿using System;
 using System.Collections.Generic;
-using TVAnime.Models;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System;
-using System.Runtime.CompilerServices;
 using System.Linq;
-using Tizen.Applications;
-using System.Threading.Tasks;
-using System.Threading;
 using System.Net.Http;
+using System.Threading.Tasks;
+using Tizen.NUI;
+using Tizen.NUI.BaseComponents;
+using Tizen.NUI.Components;
+using TVAnime.Models;
 
 namespace TVAnime.Page
 {
@@ -18,6 +14,8 @@ namespace TVAnime.Page
     {
         List<EventHandler<Window.KeyEventArgs>> delegates = new List<EventHandler<Window.KeyEventArgs>>();
         public View view { get; set; }
+        public View retryView { get; set; }
+        public Action retryAction { get; set; }
         public View loadingView { get; set; }
         public TextLabel loadingViewLabel { get; set; }
         public Window window = Window.Instance;
@@ -28,7 +26,7 @@ namespace TVAnime.Page
         {
             this.OnKeyEvents += OnBackPressed;
 
-            View v = new View()
+            view = new View()
             {
                 HeightResizePolicy = ResizePolicyType.FillToParent,
                 WidthResizePolicy = ResizePolicyType.FillToParent
@@ -37,9 +35,7 @@ namespace TVAnime.Page
             {
                 LinearOrientation = LinearLayout.Orientation.Vertical
             };
-
-            v.Layout = layout;
-            view = v;
+            view.Layout = layout;
         }
 
         public virtual void Init() { }
@@ -77,6 +73,32 @@ namespace TVAnime.Page
             HideLoading();
         }
 
+        public void ShowRetry(Action retryAction)
+        {
+            if (retryAction != null) this.retryAction = retryAction;
+
+            retryView = new View()
+            {
+                WidthResizePolicy = ResizePolicyType.FillToParent,
+                HeightResizePolicy = ResizePolicyType.FillToParent,
+                BackgroundColor = Color.Black,
+                Opacity = 0.8f
+            };
+            var retryLayout = new LinearLayout()
+            {
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+            retryView.Layout = retryLayout;
+            var button = new Button()
+            {
+                Text = "重試",
+                TextColor = Color.White,
+            };
+            retryView.Add(button);
+            window.Add(retryView);
+        }
+
         public void ShowLoading()
         {
             if (loadingView == null)
@@ -111,7 +133,7 @@ namespace TVAnime.Page
                     Text = "載入中...",
                     TextColor = Color.White,
                 };
-                ImageView loadingImageView = new ImageView() 
+                ImageView loadingImageView = new ImageView()
                 {
                     ResourceUrl = Constant.Resource + "little_twin_stars.gif"
                 };
@@ -174,6 +196,11 @@ namespace TVAnime.Page
                 {
                     GoBack();
                 }
+            }
+            if (e.Key.State == Key.StateType.Down && e.Key.KeyPressedName == "Return")
+            {
+                if (retryView != null) window.Remove(retryView);
+                if (retryAction != null) retryAction();
             }
         }
     }

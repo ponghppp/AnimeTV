@@ -8,12 +8,13 @@ namespace TVAnime.Helper
 {
     internal class TimeHelper
     {
-        public static string MillisecondsToMinute(int milliseconds)
+        public static string MillisecondsToHourMinute(int milliseconds)
         {
             var seconds = milliseconds / 1000;
             var minutes = seconds / 60;
+            var hours = minutes / 60;
             var s = seconds % 60;
-            return minutes.ToString("D2") + ":" + s.ToString("D2");
+            return (hours > 0 ? (hours.ToString("D2") + ":") : "") + minutes.ToString("D2") + ":" + s.ToString("D2");
         }
     }
 }

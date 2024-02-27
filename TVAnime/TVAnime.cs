@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading;
+﻿using System.IO;
 using Tizen.NUI;
-using Tizen.System;
 using TVAnime.Helper;
 using TVAnime.Models;
 using TVAnime.Page;
@@ -18,17 +14,9 @@ namespace TVAnime
             base.OnCreate();
             HttpHelper.CheckNetworkConnectivity();
             //DeleteEverything();
-            DeleteOldVideos();
+            VideoHelper.DeleteOldVideos();
             Initialize();
 
-        }
-        void DeleteOldVideos()
-        {
-            var dirInfo = new DirectoryInfo(Constant.Download);
-            foreach (var f in dirInfo.GetFiles("*.mp4").OrderBy(f => f.CreationTime).Take(5))
-            {
-                f.Delete();
-            }
         }
 
         void DeleteEverything()

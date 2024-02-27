@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TVAnime.Component;
 using TVAnime.Models;
 
@@ -43,6 +40,16 @@ namespace TVAnime.Page
             }).ToList();
 
             itemSelectionView.SetItemsSource(episodes);
+            if (episodes.Count == 0)
+            {
+                ShowRetry(GetList);
+                return;
+            }
+            if (param["SelectedItemTitle"] != null && param["SelectedItemTitle"].ToString() != "")
+            {
+                var selectedItemTitle = param["SelectedItemTitle"].ToString();
+                itemSelectionView.SetSelectedItem(selectedItemTitle);
+            }
         }
     }
 }

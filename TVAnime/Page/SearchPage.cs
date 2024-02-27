@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 using TVAnime.Component;
-using TVAnime.Models;
 
 namespace TVAnime.Page
 {
@@ -26,7 +23,7 @@ namespace TVAnime.Page
                 LinearOrientation = LinearLayout.Orientation.Vertical
             };
             content.view.Layout = cLayout;
-            
+
             view.Add(header.view);
             textLabel = new TextLabel()
             {

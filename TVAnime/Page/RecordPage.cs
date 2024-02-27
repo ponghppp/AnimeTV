@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tizen.NUI;
-using Tizen.NUI.BaseComponents;
 using TVAnime.Component;
 using TVAnime.Helper;
 using TVAnime.Models;
@@ -45,6 +41,11 @@ namespace TVAnime.Page
             }).Reverse().ToList();
 
             itemSelectionView.SetItemsSource(rs);
+            if (param["SelectedItemTitle"] != null && param["SelectedItemTitle"].ToString() != "")
+            {
+                var selectedItemTitle = param["SelectedItemTitle"].ToString();
+                itemSelectionView.SetSelectedItem(selectedItemTitle);
+            }
         }
     }
 }

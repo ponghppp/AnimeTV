@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tizen.NUI.BaseComponents;
 using TVAnime.Component;
 using TVAnime.Models;
-using static System.Net.WebRequestMethods;
-using static Tizen.Applications.ResourceManager;
 
 namespace TVAnime.Page
 {
@@ -34,17 +28,21 @@ namespace TVAnime.Page
                 ShowLoading();
                 List<Episode> series = new List<Episode>() { };
                 object pId = "";
+                var key = "";
                 if (param.TryGetValue("SeriesId", out pId))
                 {
+                    key = "SeriesId";
                     var url = "https://anime1.me?cat=" + pId.ToString();
                     series = await Api.GetSeries(this, url);
                 }
                 else if (param.TryGetValue("EpisodeId", out pId))
                 {
+                    key = "EpisodeId";
                     series = await Api.GetSeriesByEpisode(this, pId.ToString());
                 }
                 else if (param.TryGetValue("CategoryId", out pId))
                 {
+                    key = "CategoryId";
                     var url = "https://anime1.me/category/" + pId.ToString();
                     series = await Api.GetSeries(this, url);
                 }
@@ -65,6 +63,16 @@ namespace TVAnime.Page
                 }).ToList();
 
                 itemSelectionView.SetItemsSource(episodes);
+                if (episodes.Count == 0)
+                {
+                    ShowRetry(GetList);
+                    return;
+                }
+                if (param["SelectedItemTitle"] != null && param["SelectedItemTitle"].ToString() != "")
+                {
+                    var selectedItemTitle = param["SelectedItemTitle"].ToString();
+                    itemSelectionView.SetSelectedItem(selectedItemTitle);
+                }
             }
         }
     }

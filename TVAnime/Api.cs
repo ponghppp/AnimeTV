@@ -26,6 +26,8 @@ namespace TVAnime
             {
                 var url = "https://d1zquzjgwo9yb.cloudfront.net/";
                 var response = await HttpHelper.MakeHttpRequest(page, url, HttpMethod.Get);
+                if (response == null) return new List<LatestAnime> { };
+
                 var jsonStr = await response.Content.ReadAsStringAsync();
                 var list = JsonConvert.DeserializeObject<string[][]>(jsonStr);
                 List<LatestAnime> animeList = list.Select(l => new LatestAnime()
@@ -50,8 +52,9 @@ namespace TVAnime
             {
                 List<Episode> episodeList = new List<Episode>() { };
                 var response = await HttpHelper.MakeHttpRequest(page, url, HttpMethod.Get);
-                var html = await response.Content.ReadAsStringAsync();
+                if (response == null) return new List<Episode> { };
 
+                var html = await response.Content.ReadAsStringAsync();
                 if (html.Contains("nav-previous"))
                 {
                     var divs = HtmlHelper.GetTags(html, "div", "class=nav-previous");
@@ -91,6 +94,8 @@ namespace TVAnime
             {
                 var url = "https://anime1.me/" + episodeId;
                 var response = await HttpHelper.MakeHttpRequest(page, url, HttpMethod.Get);
+                if (response == null) return new List<Episode> { };
+
                 var html = await response.Content.ReadAsStringAsync();
                 var searchText = "cat=";
                 var searchTextIndex = html.IndexOf(searchText);
@@ -162,6 +167,8 @@ namespace TVAnime
             {
                 var url = "https://anime1.me/" + season;
                 var response = await HttpHelper.MakeHttpRequest(page, url, HttpMethod.Get);
+                if (response == null) return new List<Episode> { };
+
                 var html = await response.Content.ReadAsStringAsync();
                 var tagAs = HtmlHelper.GetTags(html, "a", "href^=\"/?cat=\"");
                 tagAs = tagAs.Where(a => !a.Contains("anime1.pw")).ToList();
@@ -188,6 +195,8 @@ namespace TVAnime
                 List<Category> categories = new List<Category>() { };
                 var url = $"https://anime1.me/page/{resultPage}?s={searchText}";
                 var response = await HttpHelper.MakeHttpRequest(page, url, HttpMethod.Get);
+                if (response == null) return new List<Category> { };
+
                 var html = await response.Content.ReadAsStringAsync();
 
                 if (html.Contains("nav-previous") && times <= 5)

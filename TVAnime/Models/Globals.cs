@@ -21,5 +21,23 @@ namespace TVAnime.Models
             dict[pageType] = param;
             Globals.pageStacks.Add(dict);
         }
+        public static Dictionary<string, object> GetCurrentPageParam()
+        {
+            var currentPage = Globals.pageStacks.LastOrDefault();
+            if (currentPage != null)
+            {
+                return currentPage.Values.FirstOrDefault();
+            }
+            return null;
+        }
+        public static void UpdateCurrentPageParam(Dictionary<string, object> param)
+        {
+            var currentPage = Globals.pageStacks.LastOrDefault();
+            if (currentPage != null)
+            {
+                var currentPageType = currentPage.Keys.FirstOrDefault();
+                currentPage[currentPageType] = param;
+            }
+        }
     }
 }

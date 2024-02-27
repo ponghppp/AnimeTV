@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Tizen.Network.Connection;
 using Tizen.NUI.BaseComponents;
@@ -73,8 +72,8 @@ namespace TVAnime.Helper
 
         public static void CheckNetworkConnectivity()
         {
-            connected = false;
-            return;
+            //connected = false;
+            //return;
 
             try
             {
@@ -118,7 +117,6 @@ namespace TVAnime.Helper
                 page.client = null;
             }
         }
-
         private static void ProgressChanged(long? totalFileSize, long totalBytesDownloaded, double? progressPercentage)
         {
             loadingViewLabel.Text = "下載中..." + (int)progressPercentage + "%";

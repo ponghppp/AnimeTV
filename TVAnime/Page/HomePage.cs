@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Tizen.NUI;
-using Tizen.NUI.BaseComponents;
-using Tizen.NUI.Binding;
-using Tizen.NUI.Components;
 using TVAnime.Component;
 using TVAnime.Models;
 
@@ -35,8 +27,8 @@ namespace TVAnime.Page
             ShowLoading();
             var latestAnimeList = await Api.GetLatestList(this);
             HideLoading();
-           
-            var episodes = latestAnimeList.Take(200).Select(a => 
+
+            var episodes = latestAnimeList.Take(200).Select(a =>
             {
                 var title = a.animeName + " " + a.episode;
                 var param = new Dictionary<string, object>()
@@ -48,6 +40,17 @@ namespace TVAnime.Page
             }).ToList();
 
             itemSelectionView.SetItemsSource(episodes);
+
+            if (episodes.Count == 0)
+            {
+                ShowRetry(GetList);
+                return;
+            }
+            if (param["SelectedItemTitle"] != null && param["SelectedItemTitle"].ToString() != "")
+            {
+                var selectedItemTitle = param["SelectedItemTitle"].ToString();
+                itemSelectionView.SetSelectedItem(selectedItemTitle);
+            }
         }
     }
 }

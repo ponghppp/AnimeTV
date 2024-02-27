@@ -14,11 +14,13 @@ namespace TVAnime.Helper
                 file.Delete();
             }
         }
-        public static void DeleteOldVideos(int maxCount = 5)
+        public static void DeleteOldVideos(int maxCount = 3)
         {
             var dir = new System.IO.DirectoryInfo(Constant.Download);
-            var files = dir.GetFiles("*.mp4").OrderBy(v => v.CreationTime).ToList();
-            if (files.Count > maxCount) files.RemoveRange(0, files.Count - maxCount);
+            foreach (var f in dir.GetFiles("*.mp4").OrderByDescending(f => f.CreationTime).Skip(maxCount))
+            {
+                f.Delete();
+            }
         }
 
         public static async Task<int> GetVideoDuration(string videoName)
