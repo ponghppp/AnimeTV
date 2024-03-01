@@ -73,8 +73,8 @@ namespace TVAnime.Helper
 
         public static void CheckNetworkConnectivity()
         {
-            connected = false;
-            return;
+            //connected = false;
+            //return;
 
             try
             {

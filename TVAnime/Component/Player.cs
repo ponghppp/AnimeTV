@@ -10,12 +10,14 @@ namespace TVAnime.Component
 {
     internal class Player
     {
+        public PlayerPage page { get; set; }
         public int currentTime { get; set; }
         public int duration { get; set; }
         private Timer timer { get; set; }
         public View view { get; set; }
         public VideoView videoView { get; set; }
         public bool isPlaying { get; set; }
+        public bool shouldPlay { get; set; }
         public View controlView { get; set; }
         public Progress progress { get; set; }
         public TextLabel progressLabel { get; set; }
@@ -23,18 +25,20 @@ namespace TVAnime.Component
         public string id { get; set; }
         public string categoryId { get; set; }
 
-        public Player(BasePage page, string categoryId, string title, string id)
+        public Player(PlayerPage page, string categoryId, string title, string id)
         {
+            this.page = page;
             this.categoryId = categoryId;
             this.id = id;
             this.title = title;
             page.OnKeyEvents += OnKeyEvent;
 
+            shouldPlay = true;
             currentTime = 0;
             timer = new Timer(1000);
             timer.Tick += Tick;
 
-            var v = new View()
+            view = new View()
             {
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.MatchParent
@@ -45,14 +49,13 @@ namespace TVAnime.Component
                 HeightSpecification = LayoutParamPolicies.MatchParent,
                 BackgroundColor = Color.Cyan,
             };
-            v.Add(videoView);
+            view.Add(videoView);
             var pm = new Tizen.NUI.PropertyMap();
             pm.Add("left", new Tizen.NUI.PropertyValue(1.0f));
             pm.Add("right", new Tizen.NUI.PropertyValue(1.0f));
             videoView.Volume = pm;
 
             SetupControlView();
-            view = v;
         }
 
 
@@ -63,10 +66,15 @@ namespace TVAnime.Component
                 timer.Stop();
             }
             currentTime += 1000;
+            UpdateProgressLabel();
+            return true;
+        }
+
+        private void UpdateProgressLabel()
+        {
             var percentage = ((float)currentTime / (float)duration) * 100;
             progress.CurrentValue = percentage;
-            progressLabel.Text = TimeHelper.MillisecondsToMinute(currentTime) + "/" + TimeHelper.MillisecondsToMinute(duration);
-            return true;
+            progressLabel.Text = TimeHelper.MillisecondsToHourMinute(currentTime) + "/" + TimeHelper.MillisecondsToHourMinute(duration);
         }
 
         public void Play()
@@ -92,8 +100,9 @@ namespace TVAnime.Component
             videoView.ResourceUrl = source;
             var videoName = source.Split('/').LastOrDefault();
             duration = await VideoHelper.GetVideoDuration(videoName);
-            progressLabel.Text = TimeHelper.MillisecondsToMinute(currentTime) + "/" + TimeHelper.MillisecondsToMinute(duration);
-            Play();
+            UpdateProgressLabel();
+            if (shouldPlay) Play();
+            videoView.Forward(lastPlayTime);
         }
 
         private void SetupControlView()
@@ -121,7 +130,8 @@ namespace TVAnime.Component
             var hLayout = new LinearLayout()
             {
                 LinearOrientation = LinearLayout.Orientation.Horizontal,
-                Padding = new Extents(20, 20, 0, 0)
+                Padding = new Extents(20, 20, 0, 0),
+                VerticalAlignment = VerticalAlignment.Center,
             };
             headerView.Layout = hLayout;
 
@@ -184,6 +194,15 @@ namespace TVAnime.Component
             Tizen.NUI.Window.Instance.Add(controlView);
         }
 
+        private void Exit()
+        {
+            RecordHelper.RecordVideoPlayTime(categoryId, id, title, currentTime, duration);
+            timer.Stop();
+            videoView.Stop();
+            shouldPlay = false;
+            view.Remove(videoView);
+        }
+
         private void OnKeyEvent(object sender, Window.KeyEventArgs e)
         {
             if (e.Key.State == Key.StateType.Down)
@@ -193,21 +212,34 @@ namespace TVAnime.Component
                     if (isPlaying) Pause();
                     else Play();
                 }
+                if (!isPlaying)
+                {
+                    if (e.Key.KeyPressedName == "Up")
+                    {
+                        Exit();
+                        page.NextEpisode();
+                    }
+                    if (e.Key.KeyPressedName == "Down")
+                    {
+                        Exit();
+                        page.PreviousEpisode();
+                    }
+                }
                 if (e.Key.KeyPressedName == "Right")
                 {
                     videoView.Forward(10000);
                     currentTime = Math.Min(duration, currentTime + 10000);
+                    UpdateProgressLabel();
                 }
                 if (e.Key.KeyPressedName == "Left")
                 {
                     videoView.Backward(10000);
                     currentTime = Math.Max(0, currentTime - 10000);
+                    UpdateProgressLabel();
                 }
                 if (e.Key.KeyPressedName == "XF86Back" || e.Key.KeyPressedName == "Escape")
                 {
-                    RecordHelper.RecordVideoPlayTime(categoryId, id, title, currentTime, duration);
-                    timer.Stop();
-                    videoView.Stop();
+                    Exit();
                 }
             }
         }
