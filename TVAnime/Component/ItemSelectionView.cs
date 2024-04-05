@@ -46,7 +46,6 @@ namespace TVAnime.Component
             for (var i = 0; i < source.Count; i++)
             {
                 var item = source[i];
-                //item.Percentage = 50;
                 CreatePercentageView(item);
             }
             if (source.Count > 0)
@@ -66,7 +65,8 @@ namespace TVAnime.Component
         {
             var vv = new View()
             {
-                HeightResizePolicy = ResizePolicyType.FitToChildren,
+                //HeightResizePolicy = ResizePolicyType.FitToChildren,
+                HeightSpecification = 68,
                 WidthResizePolicy = ResizePolicyType.FillToParent,
             };
             var v = new View()
@@ -82,7 +82,7 @@ namespace TVAnime.Component
                 TextColor = Color.Black,
                 PointSize = 50,
                 WidthResizePolicy = ResizePolicyType.FillToParent,
-                Margin = new Extents(20, 20, 0, 0),
+                Margin = new Extents(20, 20, 0, 0)
             };
             var bg = new View()
             {
@@ -113,7 +113,9 @@ namespace TVAnime.Component
             ItemsContainer[previousSelectedIndex].BackgroundColor = Color.Transparent;
             Items[selectedIndex].TextColor = Color.Red;
             ItemsContainer[selectedIndex].BackgroundColor = Color.Cyan;
-            scrollView.ScrollTo(Items[0].SizeHeight * selectedIndex, true);
+            scrollView.ScrollTo(ItemsContainer[0].SizeHeight * selectedIndex, true);
+            //var distance = ItemsContainer[selectedIndex].ScreenPosition.Height - 80;
+            //scrollView.ScrollTo(scrollView.ScrollPosition.Y + distance, true);
         }
         public void OnKeyEvent(object sender, Window.KeyEventArgs e)
         {

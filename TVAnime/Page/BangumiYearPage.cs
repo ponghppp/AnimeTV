@@ -38,16 +38,17 @@ namespace TVAnime.Page
             {
                 seasons = seasons.Where(s => seasons.IndexOf(s) <= currentSeasonIdx).ToList();
             }
-            items = seasons.Select(s =>
+            items = seasons.Select((v, i) => new { value = v, index = i }).Select(s =>
             {
-                var title = $"{selectedYear}年{s}季新番";
+                var value = $"{selectedYear}年{s.value}季新番";
+                var title = value + $" ({(s.index * 3) + 1} - {(s.index * 3) + 3}月)";
                 var param = new Dictionary<string, object>()
                 {
-                    ["Title"] = title,
+                    ["Title"] = value,
                     ["Page"] = typeof(SeasonPage)
                 };
                 return new SelectionItem(title, param);
-            }).ToList();
+            }).Reverse().ToList();
 
             itemSelectionView.SetItemsSource(items);
         }
