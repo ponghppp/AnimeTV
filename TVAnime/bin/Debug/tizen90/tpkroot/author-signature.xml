@@ -36,11 +36,11 @@
     </Reference>
     <Reference URI="bin%2FTVAnime.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
-      <DigestValue>G/pWfKo3fTZhVTNmf9KCzHikttcOLQjvQZV2H5H3HwvgMu7YEY2zfeWI8WhCPKIjMcJ4QmM90az/BgS5EQohHg==</DigestValue>
+      <DigestValue>ZFlVDFYIiQ+4VuglxlQUkfRaw3NSKm9KwZX54xEk+UYOgn1b077O/iXm65ZZoVE7kANsWZ5FrYYx1MCn/TyPsw==</DigestValue>
     </Reference>
     <Reference URI="bin%2FTVAnime.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
-      <DigestValue>GEbIeD8YuRfl4C+h2549q5f49wGywDUkDMrBv6P72s2KeC7a+pUyUcECGzbyYiVV1yqYJnQ212Hb7o9a7KG/RA==</DigestValue>
+      <DigestValue>XLeziAdU3wB4lQc6VmiCiDwst/s4m83/V1LuA0UloSz1/aVblreCp/5yvx6HAC3FthH5+HYDPfR2+BB7Dmnhwg==</DigestValue>
     </Reference>
     <Reference URI="bin%2FSystem.Xml.XPath.XmlDocument.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
@@ -99,11 +99,11 @@
     </Reference>
   </SignedInfo>
   <SignatureValue>
-h2r7SRT1pr7MkmqdNdW/5F6A+7/xJ8TTzOSOKEXCFsn52XXqj/vE6iuRdAoKBpuAhhKiBicqr1Sy
-d3/M5vo3yOT32LQJdyNYxSXIoC2Qabhizc1PpuTDtrdoKPEIbbbwKSDMH3p+7sia/ONrFdabNiZe
-FUU9NuI8g/OdXbSSjGq6wd8bS9yGNGil3XR1ymDDKJoE/Zply0P0KSVuLE6l7jqj37nK1JwGm4eU
-g2j5rRy9IPEW1sjg0vR/U3ggbtPl38j7dZM5DqCfdWbKkfm12LwkCahcfubkuOQ9IKl+eWRhSuxL
-3vSuBY3hn1tnNjwdfa+8CUBFY5Thp+OdpbpZEg==
+Sey60Af6P8HBMO2B0IFf3z0hi1p43aB3qwtWkO0JJZ1W4qoz6CcyTdsYCGHIqGtwSrj39mHVZ5So
+wgpqYjcknAryD58PAoWGu9YNDbdAj84Gv+6ttAAcmknUzF2ZMY1wg5ky39qioqF07pwBqphwAXZf
+eYucdCgqzIfmIc9vhGqlqbXicZQS7U3WEQP139zeE9tjidC+uVjzJQ+DB0HQ1utqOtHVgSCoE2r8
+0t0MzZJHjf8juy9VF+TsOAhRFMgUXQ/zXHaZtEXDlJnsstLaMLYd1sHwyv8p7IKOu1r3KbxwN6DH
+UZjAWgXo69ProB1H3TqxjB05HiRGbhW9Zsp5Kg==
 </SignatureValue>
   <KeyInfo>
     <X509Data>

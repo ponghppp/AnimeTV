@@ -79,10 +79,13 @@ namespace TVAnime.Component
 
         public void Play()
         {
-            timer.Start();
-            isPlaying = true;
-            videoView.Play();
-            controlView.Hide();
+            if (shouldPlay)
+            {
+                timer.Start();
+                isPlaying = true;
+                videoView.Play();
+                controlView.Hide();
+            }
         }
 
         public void Pause()
@@ -199,8 +202,12 @@ namespace TVAnime.Component
             RecordHelper.RecordVideoPlayTime(categoryId, id, title, currentTime, duration);
             timer.Stop();
             videoView.Stop();
+            videoView.Reset();
+            controlView.Reset();
             shouldPlay = false;
             view.Remove(videoView);
+            view.Remove(controlView);
+            page.OnKeyEvents -= OnKeyEvent;
         }
 
         private void OnKeyEvent(object sender, Window.KeyEventArgs e)

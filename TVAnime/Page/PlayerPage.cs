@@ -26,6 +26,7 @@ namespace TVAnime.Page
         private async void GetVideo()
         {
             ShowLoading();
+            loadingViewLabel.Text = "載入中...";
             player.shouldPlay = true;
             await Api.DownloadAnime(this, param["Id"].ToString(), param["ApiReq"].ToString(), loadingViewLabel);
             //await Task.Run(() => Api.CopyVideoFromResource("29109.mp4"));
@@ -52,6 +53,7 @@ namespace TVAnime.Page
                 var episode = series[nextIndex];
                 if (episode.Id.ToString() != param["Id"].ToString())
                 {
+                    client.CancelPendingRequests();
                     param["Id"] = episode.Id.ToString();
                     param["Title"] = episode.Title;
                     param["ApiReq"] = episode.ApiReq;
@@ -70,6 +72,7 @@ namespace TVAnime.Page
                 var episode = series[nextIndex];
                 if (episode.Id.ToString() != param["Id"].ToString())
                 {
+                    client.CancelPendingRequests();
                     param["Id"] = episode.Id.ToString();
                     param["Title"] = episode.Title;
                     param["ApiReq"] = episode.ApiReq;
