@@ -46,7 +46,6 @@ namespace TVAnime.Component
             for (var i = 0; i < source.Count; i++)
             {
                 var item = source[i];
-                item.Percentage = 50;
                 CreatePercentageView(item);
             }
             if (source.Count > 0)

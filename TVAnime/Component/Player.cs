@@ -38,7 +38,7 @@ namespace TVAnime.Component
             timer = new Timer(1000);
             timer.Tick += Tick;
 
-            var v = new View()
+            view = new View()
             {
                 WidthSpecification = LayoutParamPolicies.MatchParent,
                 HeightSpecification = LayoutParamPolicies.MatchParent
@@ -49,14 +49,13 @@ namespace TVAnime.Component
                 HeightSpecification = LayoutParamPolicies.MatchParent,
                 BackgroundColor = Color.Cyan,
             };
-            v.Add(videoView);
+            view.Add(videoView);
             var pm = new Tizen.NUI.PropertyMap();
             pm.Add("left", new Tizen.NUI.PropertyValue(1.0f));
             pm.Add("right", new Tizen.NUI.PropertyValue(1.0f));
             videoView.Volume = pm;
 
             SetupControlView();
-            view = v;
         }
 
 
@@ -80,10 +79,13 @@ namespace TVAnime.Component
 
         public void Play()
         {
-            timer.Start();
-            isPlaying = true;
-            videoView.Play();
-            controlView.Hide();
+            if (shouldPlay)
+            {
+                timer.Start();
+                isPlaying = true;
+                videoView.Play();
+                controlView.Hide();
+            }
         }
 
         public void Pause()
@@ -103,6 +105,7 @@ namespace TVAnime.Component
             duration = await VideoHelper.GetVideoDuration(videoName);
             UpdateProgressLabel();
             if (shouldPlay) Play();
+            videoView.Forward(lastPlayTime);
         }
 
         private void SetupControlView()
@@ -199,7 +202,12 @@ namespace TVAnime.Component
             RecordHelper.RecordVideoPlayTime(categoryId, id, title, currentTime, duration);
             timer.Stop();
             videoView.Stop();
+            videoView.Reset();
+            controlView.Reset();
             shouldPlay = false;
+            view.Remove(videoView);
+            view.Remove(controlView);
+            page.OnKeyEvents -= OnKeyEvent;
         }
 
         private void OnKeyEvent(object sender, Window.KeyEventArgs e)
@@ -226,7 +234,8 @@ namespace TVAnime.Component
                 }
                 if (e.Key.KeyPressedName == "Right")
                 {
-                    videoView.Forward(10000);
+                    var distance = duration - currentTime - 10000;
+                    videoView.Forward(Math.Min(10000, distance));
                     currentTime = Math.Min(duration, currentTime + 10000);
                     UpdateProgressLabel();
                 }

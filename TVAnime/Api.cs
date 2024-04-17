@@ -115,7 +115,8 @@ namespace TVAnime
         {
             try
             {
-                if (id == RecordHelper.GetCurrentVideo())
+                var currentVideos = VideoHelper.GetCurrentVideos();
+                if (currentVideos.Contains(id))
                 {
                     return;
                 }

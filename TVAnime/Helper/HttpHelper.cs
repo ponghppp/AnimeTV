@@ -109,6 +109,7 @@ namespace TVAnime.Helper
         public static async Task DownloadFileTaskAsync(BasePage page, string url, string destinationFilePath, Dictionary<string, string> headers, TextLabel loadingLabel)
         {
             loadingViewLabel = loadingLabel;
+            loadingViewLabel.Text = "載入中...";
             using (var client = new DownloadHelper(url, destinationFilePath, headers))
             {
                 page.client = client._httpClient;

@@ -133,7 +133,6 @@ namespace TVAnime.Page
                 container.Layout = containerLayout;
                 loadingViewLabel = new TextLabel()
                 {
-                    Text = "載入中...",
                     TextColor = Color.White,
                 };
                 ImageView loadingImageView = new ImageView()

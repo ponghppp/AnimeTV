@@ -9,34 +9,7 @@ namespace TVAnime.Helper
 {
     internal class RecordHelper
     {
-        public static string videoRecordPath = Constant.Download + "/video.txt";
         public static string recordJsonPath = Constant.Download + "/record.json";
-        public static void RecordCurrentVideo(string id)
-        {
-            try
-            {
-                File.CreateText(videoRecordPath).Close();
-                File.WriteAllText(videoRecordPath, id);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-        public static string GetCurrentVideo()
-        {
-            var id = "";
-            if (!File.Exists(videoRecordPath))
-            {
-                File.Create(videoRecordPath).Close();
-            }
-            using (StreamReader r = new StreamReader(videoRecordPath))
-            {
-                id = r.ReadToEnd();
-            }
-            return id;
-        }
-
         public static void RecordVideoPlayTime(string categoryId, string id, string title, int playTime, int duration)
         {
             if (!File.Exists(recordJsonPath))
