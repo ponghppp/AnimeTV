@@ -6256,11 +6256,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jamestang\\Desktop\\Projects\\AnimeTV\\TVAnime\\TVAnime.csproj",
+      "projectUniqueName": "C:\\Users\\jamestang\\Desktop\\Projects\\AnimeTV1\\TVAnime\\TVAnime.csproj",
       "projectName": "TVAnime",
-      "projectPath": "C:\\Users\\jamestang\\Desktop\\Projects\\AnimeTV\\TVAnime\\TVAnime.csproj",
+      "projectPath": "C:\\Users\\jamestang\\Desktop\\Projects\\AnimeTV1\\TVAnime\\TVAnime.csproj",
       "packagesPath": "C:\\Users\\jamestang\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jamestang\\Desktop\\Projects\\AnimeTV\\TVAnime\\obj\\",
+      "outputPath": "C:\\Users\\jamestang\\Desktop\\Projects\\AnimeTV1\\TVAnime\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -6337,7 +6337,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.104\\RuntimeIdentifierGraph.json"
       }
     }
   }

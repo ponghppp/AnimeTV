@@ -45,11 +45,7 @@ namespace TVAnime.Page
                 ShowRetry(GetList);
                 return;
             }
-            if (param["SelectedItemTitle"] != null && param["SelectedItemTitle"].ToString() != "")
-            {
-                var selectedItemTitle = param["SelectedItemTitle"].ToString();
-                itemSelectionView.SetSelectedItem(selectedItemTitle);
-            }
+            itemSelectionView.SetSelectedItem();
         }
     }
 }

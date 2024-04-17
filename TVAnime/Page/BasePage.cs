@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 using Tizen.NUI.Components;
+using TVAnime.Component;
 using TVAnime.Models;
 
 namespace TVAnime.Page
@@ -21,6 +23,7 @@ namespace TVAnime.Page
         public Window window = Window.Instance;
         public Dictionary<string, object> param { get; set; }
         public HttpClient client { get; set; }
+        public IList list { get; set; }
 
         public BasePage()
         {
@@ -38,7 +41,7 @@ namespace TVAnime.Page
             view.Layout = layout;
         }
 
-        public virtual void Init() { }
+        public virtual void Init() {}
 
         public async void TransferToView(Type pageType, Dictionary<string, object> param = null, bool addStack = true)
         {

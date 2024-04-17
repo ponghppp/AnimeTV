@@ -19,6 +19,7 @@ namespace TVAnime.Component
         public List<View> ItemsContainer { get; set; }
         public List<View> ItemsBg { get; set; }
         public List<TextLabel> Items { get; set; }
+        public Action DeleteAction { get; set; }
 
         public ItemSelectionView(BasePage page)
         {
@@ -53,19 +54,31 @@ namespace TVAnime.Component
                 SelectItem(0, 0);
             }
         }
-        public void SetSelectedItem(string title)
+        public void SetSelectedItem()
         {
-            var index = ItemsSource.FindIndex(i => i.Name == title);
-            if (index > 0)
+            if (page.param != null)
             {
-                SelectItem(index, previousSelectedIndex);
-            }
+                object value;
+                if (page.param.TryGetValue("SelectedItemTitle", out value))
+                {
+                    if (value.ToString() != "")
+                    {
+                        var index = ItemsSource.FindIndex(i => i.Name == value.ToString());
+                        if (index > 0)
+                        {
+                            SelectItem(index, previousSelectedIndex);
+                        }
+                        
+                    }
+                }
+            }            
         }
         private void CreatePercentageView(SelectionItem item)
         {
             var vv = new View()
             {
-                HeightResizePolicy = ResizePolicyType.FitToChildren,
+                //HeightResizePolicy = ResizePolicyType.FitToChildren,
+                HeightSpecification = 68,
                 WidthResizePolicy = ResizePolicyType.FillToParent,
             };
             var v = new View()
@@ -112,7 +125,9 @@ namespace TVAnime.Component
             ItemsContainer[previousSelectedIndex].BackgroundColor = Color.Transparent;
             Items[selectedIndex].TextColor = Color.Red;
             ItemsContainer[selectedIndex].BackgroundColor = Color.Cyan;
-            scrollView.ScrollTo(Items[0].SizeHeight * selectedIndex, true);
+            scrollView.ScrollTo(ItemsContainer[0].SizeHeight * selectedIndex, true);
+            //var distance = ItemsContainer[selectedIndex].ScreenPosition.Height - 80;
+            //scrollView.ScrollTo(scrollView.ScrollPosition.Y + distance, true);
         }
         public void OnKeyEvent(object sender, Window.KeyEventArgs e)
         {
@@ -121,6 +136,12 @@ namespace TVAnime.Component
                 var source = ItemsSource.ToList();
                 if (e.Key.KeyPressedName == "Return" && Items.Count > 0)
                 {
+                    if (selectedIndex == 0 && DeleteAction != null)
+                    {
+                        DeleteAction();
+                        return;
+                    }
+
                     var currentParam = Globals.GetCurrentPageParam();
                     if (currentParam != null)
                     {
