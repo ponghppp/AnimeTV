@@ -26,7 +26,7 @@ namespace TVAnime.Page
             view.Add(footer.view);
             GetList();
         }
-        private void GetList()
+        public override void GetList()
         {
             var items = new List<SelectionItem> { };
             var currentYear = DateTime.Now.Year;
@@ -44,7 +44,7 @@ namespace TVAnime.Page
             itemSelectionView.SetItemsSource(items);
             if (items.Count == 0)
             {
-                ShowRetry(GetList);
+                ShowRetry();
                 return;
             }
             itemSelectionView.SetSelectedItem();

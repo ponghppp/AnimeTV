@@ -26,7 +26,7 @@ namespace TVAnime.Page
             GetList();
         }
 
-        private void GetList()
+        public override void GetList()
         {
             var selectedYear = int.Parse(param["SelectedYear"].ToString());
             var items = new List<SelectionItem> { };

@@ -9,6 +9,7 @@ using Tizen.NUI.BaseComponents;
 using Tizen.NUI.Components;
 using TVAnime.Component;
 using TVAnime.Models;
+using static Tizen.Applications.Notifications.Notification;
 
 namespace TVAnime.Page
 {
@@ -17,17 +18,16 @@ namespace TVAnime.Page
         List<EventHandler<Window.KeyEventArgs>> delegates = new List<EventHandler<Window.KeyEventArgs>>();
         public View view { get; set; }
         public View retryView { get; set; }
-        public Action retryAction { get; set; }
         public View loadingView { get; set; }
         public TextLabel loadingViewLabel { get; set; }
         public Window window = Window.Instance;
         public Dictionary<string, object> param { get; set; }
         public HttpClient client { get; set; }
-        public IList list { get; set; }
 
         public BasePage()
         {
             this.OnKeyEvents += OnBackPressed;
+            this.OnKeyEvents += OnEnterPressed;
 
             view = new View()
             {
@@ -41,7 +41,7 @@ namespace TVAnime.Page
             view.Layout = layout;
         }
 
-        public virtual void Init() {}
+        public virtual void Init() { }
         public virtual void GetList() { }
 
         public async void TransferToView(Type pageType, Dictionary<string, object> param = null, bool addStack = true)
@@ -49,6 +49,12 @@ namespace TVAnime.Page
             if (client != null)
             {
                 client.CancelPendingRequests();
+            }
+            if (retryView != null)
+            {
+                window.Remove(retryView);
+                retryView.Reset();
+                retryView = null;
             }
             ShowLoading();
             await Task.Delay(500);
@@ -77,10 +83,8 @@ namespace TVAnime.Page
             HideLoading();
         }
 
-        public void ShowRetry(Action retryAction)
+        public void ShowRetry()
         {
-            if (retryAction != null) this.retryAction = retryAction;
-
             retryView = new View()
             {
                 WidthResizePolicy = ResizePolicyType.FillToParent,
@@ -134,6 +138,7 @@ namespace TVAnime.Page
                 container.Layout = containerLayout;
                 loadingViewLabel = new TextLabel()
                 {
+                    Text = "載入中...",
                     TextColor = Color.White,
                 };
                 ImageView loadingImageView = new ImageView()
@@ -152,7 +157,6 @@ namespace TVAnime.Page
         {
             window.Remove(loadingView);
         }
-
         private void Unload()
         {
             foreach (var eh in delegates)
@@ -185,7 +189,17 @@ namespace TVAnime.Page
                 window.KeyEvent -= value;
             }
         }
-
+        public void OnEnterPressed(object sender, Window.KeyEventArgs e)
+        {
+            if (e.Key.State == Key.StateType.Down && e.Key.KeyPressedName == "Return")
+            {
+                if (retryView != null)
+                {
+                    window.Remove(retryView);
+                    GetList();
+                }
+            }
+        }
         public virtual void OnBackPressed(object sender, Window.KeyEventArgs e)
         {
             if (e.Key.State == Key.StateType.Down && (e.Key.KeyPressedName == "XF86Back" || e.Key.KeyPressedName == "Escape"))
@@ -204,14 +218,6 @@ namespace TVAnime.Page
                 {
                     GoBack();
                 }
-            }
-            if (e.Key.State == Key.StateType.Down && e.Key.KeyPressedName == "Return")
-            {
-                if (retryView != null)
-                {
-                    window.Remove(retryView);
-                }
-                if (retryAction != null) retryAction();
             }
         }
     }

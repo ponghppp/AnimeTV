@@ -21,7 +21,7 @@ namespace TVAnime.Page
             GetList();
         }
 
-        private async void GetList()
+        public override async void GetList()
         {
             ShowLoading();
             var categories = await Api.GetSearchResult(this, param["Title"].ToString());
@@ -41,7 +41,7 @@ namespace TVAnime.Page
             itemSelectionView.SetItemsSource(episodes);
             if (episodes.Count == 0)
             {
-                ShowRetry(GetList);
+                ShowRetry();
                 return;
             }
             itemSelectionView.SetSelectedItem();

@@ -22,7 +22,7 @@ namespace TVAnime.Page
             GetList();
         }
 
-        private async void GetList()
+        public override async void GetList()
         {
             var selectedSeason = param["Title"].ToString();
             ShowLoading();
@@ -42,7 +42,7 @@ namespace TVAnime.Page
             itemSelectionView.SetItemsSource(episodes);
             if (episodes.Count == 0)
             {
-                ShowRetry(GetList);
+                ShowRetry();
                 return;
             }
             itemSelectionView.SetSelectedItem();

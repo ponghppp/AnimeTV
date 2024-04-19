@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Tizen.NUI;
 using Tizen.NUI.BaseComponents;
 using Tizen.NUI.Components;
@@ -53,7 +54,7 @@ namespace TVAnime.Component
                 SelectItem(0, 0);
             }
         }
-        public void SetSelectedItem()
+        public async void SetSelectedItem()
         {
             if (page.param != null)
             {
@@ -65,6 +66,8 @@ namespace TVAnime.Component
                         var index = ItemsSource.FindIndex(i => i.Name == value.ToString());
                         if (index > 0)
                         {
+                            selectedIndex = index;
+                            await Task.Delay(300);
                             SelectItem(index, previousSelectedIndex);
                         }
                         
@@ -128,6 +131,7 @@ namespace TVAnime.Component
             //var distance = ItemsContainer[selectedIndex].ScreenPosition.Height - 80;
             //scrollView.ScrollTo(scrollView.ScrollPosition.Y + distance, true);
         }
+
         public void OnKeyEvent(object sender, Window.KeyEventArgs e)
         {
             if (e.Key.State == Key.StateType.Down && ItemsSource != null)
@@ -146,6 +150,11 @@ namespace TVAnime.Component
                     {
                         currentParam["SelectedItemTitle"] = source[selectedIndex].Name;
                         Globals.UpdateCurrentPageParam(currentParam);
+                    }
+                    else
+                    {
+                        var p = new Dictionary<string, object>() { ["SelectedItemTitle"] = source[selectedIndex].Name };
+                        Globals.UpdateCurrentPageParam(p);
                     }
                     var param = source[selectedIndex].Param;
                     page.TransferToView((Type)param["Page"], param);

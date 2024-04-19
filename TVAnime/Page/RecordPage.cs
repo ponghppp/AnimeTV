@@ -28,7 +28,7 @@ namespace TVAnime.Page
             view.Add(footer.view);
             GetList();
         }
-        private void GetList()
+        public override void GetList()
         {
             var records = RecordHelper.GetAllRecords();
             records.Add(new Record()
