@@ -189,6 +189,10 @@ namespace TVAnime.Page
         {
             if (e.Key.State == Key.StateType.Down && (e.Key.KeyPressedName == "XF86Back" || e.Key.KeyPressedName == "Escape"))
             {
+                if (retryView != null)
+                {
+                    window.Remove(retryView);
+                }
                 await Task.Delay(100);
                 if (Globals.pageStacks.Count == 1)
                 {
@@ -201,7 +205,10 @@ namespace TVAnime.Page
             }
             if (e.Key.State == Key.StateType.Down && e.Key.KeyPressedName == "Return")
             {
-                if (retryView != null) window.Remove(retryView);
+                if (retryView != null)
+                {
+                    window.Remove(retryView);
+                }
                 if (retryAction != null) retryAction();
             }
         }

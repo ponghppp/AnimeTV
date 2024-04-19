@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Tizen.NUI;
+using Tizen.NUI.BaseComponents;
 using TVAnime.Component;
 using TVAnime.Helper;
 using TVAnime.Models;
+using static Tizen.Applications.ResourceManager;
 
 namespace TVAnime.Page
 {
@@ -26,6 +31,12 @@ namespace TVAnime.Page
         private void GetList()
         {
             var records = RecordHelper.GetAllRecords();
+            records.Add(new Record()
+            {
+                CategoryId = "",
+                Id = "",
+                Title = "刪除影片"
+            });
             var rs = records.GroupBy(r => r.CategoryId).Select(g => g.OrderByDescending(r => r.Id).FirstOrDefault()).Select(a =>
             {
                 var title = a.Title;
@@ -41,7 +52,12 @@ namespace TVAnime.Page
             }).Reverse().ToList();
 
             itemSelectionView.SetItemsSource(rs);
-            itemSelectionView.SetSelectedItem();
+            itemSelectionView.DeleteAction = DeleteVideo;
+        }
+
+        private void DeleteVideo()
+        {
+            VideoHelper.DeleteAllVideos();
         }
     }
 }

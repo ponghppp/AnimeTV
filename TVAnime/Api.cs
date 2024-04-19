@@ -145,7 +145,6 @@ namespace TVAnime
 
                 var dest = Constant.Download + "/" + id + ".mp4";
                 await HttpHelper.DownloadFileTaskAsync(page, downloadUrl, dest, downloadHeaders, loadingLabel);
-                RecordHelper.RecordCurrentVideo(id);
                 VideoHelper.DeleteOldVideos();
             }
             catch (Exception ex)

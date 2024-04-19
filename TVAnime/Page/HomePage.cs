@@ -45,7 +45,7 @@ namespace TVAnime.Page
                 ShowRetry(GetList);
                 return;
             }
-            itemSelectionView.SetSelectedItem();
+            //itemSelectionView.SetSelectedItem();
         }
     }
 }
