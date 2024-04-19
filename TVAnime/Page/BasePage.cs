@@ -42,6 +42,7 @@ namespace TVAnime.Page
         }
 
         public virtual void Init() {}
+        public virtual void GetList() { }
 
         public async void TransferToView(Type pageType, Dictionary<string, object> param = null, bool addStack = true)
         {
@@ -185,15 +186,16 @@ namespace TVAnime.Page
             }
         }
 
-        public virtual async void OnBackPressed(object sender, Window.KeyEventArgs e)
+        public virtual void OnBackPressed(object sender, Window.KeyEventArgs e)
         {
             if (e.Key.State == Key.StateType.Down && (e.Key.KeyPressedName == "XF86Back" || e.Key.KeyPressedName == "Escape"))
             {
                 if (retryView != null)
                 {
                     window.Remove(retryView);
+                    retryView.Reset();
+                    retryView = null;
                 }
-                await Task.Delay(100);
                 if (Globals.pageStacks.Count == 1)
                 {
                     NUIApplication.Current.Exit();
