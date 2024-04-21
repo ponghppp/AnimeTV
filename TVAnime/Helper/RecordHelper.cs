@@ -12,6 +12,8 @@ namespace TVAnime.Helper
         public static string recordJsonPath = Constant.Download + "/record.json";
         public static void RecordVideoPlayTime(string categoryId, string id, string title, int playTime, int duration)
         {
+            if (duration == 0) return;
+
             if (!File.Exists(recordJsonPath))
             {
                 File.Create(recordJsonPath).Close();

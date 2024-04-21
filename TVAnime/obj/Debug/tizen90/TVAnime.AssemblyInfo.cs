@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TVAnime")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dbd1cbad05c088d6911cdc68a48829ca8104db41")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8811c0ce824fee9f0f77eaf01437a51c0dd6069e")]
 [assembly: System.Reflection.AssemblyProductAttribute("TVAnime")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TVAnime")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

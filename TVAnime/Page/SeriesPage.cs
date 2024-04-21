@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Tizen.Multimedia;
 using TVAnime.Component;
+using TVAnime.Helper;
 using TVAnime.Models;
 
 namespace TVAnime.Page
@@ -47,8 +49,11 @@ namespace TVAnime.Page
                     series = await Api.GetSeries(this, url);
                 }
                 HideLoading();
+
+                var records = RecordHelper.GetAllRecords();
                 episodes = series.Select(a =>
                 {
+                    var percentage = ((double?)records.FirstOrDefault(r => r.Id == a.Id.ToString())?.PlayTime ?? 0) / ((double?)records.FirstOrDefault(r => r.Id == a.Id.ToString())?.Duration ?? 0) * 100;
                     var title = a.Title;
                     var id = a.Id.ToString();
                     var param = new Dictionary<string, object>()
@@ -59,7 +64,7 @@ namespace TVAnime.Page
                         ["Series"] = series,
                         ["Page"] = typeof(PlayerPage)
                     };
-                    return new SelectionItem(title, param);
+                    return new SelectionItem(title, param, (int)percentage);
                 }).ToList();
 
                 itemSelectionView.SetItemsSource(episodes);

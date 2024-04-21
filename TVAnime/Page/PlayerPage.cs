@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using System.Web;
 using TVAnime.Component;
@@ -21,9 +22,9 @@ namespace TVAnime.Page
             player = new Player(this, seriesId, param["Title"].ToString(), param["Id"].ToString());
             content.view.Add(player.view);
             view.Add(content.view);
-            GetVideo();
+            GetList();
         }
-        private async void GetVideo()
+        public override async void GetList()
         {
             ShowLoading();
             player.shouldPlay = true;
@@ -32,6 +33,11 @@ namespace TVAnime.Page
             HideLoading();
             var id = param["Id"].ToString();
             var videoUrl = Constant.Download + "/" + id + ".mp4";
+            if (!File.Exists(videoUrl))
+            {
+                ShowRetry();
+                return;
+            }
             var lastPlayTime = RecordHelper.GetVideoLastPlayTime(id);
             player.SetVideoSource(videoUrl, lastPlayTime);
         }
@@ -55,6 +61,7 @@ namespace TVAnime.Page
                     param["Id"] = episode.Id.ToString();
                     param["Title"] = episode.Title;
                     param["ApiReq"] = episode.ApiReq;
+                    param["SelectedItemTitle"] = episode.Title;
                     Globals.UpdateCurrentPageParam(param);
                     view.Remove(content.view);
                     Init();
@@ -74,6 +81,7 @@ namespace TVAnime.Page
                     param["Id"] = episode.Id.ToString();
                     param["Title"] = episode.Title;
                     param["ApiReq"] = episode.ApiReq;
+                    param["SelectedItemTitle"] = episode.Title;
                     Globals.UpdateCurrentPageParam(param);
                     view.Remove(content.view);
                     Init();

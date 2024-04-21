@@ -40,11 +40,11 @@
     </Reference>
     <Reference URI="bin%2FTVAnime.pdb">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
-      <DigestValue>J9W2QSIJq088AUddjl2LZyTFtmyuLQYShK59ccAOPvCOUqVnfcsvTFhVjSs3P1ikCXA0BUNM2ZgTQfnKvCmsTw==</DigestValue>
+      <DigestValue>ptisVi5ViNZQgFU4uvc12AC+/5+/bCaQpQ1oJ+XG6L8RJ9U20F+mJ13lKO/iaQ8CV9JiMn0YmMTdxBSZs4GRzA==</DigestValue>
     </Reference>
     <Reference URI="bin%2FTVAnime.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
-      <DigestValue>2I7wYJjRRmla1vXAiJQncPHQFJajISmFfej+pO7rzMVToLXsN+zFClHZr/1zavblS7TzEqGVevMZeCbkZ4lYcg==</DigestValue>
+      <DigestValue>RtElL5HZjBmm6cJ/OeTW4aVOabfO/BRD0MG4YuxaRKBO2fJAuYP44NPf+3iulkCzx4GkPBYFSvBMYVAyaJsf0g==</DigestValue>
     </Reference>
     <Reference URI="bin%2FSystem.Xml.XPath.XmlDocument.dll">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
@@ -96,7 +96,7 @@
     </Reference>
     <Reference URI="author-signature.xml">
       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512" />
-      <DigestValue>oA1BFzowIxfC3Nl8wK/pi4xixuGOWdvJC5E++nzxLXbYJXZbDwOngj6rY0EgYsPMME4y7Dh8uudz5BK7Nl+6wQ==</DigestValue>
+      <DigestValue>EUpC9dhCPrgE2AWEoucvGNuTUeWLriyF+X4j1oDtBNwcOvoDiCdfQXeIXJ1iy3J5e95+2XwYLzUuz0lhA9RvaA==</DigestValue>
     </Reference>
     <Reference URI="#prop">
       <Transforms>
@@ -107,11 +107,11 @@
     </Reference>
   </SignedInfo>
   <SignatureValue>
-WThBZ5M0Qnpnx7SU5+WQv9TqRQGIVIxldhre+P7+gMxAtYrz3Xj6Vv4kiMN5ZpY/8J9mglLBtf7Z
-fbix9V0TLi8ZIEFI7rOMST/uyFD2O/wOXr7nhHqvzSdS36YAJz8x9h6aEIJZq3o1RV4UTdtQk/xL
-+P2v0SY/rcvFQtGgC1Ostwd/+6th4W+mOOcrHtn2FWR2USnk0Dh1L3kCdBVG+nsoJt2ZNfmSFcyG
-Kyrjueet+dUipldQLNKC0PTbrM3yseu616USxhqdAwOH9hX1jvAbb2CGLsTLZSFsh6APO8JivgSV
-6VmIJOJdvIkk25LS/zUXtQdJuodG6u69OfFiQA==
+eeUVNQJBFRrZx4XOEB3K+mOemMJmtJEq5C6nQSxrS2FUDWSduJkBpMEWfRhvaERYczZQZyGDYl/Y
+KPiUEmH5qLJHB8rPG9RGP6vrj7hj9GRSeELO5bmJqS3s1Zap3VyxiiCJugi0q21gojqd5FGYbo6N
+eG8WehD73olaWcII5citqEYma05RpuoZI94rER4Mf9Xqao3jmmCgh6aAzvIMxwHV/oRgjskr0oPU
+w7YXGV5bE66xTMmY58bYt5tColIDfgCWXURMr9Dj0F6YOaFOcYj2ZHFLfYysH93eAegY+2/jGXH1
+ASum4T4ebtDpuej2I1lp6kPNXwH/enWXVoJTGw==
 </SignatureValue>
   <KeyInfo>
     <X509Data>
